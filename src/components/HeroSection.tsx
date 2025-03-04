@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
+import logo from "@/assets/img/logo.png";
+import bg from "@/assets/img/bg.png";
+
 
 interface HeroSectionProps {
   title?: string;
@@ -16,7 +19,7 @@ const HeroSection = ({
   subtitle = "with Intelligent Software & Kiosks",
   ctaText = "Explore Solutions",
   onCtaClick = () => {},
-  backgroundImage = "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&q=80",
+  backgroundImage = bg,
 }: HeroSectionProps) => {
   const controls = useAnimation();
   const ref = useRef(null);
@@ -83,7 +86,7 @@ const HeroSection = ({
         >
           <div className="w-40 h-40 md:w-48 md:h-48 flex items-center justify-center mx-auto">
             <img
-              src="https://i.ibb.co/Qj1bRfL/t8-logo.png"
+              src={logo}
               alt="T8 Logo"
               className="w-full h-full object-contain"
             />
@@ -102,7 +105,7 @@ const HeroSection = ({
 
         {/* Subtitle with Animation */}
         <motion.h2
-          className="text-2xl md:text-3xl font-bold mb-8 text-gray-700"
+          className="text-3xl md:text-3xl font-bold mb-8 text-gray-700"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}

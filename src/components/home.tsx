@@ -5,6 +5,10 @@ import ClientLogoSlider from "./ClientLogoSlider";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
 import { Code, Terminal } from "lucide-react";
+import canara from "../assets/img/canara.png";
+import hdfc from "../assets/img/hdfc.png"; 
+import icici from "../assets/img/icici.png";
+import axis from "../assets/img/axis.png";
 
 function Home() {
   const handleHeroCtaClick = () => {
@@ -19,22 +23,22 @@ function Home() {
   const bankLogos = [
     {
       name: "HDFC Bank",
-      src: "https://i.ibb.co/VVDgctS/hdfc-bank.png",
+      src: hdfc,
       alt: "HDFC Bank Logo",
     },
     {
       name: "ICICI Bank",
-      src: "https://i.ibb.co/Jt2kGGY/icici-bank.png",
+      src: icici,
       alt: "ICICI Bank Logo",
     },
     {
       name: "Axis Bank",
-      src: "https://i.ibb.co/Lk4Lv1L/axis-bank.png",
+      src: axis,
       alt: "Axis Bank Logo",
     },
     {
       name: "Canara Bank",
-      src: "https://i.ibb.co/0jHvZZ2/canara-bank.png",
+      src: canara,
       alt: "Canara Bank Logo",
     },
   ];
