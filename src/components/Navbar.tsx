@@ -86,7 +86,7 @@ const Navbar = ({
               <motion.a
                 key={index}
                 href={link.href}
-                className={`font-medium hover:text-red-600 transition-colors ${isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"}`}
+                className={`font-medium hover:text-red-600 transition-colors ${isScrolled ? "text-gray-800 dark:text-gray-200" : "text-red-600 dark:text-gray-200"}`}
                 whileHover={{ y: -2 }}
                 onClick={(e) => handleLinkClick(e, link.href)}
               >
