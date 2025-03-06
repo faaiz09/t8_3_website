@@ -2,12 +2,11 @@ import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Facebook,
-  Instagram,
   Linkedin,
-  Twitter,
   Mail,
   Phone,
   MapPin,
+  Youtube,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import PrivacyPolicyModal from "./modals/PrivacyPolicyModal";
@@ -147,27 +146,29 @@ const Footer = ({ className }: FooterProps) => {
   ];
 
   const socialLinks = [
-    { icon: <Facebook className="h-5 w-5" />, href: "#", label: "Facebook" },
-    { icon: <Twitter className="h-5 w-5" />, href: "#", label: "Twitter" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "#", label: "LinkedIn" },
-    { icon: <Instagram className="h-5 w-5" />, href: "#", label: "Instagram" },
+    { icon: <Facebook className="h-5 w-5" />, href: "https://www.facebook.com/share/1BPeKHmUKG/?mibextid=wwXIfr", rel: "noopener noreferrer", target: "_blank", label: "Facebook" },
+    // { icon: <Twitter className="h-5 w-5" />, href: "#", label: "Twitter" },
+    { icon: <Youtube className="h-5 w-5" />, href: "https://www.youtube.com/@technocraftsswitchgears6096", rel: "noopener noreferrer", target: "_blank", label: "Instagram" },
+    { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/company/technocrafts-kiosk-and-automation-division/", rel: "noopener noreferrer", target: "_blank", label: "LinkedIn" },
   ];
 
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5" />,
-      text: "contact@t8banking.com",
-      href: "mailto:contact@t8banking.com",
+      text: "hr@technocrafts.net",
+      href: "mailto:hr@technocrafts.net",
     },
     {
       icon: <Phone className="h-5 w-5" />,
-      text: "+91 123 456 7890",
-      href: "tel:+911234567890",
+      text: "02228479999",
+      href: "tel:02228479999",
     },
     {
       icon: <MapPin className="h-5 w-5" />,
       text: "T8 Headquarters, Maharashtra, India",
-      href: "#",
+      href: "https://maps.app.goo.gl/EYfn5nt1jj33p2t49",
+      target:"_blank",
+      rel:"noopener noreferrer"
     },
   ];
 
