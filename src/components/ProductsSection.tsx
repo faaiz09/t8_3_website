@@ -39,6 +39,8 @@ import collmngmt from "../assets/img/collection_management.webp";
 import remote_monitor from "../assets/img/remote_monitoring.png";
 import self_service from "../assets/img/self_service_kiosk.jpg";
 
+import brochure from "../assets/documents/brochure.pdf";
+
 interface Product {
   id: string;
   name: string;
@@ -215,6 +217,13 @@ const ProductsSection = () => {
     setIsModalOpen(true);
   };
 
+  const downloadBrochure = () => {
+    const link = document.createElement("a");
+    link.href = brochure;
+    link.download = "brochure.pdf";
+    link.click();
+  };
+
   return (
     <section
       id="products"
@@ -247,6 +256,7 @@ const ProductsSection = () => {
             <Button
               className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md shadow-lg inline-flex items-center space-x-2 hover:scale-105 transition-all duration-300"
               size="lg"
+              onClick={downloadBrochure}
             >
               <Download size={20} />
               <span>Download Brochure</span>
