@@ -31,6 +31,13 @@ import infokisok from "../assets/img/infoko.png";
 import reportkiosk from "../assets/img/reportp.png";
 import retailkiosk from "../assets/img/retail_kiosk.png";
 import visitorkiosk from "../assets/img/visitor.png";
+import bankingkiosk from "../assets/img/banking_kiosk.png";
+import consultativekiosk from "../assets/img/consultative.png";
+import transportkiosk from "../assets/img/transit_Kiosk.png";
+import digitalbanking from "../assets/img/digital_banking.png";
+import collmngmt from "../assets/img/collection_management.webp";
+import remote_monitor from "../assets/img/remote_monitoring.png";
+import self_service from "../assets/img/self_service_kiosk.jpg";
 
 interface Product {
   id: string;
@@ -119,7 +126,7 @@ const ProductsSection = () => {
       icon: <Smartphone size={24} />,
       category: "INVOS",
       image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80",
+        self_service,
       details:
         "Our Self-Service Kiosk Applications suite includes customizable software solutions for banking, retail, healthcare, and government sectors. These applications feature modular designs that can be tailored to specific business requirements, with robust security, analytics capabilities, and seamless integration with existing systems.",
     },
@@ -130,7 +137,7 @@ const ProductsSection = () => {
       icon: <Server size={24} />,
       category: "INVOS",
       image:
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&q=80",
+        remote_monitor,
       details:
         "Our Remote Monitoring Solutions provide real-time oversight of your entire kiosk network from a centralized dashboard. Features include hardware status monitoring, software performance tracking, automated alerts for maintenance needs, remote troubleshooting capabilities, and detailed usage analytics to optimize deployment.",
     },
@@ -142,7 +149,7 @@ const ProductsSection = () => {
       icon: <Database size={24} />,
       category: "INVOS",
       image:
-        "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=500&q=80",
+        collmngmt,
       details:
         "Our Collection Management Solutions automate and optimize the entire payment collection lifecycle. The system handles multiple payment methods, provides real-time reconciliation, generates comprehensive reports, and integrates with accounting systems. Advanced features include recurring payment scheduling, automated reminders, and fraud detection.",
     },
@@ -156,7 +163,7 @@ const ProductsSection = () => {
       icon: <CreditCard size={24} />,
       category: "TSSAD",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&q=80",
+        digitalbanking,
       details:
         "The Digital Banking Unit is a comprehensive solution that transforms traditional banking operations into seamless digital experiences. It includes account management, fund transfers, bill payments, loan applications, investment services, and personalized financial insights—all accessible through intuitive interfaces designed for maximum security and user satisfaction.",
     },
@@ -167,7 +174,7 @@ const ProductsSection = () => {
       icon: <Train size={24} />,
       category: "TSSAD",
       image:
-        "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=500&q=80",
+        transportkiosk,
       details:
         "Our Transport Kiosks streamline passenger experiences at airports, train stations, and bus terminals. These kiosks enable ticket purchasing, seat selection, boarding pass printing, route information, and schedule updates. Advanced features include biometric verification, contactless payments, and integration with transportation management systems.",
     },
@@ -178,7 +185,7 @@ const ProductsSection = () => {
       icon: <Users size={24} />,
       category: "TSSAD",
       image:
-        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80",
+        consultativekiosk,
       details:
         "Consultative Kiosks bridge the gap between self-service and personalized assistance through video conferencing with remote experts. These kiosks feature high-definition video, document scanning and sharing capabilities, electronic signature collection, and secure transaction processing—ideal for complex financial services, healthcare consultations, and government services.",
     },
@@ -190,7 +197,7 @@ const ProductsSection = () => {
       icon: <Building size={24} />,
       category: "TSSAD",
       image:
-        "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=500&q=80",
+        bankingkiosk,
       details:
         "Our Banking Kiosks deliver a full range of financial services without requiring teller assistance. Features include account opening, cash/check deposits, withdrawals, fund transfers, loan applications, card issuance, and account management. These kiosks extend banking services beyond traditional hours and locations while maintaining the highest security standards.",
     },
