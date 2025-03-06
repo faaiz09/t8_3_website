@@ -95,6 +95,10 @@ export const theme = {
         "0%": { backgroundPosition: "-1000px 0" },
         "100%": { backgroundPosition: "1000px 0" },
       },
+      "progress-fill": {
+        "0%": { strokeDashoffset: "251.2" },
+        "100%": { strokeDashoffset: "0" },
+      },
     },
     animation: {
       "accordion-down": "accordion-down 0.2s ease-out",
@@ -102,6 +106,7 @@ export const theme = {
       float: "float 6s ease-in-out infinite",
       "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       shimmer: "shimmer 2s infinite",
+      "progress-fill": "progress-fill 1s ease-out forwards",
     },
   },
 };

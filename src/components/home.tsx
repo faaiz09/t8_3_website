@@ -8,6 +8,7 @@ import ClientsSection from "./ClientsSection";
 // import ClientLogoSlider from "./ClientLogoSlider";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
+import ScrollToTop from "./ScrollToTop";
 import canara from "../assets/img/canara.png";
 import hdfc from "../assets/img/hdfc.png";
 import icici from "../assets/img/icici.png";
@@ -79,6 +80,9 @@ function Home() {
 
       {/* Footer with Modal Triggers */}
       <Footer />
+
+      {/* Scroll to Top Button with Progress Indicator */}
+      <ScrollToTop showBelow={300} />
     </div>
   );
 }
