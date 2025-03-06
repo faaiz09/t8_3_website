@@ -20,7 +20,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   title = "Get in Touch",
   subtitle = "Have questions about our banking solutions? Our team is here to help.",
   email = "hr@technocrafts.net",
-  phone = "1800-313-0062",
+  phone = "1800-313-0062/ +91-9987571950",
   address = "WB-VII, Unit No. 1 to 10, Renaissance Industrial Smart City, Bhiwandi, Vashere, Maharashtra 421302",
 }) => {
   return (
