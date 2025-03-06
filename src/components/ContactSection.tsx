@@ -318,10 +318,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-8 text-[#0D47A1] dark:text-blue-400 transition-colors duration-300">
+          {/* <h3 className="text-2xl font-bold text-center mb-8 text-[#0D47A1] dark:text-blue-400 transition-colors duration-300">
             Our Location
-          </h3>
-          <InteractiveMap height="400px" />
+          </h3> */}
+          {/* <InteractiveMap height="400px" /> */}
         </motion.div>
       </div>
     </section>

@@ -6,6 +6,12 @@ import hdfc from "../assets/img/hdfc.png";
 import icici from "../assets/img/icici.png";
 import axis from "../assets/img/axis.png";
 import canara from "../assets/img/canara.png";
+import kalupur from "../assets/img/kalupur.png";
+import dbs from "../assets/img/dbs.png";
+import bmrcl from "../assets/img/bmrcl.png";
+import mumbaiMetro from "../assets/img/mmrc.png";
+import mvretail from "../assets/img/mvretail.png";
+import drlals from "../assets/img/drlalpathlabs.png";
 
 interface ClientCategory {
   id: string;
@@ -54,12 +60,12 @@ const ClientsSection = () => {
         {
           id: "kalupur",
           name: "Kalupur Bank",
-          logo: "https://placehold.co/150x80/e2e8f0/1e293b?text=Kalupur+Bank&font=source-sans-pro",
+          logo: kalupur,
         },
         {
           id: "dbs",
           name: "DBS Bank",
-          logo: "https://placehold.co/150x80/e2e8f0/1e293b?text=DBS+Bank&font=source-sans-pro",
+          logo: dbs,
         },
       ],
     },
@@ -70,7 +76,7 @@ const ClientsSection = () => {
         {
           id: "mv-retail",
           name: "MV Retail",
-          logo: "https://placehold.co/150x80/e2e8f0/1e293b?text=MV+Retail&font=source-sans-pro",
+          logo: mvretail,
         },
       ],
     },
@@ -81,12 +87,12 @@ const ClientsSection = () => {
         {
           id: "bmrcl",
           name: "BMRCL",
-          logo: "https://placehold.co/150x80/e2e8f0/1e293b?text=BMRCL&font=source-sans-pro",
+          logo: bmrcl,
         },
         {
           id: "mumbai-metro",
           name: "Mumbai Metro",
-          logo: "https://placehold.co/150x80/e2e8f0/1e293b?text=Mumbai+Metro&font=source-sans-pro",
+          logo: mumbaiMetro,
         },
       ],
     },
@@ -97,7 +103,7 @@ const ClientsSection = () => {
         {
           id: "dr-lals",
           name: "Dr. Lals Pathlab",
-          logo: "https://placehold.co/150x80/e2e8f0/1e293b?text=Dr.+Lals&font=source-sans-pro",
+          logo: drlals,
         },
       ],
     },

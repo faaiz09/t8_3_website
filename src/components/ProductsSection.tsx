@@ -246,8 +246,8 @@ const ProductsSection = () => {
           className="w-full"
           onValueChange={(value) => setActiveCategory(value as any)}
         >
-          <div className="flex justify-center mb-8">
-            <TabsList className="grid w-full max-w-md grid-cols-3 bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+          <div className="flex justify-center mb-10">
+            <TabsList className="grid w-full max-w-md grid-cols-3 bg-gray-200 dark:bg-gray-800 transition-colors duration-300 h-100">
               <TabsTrigger
                 value="TECHSA"
                 className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3"

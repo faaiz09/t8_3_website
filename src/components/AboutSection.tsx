@@ -244,7 +244,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Download Brochure Button */}
-        <div className="text-center">
+        {/* <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -259,7 +259,7 @@ const AboutSection = ({
               <span>Download Brochure</span>
             </Button>
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

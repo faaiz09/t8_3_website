@@ -158,7 +158,7 @@ const HeroSection = ({
       </div>
 
       {/* Glass effect overlay at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 glass-effect z-10"></div>
+      {/* <div className="absolute bottom-0 left-0 right-0 h-20 glass-effect z-10"></div> */}
     </section>
   );
 };

@@ -5,7 +5,7 @@ import AboutSection from "./AboutSection";
 import ProductsSection from "./ProductsSection";
 import ServicesSection from "./ServicesSection";
 import ClientsSection from "./ClientsSection";
-import ClientLogoSlider from "./ClientLogoSlider";
+// import ClientLogoSlider from "./ClientLogoSlider";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
 import canara from "../assets/img/canara.png";
@@ -53,9 +53,9 @@ function Home() {
 
       {/* Hero Section */}
       <HeroSection
-        title="Revolutionizing Banking"
-        subtitle="with Intelligent Software & Kiosks"
-        ctaText="Explore Products"
+        title="A Digital Kiosk & Automation Company"
+        // subtitle="with Seamless transactions anytime, anywhere, with preferred payment modes on cutting-edge platforms."
+        ctaText="Explore Our Solutions"
         onCtaClick={handleHeroCtaClick}
       />
 
@@ -72,7 +72,7 @@ function Home() {
       <ClientsSection />
 
       {/* Client Logo Slider */}
-      <ClientLogoSlider logos={bankLogos} />
+      {/* <ClientLogoSlider logos={bankLogos} /> */}
 
       {/* Contact Section */}
       <ContactSection />
