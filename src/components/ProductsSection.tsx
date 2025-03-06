@@ -26,6 +26,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+import hrmskiosk from "../assets/img/hrms.png";
+import infokisok from "../assets/img/infoko.png";
+import reportkiosk from "../assets/img/reportp.png";
+import retailkiosk from "../assets/img/retail_kiosk.png";
+import visitorkiosk from "../assets/img/visitor.png";
+
 interface Product {
   id: string;
   name: string;
@@ -51,7 +57,7 @@ const ProductsSection = () => {
       icon: <Users size={24} />,
       category: "TECHSA",
       image:
-        "https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&q=80",
+        visitorkiosk,
       details:
         "Our Visitor Management Kiosk provides a seamless check-in experience for visitors while enhancing security protocols. Features include ID scanning, photo capture, badge printing, and real-time notifications to hosts. The system maintains a digital log of all visitors for compliance and security purposes.",
     },
@@ -63,7 +69,7 @@ const ProductsSection = () => {
       icon: <ShoppingBag size={24} />,
       category: "TECHSA",
       image:
-        "https://images.unsplash.com/photo-1556742031-c6961e8560b0?w=500&q=80",
+        retailkiosk,
       details:
         "Our Retail Kiosks transform the shopping experience by enabling customers to browse products, check prices, place orders, and make payments without assistance. These kiosks reduce wait times, increase sales opportunities through upselling, and provide valuable customer data for marketing insights.",
     },
@@ -75,7 +81,7 @@ const ProductsSection = () => {
       icon: <Users size={24} />,
       category: "TECHSA",
       image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80",
+        hrmskiosk,
       details:
         "The HRMS Kiosk streamlines human resource management by allowing employees to handle routine tasks independently. Features include attendance tracking, leave management, payslip access, benefits enrollment, and company announcement viewing. This solution reduces HR administrative burden while empowering employees.",
     },
@@ -87,7 +93,7 @@ const ProductsSection = () => {
       icon: <FileText size={24} />,
       category: "TECHSA",
       image:
-        "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=500&q=80",
+        reportkiosk,
       details:
         "Our Report Printing Kiosks allow customers to securely access and print account statements, transaction histories, and other important documents on demand. These kiosks feature secure authentication, high-quality printing, and digital delivery options, reducing branch workload while improving customer convenience.",
     },
@@ -99,7 +105,7 @@ const ProductsSection = () => {
       icon: <Monitor size={24} />,
       category: "TECHSA",
       image:
-        "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=500&q=80",
+        infokisok,
       details:
         "Information Kiosks serve as digital concierges, providing users with wayfinding assistance, product information, service details, and promotional content. These interactive displays feature intuitive touchscreen interfaces, multilingual support, and accessibility options to serve diverse user populations.",
     },

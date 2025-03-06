@@ -1,13 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Shield, Lock, Eye, FileText, X } from "lucide-react";
 
@@ -23,7 +16,7 @@ const PrivacyPolicyModal = ({ trigger }: PrivacyPolicyModalProps) => {
       <DialogTrigger asChild>
         {trigger || <Button variant="link">Privacy Policy</Button>}
       </DialogTrigger>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden p-0 gap-0 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0 gap-0 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="flex flex-col h-full">
           {/* Header with gradient background */}
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-900 p-6 text-white transition-colors duration-300">
@@ -152,22 +145,6 @@ const PrivacyPolicyModal = ({ trigger }: PrivacyPolicyModalProps) => {
             </AnimatePresence>
           </div>
 
-          {/* Footer with action buttons */}
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-            <Button
-              variant="outline"
-              onClick={() => setOpen(false)}
-              className="border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
-            >
-              Close
-            </Button>
-            <Button
-              className="bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-300"
-              onClick={() => window.print()}
-            >
-              Print
-            </Button>
-          </div>
         </div>
       </DialogContent>
     </Dialog>

@@ -16,10 +16,10 @@ const CookiePolicyModal = ({ trigger }: CookiePolicyModalProps) => {
       <DialogTrigger asChild>
         {trigger || <Button variant="link">Cookie Policy</Button>}
       </DialogTrigger>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden p-0 gap-0 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="flex flex-col h-full">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto p-0 gap-0 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="flex flex-col">
           {/* Header with gradient background */}
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 dark:from-amber-700 dark:to-orange-800 p-6 text-white transition-colors duration-300">
+          <div className="bg-gradient-to-r from-amber-500 to-orange-600 dark:from-amber-700 dark:to-orange-800 p-6 text-white sticky top-0 z-10 transition-colors duration-300">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-white/20 rounded-full">
@@ -41,8 +41,8 @@ const CookiePolicyModal = ({ trigger }: CookiePolicyModalProps) => {
             </p>
           </div>
 
-          {/* Scrollable content */}
-          <div className="overflow-y-auto p-6 space-y-6 flex-grow text-gray-800 dark:text-gray-200 transition-colors duration-300">
+          {/* Content */}
+          <div className="p-6 space-y-6 text-gray-800 dark:text-gray-200 transition-colors duration-300">
             <AnimatePresence>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -176,22 +176,7 @@ const CookiePolicyModal = ({ trigger }: CookiePolicyModalProps) => {
             </AnimatePresence>
           </div>
 
-          {/* Footer with action buttons */}
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-            <Button
-              variant="outline"
-              onClick={() => setOpen(false)}
-              className="border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
-            >
-              Close
-            </Button>
-            <Button
-              className="bg-amber-600 hover:bg-amber-700 text-white transition-colors duration-300"
-              onClick={() => window.print()}
-            >
-              Print
-            </Button>
-          </div>
+
         </div>
       </DialogContent>
     </Dialog>
