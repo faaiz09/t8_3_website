@@ -305,7 +305,7 @@ const ProductsSection = () => {
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                            className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
                             loading="lazy"
                           />
                         </div>
@@ -364,7 +364,7 @@ const ProductsSection = () => {
                   <img
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               )}
