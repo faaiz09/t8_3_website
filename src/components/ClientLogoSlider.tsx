@@ -68,15 +68,11 @@ const ClientLogoSlider = ({
 
   return (
     <div
-      className="w-full py-12 px-4 bg-white overflow-hidden"
+      className="w-full py-12 px-4 bg-white dark:bg-gray-950 overflow-hidden transition-colors duration-300"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">
-          Trusted by Leading Financial Institutions
-        </h2>
-
         <div className="relative h-32 mb-8">
           <AnimatePresence mode="wait">
             <motion.div
@@ -96,7 +92,7 @@ const ClientLogoSlider = ({
                     whileHover={{ scale: 1.05 }}
                   />
                   <motion.div
-                    className="absolute -bottom-6 left-0 right-0 text-center text-sm font-medium text-gray-600"
+                    className="absolute -bottom-6 left-0 right-0 text-center text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors duration-300"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
@@ -115,7 +111,7 @@ const ClientLogoSlider = ({
             <button
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-blue-500 scale-125" : "bg-gray-300 hover:bg-gray-400"}`}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-blue-500 scale-125" : "bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500"}`}
               aria-label={`View ${logos[index].name} logo`}
             />
           ))}
@@ -137,7 +133,7 @@ const ClientLogoSlider = ({
                 alt={logo.alt}
                 className={`h-16 object-contain filter hover:filter-none transition-all duration-300 ${index === currentIndex ? "filter-none" : ""}`}
               />
-              <div className="text-xs text-center mt-2 text-gray-600">
+              <div className="text-xs text-center mt-2 text-gray-600 dark:text-gray-300 transition-colors duration-300">
                 {logo.name}
               </div>
             </motion.div>

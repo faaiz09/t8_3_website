@@ -1,7 +1,19 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+import PrivacyPolicyModal from "./modals/PrivacyPolicyModal";
+import TermsOfServiceModal from "./modals/TermsOfServiceModal";
+import CookiePolicyModal from "./modals/CookiePolicyModal";
+import logo from "@/assets/img/logo.png";
 
 interface FooterProps {
   className?: string;
@@ -108,16 +120,16 @@ const Footer = ({ className }: FooterProps) => {
     {
       title: "Solutions",
       links: [
-        { name: "Software Development", href: "#" },
-        { name: "Banking Kiosks", href: "#" },
-        { name: "Digital Transformation", href: "#" },
-        { name: "Cloud Migration", href: "#" },
+        { name: "Software Development", href: "#products" },
+        { name: "Banking Kiosks", href: "#products" },
+        { name: "Digital Transformation", href: "#services" },
+        { name: "Cloud Migration", href: "#services" },
       ],
     },
     {
       title: "Company",
       links: [
-        { name: "About Us", href: "#" },
+        { name: "About Us", href: "#about" },
         { name: "Careers", href: "#" },
         { name: "News", href: "#" },
         { name: "Contact", href: "#contact" },
@@ -127,7 +139,7 @@ const Footer = ({ className }: FooterProps) => {
       title: "Resources",
       links: [
         { name: "Blog", href: "#" },
-        { name: "Case Studies", href: "#portfolio" },
+        { name: "Case Studies", href: "#clients" },
         { name: "Documentation", href: "#" },
         { name: "Support", href: "#" },
       ],
@@ -141,12 +153,31 @@ const Footer = ({ className }: FooterProps) => {
     { icon: <Instagram className="h-5 w-5" />, href: "#", label: "Instagram" },
   ];
 
+  const contactInfo = [
+    {
+      icon: <Mail className="h-5 w-5" />,
+      text: "contact@t8banking.com",
+      href: "mailto:contact@t8banking.com",
+    },
+    {
+      icon: <Phone className="h-5 w-5" />,
+      text: "+91 123 456 7890",
+      href: "tel:+911234567890",
+    },
+    {
+      icon: <MapPin className="h-5 w-5" />,
+      text: "T8 Headquarters, Maharashtra, India",
+      href: "#",
+    },
+  ];
+
   return (
     <footer
       className={cn(
-        "bg-gray-900 text-white py-12 px-4 relative overflow-hidden",
+        "bg-gray-900 dark:bg-gray-950 text-white py-12 px-4 relative overflow-hidden transition-colors duration-300",
         className,
       )}
+      id="footer"
     >
       {/* 3D Particles Background */}
       <div
@@ -158,7 +189,7 @@ const Footer = ({ className }: FooterProps) => {
       {[1, 2, 3].map((_, index) => (
         <motion.div
           key={index}
-          className="absolute rounded-full bg-blue-500/10"
+          className="absolute rounded-full bg-red-500/10"
           style={{
             width: Math.random() * 100 + 50,
             height: Math.random() * 100 + 50,
@@ -185,19 +216,33 @@ const Footer = ({ className }: FooterProps) => {
           <div className="lg:col-span-2">
             <motion.a
               href="#"
-              className="text-2xl font-bold mb-4 inline-block"
+              className="flex items-center mb-4 inline-block"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                T8
-              </span>
+              <img src={logo} alt="T8 Logo" className="h-10 w-auto mr-2" />
+              <span className="text-2xl font-bold text-white">T8</span>
             </motion.a>
             <p className="text-gray-400 mt-4 max-w-md">
               Transforming financial institutions with innovative software and
               kiosk solutions that enhance customer experience and operational
               efficiency.
             </p>
+
+            {/* Contact Information */}
+            <div className="mt-6 space-y-3">
+              {contactInfo.map((item, index) => (
+                <motion.a
+                  key={index}
+                  href={item.href}
+                  className="flex items-center text-gray-400 hover:text-white transition-colors"
+                  whileHover={{ x: 5 }}
+                >
+                  <span className="mr-2">{item.icon}</span>
+                  <span>{item.text}</span>
+                </motion.a>
+              ))}
+            </div>
 
             {/* Social Media Links with 3D effects */}
             <div className="flex space-x-4 mt-6">
@@ -206,10 +251,10 @@ const Footer = ({ className }: FooterProps) => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="bg-gray-800 p-2 rounded-full text-gray-400 hover:text-white hover:bg-blue-600 transition-colors"
+                  className="bg-gray-800 dark:bg-gray-900 p-2 rounded-full text-gray-400 hover:text-white hover:bg-red-600 transition-colors duration-300"
                   whileHover={{
                     y: -5,
-                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.5)",
+                    boxShadow: "0 10px 25px rgba(239, 68, 68, 0.5)",
                   }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -262,27 +307,36 @@ const Footer = ({ className }: FooterProps) => {
             © {currentYear} T8. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <motion.a
-              href="#"
-              className="text-gray-500 hover:text-white text-sm"
-              whileHover={{ y: -2 }}
-            >
-              Privacy Policy
-            </motion.a>
-            <motion.a
-              href="#"
-              className="text-gray-500 hover:text-white text-sm"
-              whileHover={{ y: -2 }}
-            >
-              Terms of Service
-            </motion.a>
-            <motion.a
-              href="#"
-              className="text-gray-500 hover:text-white text-sm"
-              whileHover={{ y: -2 }}
-            >
-              Cookie Policy
-            </motion.a>
+            <PrivacyPolicyModal
+              trigger={
+                <motion.button
+                  className="text-gray-500 hover:text-white text-sm"
+                  whileHover={{ y: -2 }}
+                >
+                  Privacy Policy
+                </motion.button>
+              }
+            />
+            <TermsOfServiceModal
+              trigger={
+                <motion.button
+                  className="text-gray-500 hover:text-white text-sm"
+                  whileHover={{ y: -2 }}
+                >
+                  Terms of Service
+                </motion.button>
+              }
+            />
+            <CookiePolicyModal
+              trigger={
+                <motion.button
+                  className="text-gray-500 hover:text-white text-sm"
+                  whileHover={{ y: -2 }}
+                >
+                  Cookie Policy
+                </motion.button>
+              }
+            />
           </div>
         </motion.div>
       </div>

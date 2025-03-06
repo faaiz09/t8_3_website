@@ -7,6 +7,7 @@ import { Textarea } from "../components//ui/textarea";
 import { Label } from "../components/ui/label";
 import { Mail, MessageSquare, Phone, Send } from "lucide-react";
 import ParticleEffects from "../components/animations/ParticleEffects";
+import InteractiveMap from "./InteractiveMap";
 
 interface ContactSectionProps {
   title?: string;
@@ -24,7 +25,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   address = "WB-VII, Unit No. 1 to 10, Renaissance Industrial Smart City, Bhiwandi, Vashere, Maharashtra 421302",
 }) => {
   return (
-    <section className="py-20 px-4 md:px-8 bg-white relative" id="contact">
+    <section
+      className="py-20 px-4 md:px-8 bg-white dark:bg-gray-950 relative transition-colors duration-300"
+      id="contact"
+    >
       {/* Background particle effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <ParticleEffects
@@ -39,7 +43,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-[#0D47A1] mb-4"
+            className="text-3xl md:text-4xl font-bold text-[#0D47A1] dark:text-blue-400 mb-4 transition-colors duration-300"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -48,7 +52,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             {title}
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -67,7 +71,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="h-full border-none shadow-lg bg-gradient-to-br from-[#0D47A1] to-[#42A5F5] text-white">
+            <Card className="h-full border-none shadow-lg bg-gradient-to-br from-[#0D47A1] to-[#42A5F5] text-white dark:from-blue-900 dark:to-blue-700 transition-colors duration-300">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
                 <p className="text-white/80 mb-8">
@@ -182,63 +186,93 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="border-none shadow-lg">
+            <Card className="border-none shadow-lg dark:bg-gray-800 dark:border-gray-700 transition-colors duration-300">
               <CardContent className="p-8">
                 <form>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
+                      <Label
+                        htmlFor="firstName"
+                        className="dark:text-white transition-colors duration-300"
+                      >
+                        First Name
+                      </Label>
                       <Input
                         id="firstName"
                         placeholder="John"
-                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1]"
+                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
+                      <Label
+                        htmlFor="lastName"
+                        className="dark:text-white transition-colors duration-300"
+                      >
+                        Last Name
+                      </Label>
                       <Input
                         id="lastName"
                         placeholder="Doe"
-                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1]"
+                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label
+                        htmlFor="email"
+                        className="dark:text-white transition-colors duration-300"
+                      >
+                        Email
+                      </Label>
                       <Input
                         id="email"
                         type="email"
                         placeholder="john.doe@example.com"
-                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1]"
+                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
+                      <Label
+                        htmlFor="phone"
+                        className="dark:text-white transition-colors duration-300"
+                      >
+                        Phone Number
+                      </Label>
                       <Input
                         id="phone"
                         placeholder="+1 (555) 123-4567"
-                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1]"
+                        className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2 mb-6">
-                    <Label htmlFor="subject">Subject</Label>
+                    <Label
+                      htmlFor="subject"
+                      className="dark:text-white transition-colors duration-300"
+                    >
+                      Subject
+                    </Label>
                     <Input
                       id="subject"
                       placeholder="How can we help you?"
-                      className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1]"
+                      className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                     />
                   </div>
 
                   <div className="space-y-2 mb-6">
-                    <Label htmlFor="message">Message</Label>
+                    <Label
+                      htmlFor="message"
+                      className="dark:text-white transition-colors duration-300"
+                    >
+                      Message
+                    </Label>
                     <Textarea
                       id="message"
                       placeholder="Write your message here..."
-                      className="min-h-[150px] border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1]"
+                      className="min-h-[150px] border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                     />
                   </div>
 
@@ -246,11 +280,17 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                     <input
                       type="checkbox"
                       id="privacy"
-                      className="rounded border-gray-300 text-[#0D47A1] focus:ring-[#0D47A1]"
+                      className="rounded border-gray-300 text-[#0D47A1] focus:ring-[#0D47A1] dark:border-gray-600 dark:bg-gray-700 transition-colors duration-300"
                     />
-                    <Label htmlFor="privacy" className="text-sm text-gray-600">
+                    <Label
+                      htmlFor="privacy"
+                      className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300"
+                    >
                       I agree to the{" "}
-                      <a href="#" className="text-[#0D47A1] hover:underline">
+                      <a
+                        href="#"
+                        className="text-[#0D47A1] dark:text-blue-400 hover:underline transition-colors duration-300"
+                      >
                         privacy policy
                       </a>
                       .
@@ -259,7 +299,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
 
                   <Button
                     type="submit"
-                    className="w-full bg-[#0D47A1] hover:bg-[#0D47A1]/90 text-white py-6 h-auto text-lg flex items-center justify-center gap-2"
+                    className="w-full bg-[#0D47A1] hover:bg-[#0D47A1]/90 text-white py-6 h-auto text-lg flex items-center justify-center gap-2 transition-colors duration-300"
                   >
                     Send Message
                     <Send className="h-5 w-5" />
@@ -269,6 +309,20 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             </Card>
           </motion.div>
         </div>
+
+        {/* Interactive Map */}
+        <motion.div
+          className="mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <h3 className="text-2xl font-bold text-center mb-8 text-[#0D47A1] dark:text-blue-400 transition-colors duration-300">
+            Our Location
+          </h3>
+          <InteractiveMap height="400px" />
+        </motion.div>
       </div>
     </section>
   );

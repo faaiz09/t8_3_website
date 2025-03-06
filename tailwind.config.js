@@ -83,40 +83,26 @@ export const theme = {
         from: { height: "var(--radix-accordion-content-height)" },
         to: { height: "0" },
       },
+      float: {
+        "0%, 100%": { transform: "translateY(0px)" },
+        "50%": { transform: "translateY(-20px)" },
+      },
+      "pulse-glow": {
+        "0%, 100%": { boxShadow: "0 0 15px rgba(239, 68, 68, 0.5)" },
+        "50%": { boxShadow: "0 0 30px rgba(239, 68, 68, 0.8)" },
+      },
+      shimmer: {
+        "0%": { backgroundPosition: "-1000px 0" },
+        "100%": { backgroundPosition: "1000px 0" },
+      },
     },
     animation: {
       "accordion-down": "accordion-down 0.2s ease-out",
       "accordion-up": "accordion-up 0.2s ease-out",
-    },
-    boxShadow: {
-      "glow-gold": "0 0 15px rgba(230, 194, 0, 0.5)",
-      "glow-teal": "0 0 15px rgba(100, 255, 218, 0.5)",
-    },
-    perspective: {
-      default: "1000px",
-    },
-    backfaceVisibility: {
-      hidden: "hidden",
-    },
-    transformStyle: {
-      "preserve-3d": "preserve-3d",
+      float: "float 6s ease-in-out infinite",
+      "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+      shimmer: "shimmer 2s infinite",
     },
   },
 };
-export const plugins = [
-  tailwindcssAnimate,
-  function ({ addUtilities }) {
-    const newUtilities = {
-      ".perspective": {
-        perspective: "1000px",
-      },
-      ".preserve-3d": {
-        transformStyle: "preserve-3d",
-      },
-      ".backface-hidden": {
-        backfaceVisibility: "hidden",
-      },
-    };
-    addUtilities(newUtilities);
-  },
-];
+export const plugins = [tailwindcssAnimate];

@@ -1,21 +1,24 @@
 import React from "react";
+import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
-import SolutionsShowcase from "./SolutionsShowcase";
+import AboutSection from "./AboutSection";
+import ProductsSection from "./ProductsSection";
+import ServicesSection from "./ServicesSection";
+import ClientsSection from "./ClientsSection";
 import ClientLogoSlider from "./ClientLogoSlider";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
-import { Code, Terminal } from "lucide-react";
 import canara from "../assets/img/canara.png";
-import hdfc from "../assets/img/hdfc.png"; 
+import hdfc from "../assets/img/hdfc.png";
 import icici from "../assets/img/icici.png";
 import axis from "../assets/img/axis.png";
 
 function Home() {
   const handleHeroCtaClick = () => {
-    // Smooth scroll to solutions section
-    const solutionsSection = document.getElementById("solutions");
-    if (solutionsSection) {
-      solutionsSection.scrollIntoView({ behavior: "smooth" });
+    // Smooth scroll to products section
+    const productsSection = document.getElementById("products");
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -44,56 +47,29 @@ function Home() {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-white">
+    <div className="w-full min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+      {/* Navbar */}
+      <Navbar />
+
       {/* Hero Section */}
       <HeroSection
         title="Revolutionizing Banking"
         subtitle="with Intelligent Software & Kiosks"
-        ctaText="Explore Solutions"
+        ctaText="Explore Products"
         onCtaClick={handleHeroCtaClick}
       />
 
-      {/* Solutions Showcase */}
-      <div id="solutions">
-        <SolutionsShowcase
-          title="Our Solutions"
-          subtitle="Innovative banking technology for the modern financial world"
-          solutions={[
-            {
-              title: "Banking Software",
-              description:
-                "Modern banking solutions for financial institutions",
-              icon: <Code className="h-8 w-8" />,
-              details:
-                "Our banking software solutions are designed to streamline operations, enhance security, and improve customer experience for financial institutions of all sizes.",
-              features: [
-                "Core banking systems",
-                "Mobile banking applications",
-                "Payment processing solutions",
-                "Fraud detection and prevention",
-                "Regulatory compliance tools",
-              ],
-              color: "bg-blue-50",
-            },
-            {
-              title: "Kiosk Solutions",
-              description:
-                "Self-service banking kiosks for enhanced customer experience",
-              icon: <Terminal className="h-8 w-8" />,
-              details:
-                "Our interactive kiosk solutions provide a seamless self-service experience for banking customers, reducing wait times and operational costs while improving service delivery.",
-              features: [
-                "Account management kiosks",
-                "ATM and cash recycling systems",
-                "Customer onboarding terminals",
-                "Bill payment stations",
-                "Video banking kiosks",
-              ],
-              color: "bg-purple-50",
-            },
-          ]}
-        />
-      </div>
+      {/* About Section */}
+      <AboutSection />
+
+      {/* Products Section */}
+      <ProductsSection />
+
+      {/* Services Section */}
+      <ServicesSection />
+
+      {/* Clients Section */}
+      <ClientsSection />
 
       {/* Client Logo Slider */}
       <ClientLogoSlider logos={bankLogos} />
@@ -101,7 +77,7 @@ function Home() {
       {/* Contact Section */}
       <ContactSection />
 
-      {/* Footer */}
+      {/* Footer with Modal Triggers */}
       <Footer />
     </div>
   );
