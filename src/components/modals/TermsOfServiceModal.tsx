@@ -16,8 +16,8 @@ const TermsOfServiceModal = ({ trigger }: TermsOfServiceModalProps) => {
       <DialogTrigger asChild>
         {trigger || <Button variant="link">Terms of Service</Button>}
       </DialogTrigger>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden p-0 gap-0 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="flex flex-col h-full">
+      <DialogContent className="max-w-4xl max-h-[90vh] p-0 gap-0 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="flex flex-col h-full max-h-[90vh]">
           {/* Header with gradient background */}
           <div className="bg-gradient-to-r from-purple-600 to-indigo-800 dark:from-purple-800 dark:to-indigo-900 p-6 text-white transition-colors duration-300">
             <div className="flex items-center justify-between">
@@ -125,22 +125,7 @@ const TermsOfServiceModal = ({ trigger }: TermsOfServiceModalProps) => {
             </AnimatePresence>
           </div>
 
-          {/* Footer with action buttons */}
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-            <Button
-              variant="outline"
-              onClick={() => setOpen(false)}
-              className="border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
-            >
-              Close
-            </Button>
-            <Button
-              className="bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
-              onClick={() => window.print()}
-            >
-              Print
-            </Button>
-          </div>
+
         </div>
       </DialogContent>
     </Dialog>
