@@ -19,9 +19,9 @@ interface ContactSectionProps {
 const ContactSection: React.FC<ContactSectionProps> = ({
   title = "Get in Touch",
   subtitle = "Have questions about our banking solutions? Our team is here to help.",
-  email = "info@t8banking.com",
-  phone = "+1 (555) 123-4567",
-  address = "123 Financial District, San Francisco, CA 94111",
+  email = "hr@technocrafts.net",
+  phone = "1800-313-0062",
+  address = "WB-VII, Unit No. 1 to 10, Renaissance Industrial Smart City, Bhiwandi, Vashere, Maharashtra 421302",
 }) => {
   return (
     <section className="py-20 px-4 md:px-8 bg-white relative" id="contact">

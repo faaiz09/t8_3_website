@@ -34,7 +34,7 @@ const ClientLogoSlider = ({
       alt: "Canara Bank Logo",
     },
   ],
-  autoplaySpeed = 3000,
+  autoplaySpeed = 2000,
   pauseOnHover = true,
 }: ClientLogoProps) => {
   const [isPaused, setIsPaused] = useState(false);
