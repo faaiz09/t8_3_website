@@ -166,7 +166,7 @@ const Footer = ({ className }: FooterProps) => {
     {
       icon: <MapPin className="h-5 w-5" />,
       text: "T8 Headquarters, Maharashtra, India",
-      href: "https://maps.app.goo.gl/EYfn5nt1jj33p2t49",
+      href: "https://maps.app.goo.gl/TZk4ciXYF8Kcg4kz9",
       target:"_blank",
       rel:"noopener noreferrer"
     },

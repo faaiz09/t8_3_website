@@ -98,7 +98,7 @@ const ProductsSection = () => {
       id: "report-kiosk",
       name: "Report Printing Kiosk",
       description:
-        "Enable customers to print statements and reports with ease.",
+        "Enable customers to print statements and reports securely with ease.",
       icon: <FileText size={24} />,
       category: "TECHSA",
       image:
@@ -135,7 +135,7 @@ const ProductsSection = () => {
     {
       id: "remote-monitoring",
       name: "Remote Monitoring Solutions",
-      description: "Monitor and manage your kiosk network from anywhere.",
+      description: "Monitor and manage your kiosk network from anywhere in real-time.",
       icon: <Server size={24} />,
       category: "INVOS",
       image:
@@ -172,7 +172,7 @@ const ProductsSection = () => {
     {
       id: "transport-kiosk",
       name: "Transport Kiosk",
-      description: "Self-service kiosks for transportation hubs and services.",
+      description: "Self-service kiosks for transportation hubs and services streamlining passenger experiences.",
       icon: <Train size={24} />,
       category: "TSSAD",
       image:
@@ -183,7 +183,7 @@ const ProductsSection = () => {
     {
       id: "consultative-kiosk",
       name: "Consultative Kiosk",
-      description: "Interactive kiosks for customer consultation and service.",
+      description: "Interactive kiosks for customer consultation and service with personalized assistance.",
       icon: <Users size={24} />,
       category: "TSSAD",
       image:
@@ -311,7 +311,7 @@ const ProductsSection = () => {
                   >
                     <Card className="h-full hover:shadow-xl transition-all duration-300 overflow-hidden border-t-4 border-t-red-500 dark:bg-gray-800 dark:border-gray-700 dark:border-t-red-500 transition-colors duration-300">
                       {product.image && (
-                        <div className="w-full h-48 overflow-hidden">
+                        <div className="w-full h-48 overflow-hidden mt-2"> {/* Added mt-2 for margin-top */}
                           <img
                             src={product.image}
                             alt={product.name}
@@ -343,11 +343,17 @@ const ProductsSection = () => {
                         <div className="flex justify-end">
                           <motion.button
                             className="text-sm text-red-600 dark:text-red-400 font-medium flex items-center group transition-colors duration-300"
-                            whileHover={{ x: 5 }}
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{
+                              repeat: Infinity,
+                              repeatType: "mirror",
+                              duration: 1.2,
+                              ease: "easeInOut"
+                            }}
                             onClick={() => openProductModal(product)}
                           >
                             Learn more
-                            <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="h-4 w-4 ml-1 transition-transform" />
                           </motion.button>
                         </div>
                       </CardContent>
@@ -370,7 +376,7 @@ const ProductsSection = () => {
               transition={{ type: "spring", duration: 0.5 }}
             >
               {selectedProduct.image && (
-                <div className="w-full h-64 overflow-hidden">
+                <div className="w-full h-64 overflow-hidden mt-2"> {/* Added mt-2 for margin-top */}
                   <img
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
