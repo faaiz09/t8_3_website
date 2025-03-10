@@ -9,7 +9,15 @@ import {
   HeartPulse,
   Zap,
   Rocket,
+  TrainIcon,
+  PhoneIcon
+
 } from "lucide-react";
+
+import Products from '../assets/img/product_icon.png';
+import Services from '../assets/img/services_icon.png';
+import Domains from '../assets/img/domain_icon.png';
+
 
 interface StatItem {
   value: string;
@@ -23,9 +31,9 @@ interface AboutSectionProps {
 
 const AboutSection = ({
   stats = [
-    { value: "13+", label: "Products", icon: <Code size={24} /> },
-    { value: "10", label: "Services", icon: <Server size={24} /> },
-    { value: "6", label: "Domains", icon: <Globe size={24} /> },
+    { value: "13+", label: "Products", icon: <img src={Products} alt="Products" className="h-6 w-6" /> },
+    { value: "10", label: "Services", icon: <img src={Services} alt="Services" className="h-6 w-6" /> },
+    { value: "6", label: "Domains", icon: <img src={Domains} alt="Domains" className="h-6 w-6" /> },
   ],
 }: AboutSectionProps) => {
   const ref = useRef(null);
@@ -34,13 +42,7 @@ const AboutSection = ({
   const domains = [
     {
       name: "Banking",
-      icon: (
-        <img
-          src="/src/assets/img/cloud_services.png"
-          alt="Banking"
-          className="h-10 w-10"
-        />
-      ),
+      icon: <Server className="h-6 w-6 text-yellow-500" />,
       description: "Secure financial solutions",
     },
     {
@@ -55,30 +57,18 @@ const AboutSection = ({
     },
     {
       name: "Transit",
-      icon: (
-        <img
-          src="/src/assets/img/kiosk.png"
-          alt="Transit"
-          className="h-10 w-10"
-        />
-      ),
+      icon: <TrainIcon className="h-6 w-6 text-purple-500" />,
       description: "Smart mobility solutions",
     },
     {
       name: "Consultancy",
-      icon: (
-        <img
-          src="/src/assets/img/consultant.png"
-          alt="Consultancy"
-          className="h-10 w-10"
-        />
-      ),
+      icon: <PhoneIcon className="h-6 w-6 text-blue-500" />,
       description: "Expert technical guidance",
     },
     {
       name: "Retail",
       icon: <ShoppingBag className="h-6 w-6 text-pink-500" />,
-      description: "Enhanced shopping experiences",
+      description: "Enhanced purchase experiences",
     },
   ];
 
@@ -149,7 +139,10 @@ const AboutSection = ({
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7 }}
         >
-          <motion.div
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
+                About Us
+              </h2>
+          {/* <motion.div
             className="inline-block mb-4 relative"
             animate={{ rotate: [0, 5, 0, -5, 0] }}
             transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
@@ -160,7 +153,7 @@ const AboutSection = ({
                 About Us
               </h2>
             </div>
-          </motion.div>
+          </motion.div> */}
           <motion.p
             className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
             initial={{ opacity: 0 }}
@@ -202,21 +195,21 @@ const AboutSection = ({
                     <div className="text-3xl">
                       {index === 0 ? (
                         <img
-                          src="/src/assets/img/cloud_services.png"
+                          src={Products}
                           alt="Products"
-                          className="h-10 w-10"
+                          className="h-20 w-20"
                         />
                       ) : index === 1 ? (
                         <img
-                          src="/src/assets/img/kiosk.png"
+                          src={Services}
                           alt="Services"
-                          className="h-10 w-10"
+                          className="h-20 w-20"
                         />
                       ) : (
                         <img
-                          src="/src/assets/img/consultant.png"
+                          src={Domains}
                           alt="Domains"
-                          className="h-10 w-10"
+                          className="h-20 w-20"
                         />
                       )}
                     </div>
