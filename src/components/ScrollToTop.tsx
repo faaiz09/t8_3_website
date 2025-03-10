@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 
@@ -6,51 +6,78 @@ interface ScrollToTopProps {
   showBelow?: number;
   zIndex?: number;
   fillColor?: string;
+  duration?: number;
 }
 
 const ScrollToTop: React.FC<ScrollToTopProps> = ({
   showBelow = 300,
-  zIndex = 40, // Lower z-index to prevent overlapping with modals
-  fillColor = "#D62626" 
+  zIndex = 40,
+  fillColor = "#D62626",
+  duration = 1000
 }) => {
   const [show, setShow] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Calculate how far down the page the user has scrolled
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrollPercentage = (scrollTop / windowHeight) * 100;
-
-      // Update scroll progress
-      setScrollProgress(scrollPercentage);
-
-      // Show button when user has scrolled down enough
-      if (scrollTop > showBelow) {
-        if (!show) setShow(true);
-      } else {
-        if (show) setShow(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  const updateScrollProgress = useCallback(() => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / windowHeight) * 100;
+    
+    setScrollProgress(scrollPercentage);
+    
+    if (scrollTop > showBelow) {
+      if (!show) setShow(true);
+    } else {
+      if (show) setShow(false);
+    }
   }, [show, showBelow]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", updateScrollProgress);
+    return () => window.removeEventListener("scroll", updateScrollProgress);
+  }, [updateScrollProgress]);
+
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Set scrolling state to trigger animation
+    setIsScrolling(true);
+    
+    // Get current scroll position
+    const startPosition = window.pageYOffset;
+    const startTime = performance.now();
+    
+    // Cubic easeInOut function for smooth acceleration and deceleration
+    const easeInOutCubic = (t: number) => 
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    
+    // Animation function
+    const scrollAnimation = (currentTime: number) => {
+      const elapsedTime = currentTime - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+      const easeProgress = easeInOutCubic(progress);
+      
+      window.scrollTo(0, startPosition * (1 - easeProgress));
+      
+      if (progress < 1) {
+        requestAnimationFrame(scrollAnimation);
+      } else {
+        // Animation complete
+        setIsScrolling(false);
+      }
+    };
+    
+    // Start animation
+    requestAnimationFrame(scrollAnimation);
   };
 
   // Calculate clip path for the water fill effect
-  // Translate the scroll percentage to a y-position from bottom (100) to top (0)
   const waterFillHeight = 100 - scrollProgress;
 
   return (
     <AnimatePresence>
       {show && (
         <motion.div
-        className={`fixed bottom-24 right-8 z-${zIndex}`}
+          className={`fixed bottom-24 right-8 z-${zIndex}`}
           initial={{ opacity: 0, scale: 0, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0, y: 20 }}
@@ -61,9 +88,14 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
           }}
         >
           <div className="relative group">
-            <svg
+            <motion.svg
               className="w-16 h-16 drop-shadow-lg"
               viewBox="0 0 100 100"
+              animate={isScrolling ? { rotate: [0, 360] } : {}}
+              transition={isScrolling ? { 
+                duration: duration / 1000, 
+                ease: "easeInOut" 
+              } : {}}
             >
               {/* Definitions for filters and gradients */}
               <defs>
@@ -102,7 +134,7 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
               </defs>
 
               {/* Glass sphere outer circle */}
-              <circle
+              <motion.circle
                 cx="50"
                 cy="50"
                 r="42"
@@ -110,7 +142,13 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
                 stroke="#e0e0e0"
                 strokeWidth="1"
                 filter="url(#glass-effect)"
-                className="shadow-lg" // Add shadow class
+                className="shadow-lg"
+                animate={isScrolling ? { scale: [1, 1.1, 1] } : {}}
+                transition={isScrolling ? { 
+                  duration: duration / 1000,
+                  times: [0, 0.5, 1],
+                  ease: "easeInOut" 
+                } : {}}
               />
 
               {/* Glass sphere inner circle for depth */}
@@ -132,15 +170,6 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
                   fill="url(#water-gradient)"
                   filter="url(#wave-effect)"
                 />
-                {/* Water surface highlight */}
-                {/* <ellipse
-                  cx="50"
-                  cy={waterFillHeight}
-                  rx="40"
-                  ry="2"
-                  fill="url(#water-surface)"
-                  opacity="0.6"
-                /> */}
               </g>
 
               {/* Shine effect on top of the glass */}
@@ -152,7 +181,7 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
                 fill="rgba(255, 255, 255, 0.3)"
                 transform="rotate(-20, 35, 35)"
               />
-            </svg>
+            </motion.svg>
 
             {/* Button with arrow (sits on top of the water sphere) */}
             <button
@@ -163,9 +192,21 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
                 background: "transparent"
               }}
             >
-              <ArrowUp
-                className="h-6 w-6 text-blue drop-shadow-md transform transition-transform group-hover:translate-y-px"
-              />
+              <motion.div
+                animate={isScrolling ? 
+                  { y: [0, -30, -100], opacity: [1, 0.8, 0] } : 
+                  { y: 0, opacity: 1 }
+                }
+                transition={isScrolling ? {
+                  duration: duration / 1000,
+                  times: [0, 0.2, 1],
+                  ease: "easeOut"
+                } : {}}
+              >
+                <ArrowUp
+                  className="h-6 w-6 text-blue drop-shadow-md transform transition-transform group-hover:translate-y-px"
+                />
+              </motion.div>
             </button>
           </div>
         </motion.div>

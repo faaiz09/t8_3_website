@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { Download, Server, Users, Globe, Code, Cpu } from "lucide-react";
+import { Download, Server, Users, Globe, Code, Cpu, HeartPulse } from "lucide-react";
 
 interface StatItem {
   value: string;
@@ -17,18 +17,18 @@ const AboutSection = ({
   stats = [
     { value: "13+", label: "Products", icon: <Code size={24} /> },
     { value: "10", label: "Services", icon: <Server size={24} /> },
-    { value: "8", label: "Domains", icon: <Globe size={24} /> },
+    { value: "6", label: "Domains", icon: <Globe size={24} /> },
   ],
 }: AboutSectionProps) => {
   const domains = [
     { name: "Banking", icon: <Server className="h-6 w-6 text-blue-500" /> },
-    { name: "Insurance", icon: <Shield className="h-6 w-6 text-green-500" /> },
+    { name: "Health", icon: <HeartPulse className="h-6 w-6 text-green-500" /> },
     {
       name: "Government",
       icon: <Building2 className="h-6 w-6 text-red-500" />,
     },
     { name: "Transit", icon: <Train className="h-6 w-6 text-purple-500" /> },
-    { name: "Telecom", icon: <Phone className="h-6 w-6 text-yellow-500" /> },
+    { name: "Consultancy", icon: <Phone className="h-6 w-6 text-yellow-500" /> },
     { name: "Retail", icon: <ShoppingBag className="h-6 w-6 text-pink-500" /> },
   ];
 
