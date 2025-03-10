@@ -47,8 +47,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <ParticleEffects
           color={isDarkMode ? "#42A5F5" : "#0D47A1"}
-          opacity={0.2}
-          particleCount={30}
+          opacity={1}
+          particleCount={100}
           width="100%"
           height="100%"
         />
