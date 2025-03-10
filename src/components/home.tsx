@@ -66,11 +66,11 @@ function Home() {
       {/* Products Section */}
       <ProductsSection />
 
-      {/* Services Section */}
-      <ServicesSection />
-
       {/* Clients Section */}
       <ClientsSection />
+
+      {/* Services Section */}
+      <ServicesSection />
 
       {/* Client Logo Slider */}
       {/* <ClientLogoSlider logos={bankLogos} /> */}

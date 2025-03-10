@@ -46,25 +46,25 @@ interface Product {
   name: string;
   description: string;
   icon: React.ReactNode;
-  category: "TECHSA" | "INVOS" | "TSSAD";
+  category: "KIOSK" | "SOLUTIONS" | "SERVICES";
   image?: string;
   details?: string;
 }
 
 const ProductsSection = () => {
   const [activeCategory, setActiveCategory] = useState<
-    "TECHSA" | "INVOS" | "TSSAD"
-  >("TECHSA");
+    "KIOSK" | "SOLUTIONS" | "SERVICES"
+  >("KIOSK");
 
   const products: Product[] = [
-    // TECHSA Products
+    // KIOSK Products
     {
       id: "visitor-kiosk",
       name: "Visitor Management Kiosk",
       description:
         "Streamline visitor registration and management with our advanced kiosk solution.",
       icon: <Users size={24} />,
-      category: "TECHSA",
+      category: "KIOSK",
       image:
         visitorkiosk,
       details:
@@ -76,7 +76,7 @@ const ProductsSection = () => {
       description:
         "Enhance customer shopping experience with self-service retail kiosks.",
       icon: <ShoppingBag size={24} />,
-      category: "TECHSA",
+      category: "KIOSK",
       image:
         retailkiosk,
       details:
@@ -88,7 +88,7 @@ const ProductsSection = () => {
       description:
         "Simplify HR processes with employee self-service kiosks for attendance and more.",
       icon: <Users size={24} />,
-      category: "TECHSA",
+      category: "KIOSK",
       image:
         hrmskiosk,
       details:
@@ -100,7 +100,7 @@ const ProductsSection = () => {
       description:
         "Enable customers to print statements and reports securely with ease.",
       icon: <FileText size={24} />,
-      category: "TECHSA",
+      category: "KIOSK",
       image:
         reportkiosk,
       details:
@@ -112,21 +112,21 @@ const ProductsSection = () => {
       description:
         "Provide interactive information access to customers and visitors.",
       icon: <Monitor size={24} />,
-      category: "TECHSA",
+      category: "KIOSK",
       image:
         infokisok,
       details:
         "Information Kiosks serve as digital concierges, providing users with wayfinding assistance, product information, service details, and promotional content. These interactive displays feature intuitive touchscreen interfaces, multilingual support, and accessibility options to serve diverse user populations.",
     },
 
-    // INVOS Products
+    // SOLUTIONS Products
     {
       id: "self-service",
       name: "Self-Service Kiosk Applications",
       description:
         "Comprehensive applications for various self-service scenarios.",
       icon: <Smartphone size={24} />,
-      category: "INVOS",
+      category: "SOLUTIONS",
       image:
         self_service,
       details:
@@ -137,7 +137,7 @@ const ProductsSection = () => {
       name: "Remote Monitoring Solutions",
       description: "Monitor and manage your kiosk network from anywhere in real-time.",
       icon: <Server size={24} />,
-      category: "INVOS",
+      category: "SOLUTIONS",
       image:
         remote_monitor,
       details:
@@ -149,21 +149,21 @@ const ProductsSection = () => {
       description:
         "Streamline payment collection processes with our integrated solutions.",
       icon: <Database size={24} />,
-      category: "INVOS",
+      category: "SOLUTIONS",
       image:
         collmngmt,
       details:
         "Our Collection Management Solutions automate and optimize the entire payment collection lifecycle. The system handles multiple payment methods, provides real-time reconciliation, generates comprehensive reports, and integrates with accounting systems. Advanced features include recurring payment scheduling, automated reminders, and fraud detection.",
     },
 
-    // TSSAD Products
+    // SERVICES Products
     {
       id: "digital-banking",
       name: "Digital Banking Unit",
       description:
         "Complete digital banking solution for modern financial institutions.",
       icon: <CreditCard size={24} />,
-      category: "TSSAD",
+      category: "SERVICES",
       image:
         digitalbanking,
       details:
@@ -174,7 +174,7 @@ const ProductsSection = () => {
       name: "Transport Kiosk",
       description: "Self-service kiosks for transportation hubs and services streamlining passenger experiences.",
       icon: <Train size={24} />,
-      category: "TSSAD",
+      category: "SERVICES",
       image:
         transportkiosk,
       details:
@@ -185,7 +185,7 @@ const ProductsSection = () => {
       name: "Consultative Kiosk",
       description: "Interactive kiosks for customer consultation and service with personalized assistance.",
       icon: <Users size={24} />,
-      category: "TSSAD",
+      category: "SERVICES",
       image:
         consultativekiosk,
       details:
@@ -197,7 +197,7 @@ const ProductsSection = () => {
       description:
         "Comprehensive banking services in a self-service kiosk format.",
       icon: <Building size={24} />,
-      category: "TSSAD",
+      category: "SERVICES",
       image:
         bankingkiosk,
       details:
@@ -265,29 +265,29 @@ const ProductsSection = () => {
         </motion.div>
 
         <Tabs
-          defaultValue="TECHSA"
+          defaultValue="KIOSK"
           className="w-full"
           onValueChange={(value) => setActiveCategory(value as any)}
         >
           <div className="flex justify-center mb-10">
             <TabsList className="grid w-full max-w-md grid-cols-3 bg-gray-200 dark:bg-gray-800 transition-colors duration-300 h-100">
               <TabsTrigger
-                value="TECHSA"
+                value="KIOSK"
                 className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3 data-[state=active]:text-red-600"
               >
-                TECHSA
+                KIOSK
               </TabsTrigger>
               <TabsTrigger
-                value="INVOS"
+                value="SOLUTIONS"
                 className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3 data-[state=active]:text-red-600"
               >
-                INVOS
+                SOLUTIONS
               </TabsTrigger>
               <TabsTrigger
-                value="TSSAD"
+                value="SERVICES"
                 className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3 data-[state=active]:text-red-600"
               >
-                TSSAD
+                SERVICES
               </TabsTrigger>
             </TabsList>
           </div>
