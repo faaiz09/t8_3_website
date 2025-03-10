@@ -37,7 +37,7 @@ import transportkiosk from "../assets/img/transit_Kiosk.png";
 import digitalbanking from "../assets/img/digital_banking.png";
 import collmngmt from "../assets/img/collection_management.webp";
 import remote_monitor from "../assets/img/remote_monitoring.png";
-import self_service from "../assets/img/self_service_kiosk.jpg";
+import self_service from "../assets/img/self_service_kiosk.png";
 
 import brochure from "../assets/documents/brochure.pdf";
 
