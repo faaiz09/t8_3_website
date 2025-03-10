@@ -11,12 +11,12 @@ interface NavbarProps {
 
 const Navbar = ({
   links = [
-    // { name: "Home", href: "#" },
-    { name: "About Us", href: "#about" },
-    { name: "Products", href: "#products" },
-    { name: "Clients", href: "#clients" },
-    { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/#about" },
+    { name: "Products", href: "/#products" },
+    { name: "Clients", href: "/#clients" },
+    { name: "Services", href: "/#services" },
+    { name: "Careers", href: "/careers" },
   ],
 }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,6 +51,9 @@ const Navbar = ({
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
+    } else if (href.startsWith("/")) {
+      // Use window.location for full page navigation
+      window.location.href = href;
     } else {
       window.location.href = href;
     }
