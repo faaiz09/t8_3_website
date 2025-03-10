@@ -11,6 +11,8 @@ import {
   Rocket,
   TrainIcon,
   PhoneIcon,
+  User,
+  Monitor,
 } from "lucide-react";
 
 import Products from "../assets/img/product_icon.png";
@@ -104,6 +106,25 @@ const AboutSection = ({
     { name: "Cloud", level: 80 },
     { name: "Security", level: 95 },
     { name: "UI/UX", level: 88 },
+  ];
+
+  const achievements = [
+    {
+      value: "25+",
+      description: "Channel Partners Across India"
+    },
+    {
+      value: "15,000+",
+      description: "Online Kiosks Across India"
+    },
+    {
+      value: "200+",
+      description: "Customer Service Representatives Across India"
+    },
+    {
+      value: "1M+",
+      description: "Satisfied Customers Nationwide"
+    }
   ];
 
   return (
@@ -326,54 +347,96 @@ const AboutSection = ({
           </div>
         </motion.div>
 
-        {/* Tech Skills */}
-        {/* <motion.div
-          className="mb-16"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+        {/* Achievements */}
+        <motion.div
+          className="mb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3
+              }
+            }
+          }}
         >
-          <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-8 transition-colors duration-300">
-            Our Technical Expertise
+
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">
+            {/* <span className="absolute inset-x-0 -bottom-3 h-1.5 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 rounded-full blur-sm" /> */}
+            Our Achievements
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {techSkills.map((skill, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                number: 25,
+                label: "Channel Partners",
+                icon: <Users className="w-14 h-14 text-red-500 mb-5" />,
+                gradient: ["from-red-400", "to-red-600"]
+              },
+              {
+                number: 15000,
+                label: "Online Kiosks",
+                icon: <Monitor className="w-14 h-14 text-blue-500 mb-5" />,
+                gradient: ["from-blue-400", "to-blue-600"]
+              },
+              {
+                number: 200,
+                label: "Customer Service Reps",
+                icon: <User className="w-14 h-14 text-green-500 mb-5" />,
+                gradient: ["from-green-400", "to-green-600"]
+              },
+            ].map((achievement, index) => (
               <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-colors duration-300"
-                initial={{ opacity: 0, x: -20 }}
-                animate={
-                  isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
-                }
-                transition={{ delay: index * 0.1 + 0.5 }}
-                whileHover={{
-                  y: -5,
-                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
+                className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-2xl p-8 text-center shadow-xl transform-gpu"
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { opacity: 1, y: 0 }
                 }}
+                transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                whileInView={{ scale: [1, 1.02, 1] }}
+                whileHover={{ scale: 1.02 }}
               >
-                <div className="flex justify-between items-center mb-2">
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
-                    {skill.name}
-                  </h4>
-                  <span className="text-sm font-medium text-red-600 dark:text-red-400 transition-colors duration-300">
-                    {skill.level}%
-                  </span>
-                </div>
-                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden transition-colors duration-300">
-                  <motion.div
-                    className="h-full bg-gradient-to-r from-red-600 to-blue-600 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={
-                      isInView ? { width: `${skill.level}%` } : { width: 0 }
-                    }
-                    transition={{ duration: 1.5, delay: index * 0.1 + 0.8 }}
-                  />
+                <motion.div
+                  className="flex justify-center mb-6"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 15,
+                    delay: index * 0.15 + 0.5
+                  }}
+                >
+                  {achievement.icon}
+                </motion.div>
+
+                <div className="space-y-3">
+                  <motion.span
+                    className={`text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r ${achievement.gradient.join(' ')}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.8,
+                      ease: "easeOut",
+                      delay: index * 0.2 + 0.6
+                    }}
+                  >
+                    {achievement.number}+
+                  </motion.span>
+
+                  <p className="text-gray-600 dark:text-gray-300 text-lg font-medium tracking-tight">
+                    {achievement.label} across India
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div> */}
+        </motion.div>
 
         {/* Domains Section with simplified animations */}
         <motion.div
