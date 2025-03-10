@@ -317,7 +317,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Tech Skills */}
-        <motion.div
+        {/* <motion.div
           className="mb-16"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -363,7 +363,7 @@ const AboutSection = ({
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Domains Section with simplified animations */}
         <motion.div
