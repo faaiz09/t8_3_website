@@ -203,7 +203,7 @@ const ClientsSection = () => {
                                   }}
                                   transition={{
                                     repeat: Infinity,
-                                    duration: Math.random() * 2 + 1,
+                                    duration: Math.random() * 4 + 3, // Slower animation
                                   }}
                                 />
                               ))}
@@ -227,7 +227,7 @@ const ClientsSection = () => {
                             <motion.img
                               src={client.logo}
                               alt={`${client.name} Logo`}
-                              className="h-16 object-contain mb-4 transition-all duration-300"
+                              className={`h-16 object-contain mb-4 transition-all duration-300 ${client.id === "mumbai-metro" ? "mx-auto" : ""}`}
                               loading="lazy"
                               initial={{ filter: "brightness(1)" }}
                               animate={{
@@ -254,28 +254,28 @@ const ClientsSection = () => {
                           {hoveredClient === client.id && (
                             <>
                               <motion.div
-                                className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-red-400 to-red-500"
+                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 via-red-400 to-red-500 rounded-b"
                                 initial={{ scaleX: 0 }}
                                 animate={{ scaleX: 1 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 1 }}
                               />
                               <motion.div
-                                className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-red-500 via-red-400 to-red-500"
+                                className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-red-500 via-red-400 to-red-500 rounded-l"
                                 initial={{ scaleY: 0 }}
                                 animate={{ scaleY: 1 }}
-                                transition={{ duration: 0.3, delay: 0.1 }}
+                                transition={{ duration: 1, delay: 0.1 }}
                               />
                               <motion.div
-                                className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-red-400 to-red-500"
+                                className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 via-red-400 to-red-500 rounded-t"
                                 initial={{ scaleX: 0 }}
                                 animate={{ scaleX: 1 }}
-                                transition={{ duration: 0.3, delay: 0.2 }}
+                                transition={{ duration: 1, delay: 0.2 }}
                               />
                               <motion.div
-                                className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-red-500 via-red-400 to-red-500"
+                                className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-red-500 via-red-400 to-red-500 rounded-r"
                                 initial={{ scaleY: 0 }}
                                 animate={{ scaleY: 1 }}
-                                transition={{ duration: 0.3, delay: 0.3 }}
+                                transition={{ duration: 1, delay: 0.3 }}
                               />
                             </>
                           )}
