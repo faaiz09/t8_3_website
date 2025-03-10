@@ -113,7 +113,7 @@ const HeroSection = ({
 
         {/* Title with Animation */}
         <motion.h1
-          className="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-gray-500 dark:from-red-500 dark:to-gray-300 transition-colors duration-300"
+          className="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-gray-500 dark:from-red-500 dark:to-gray-300 transition-colors duration-300 p-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -123,7 +123,7 @@ const HeroSection = ({
 
         {/* Subtitle with Animation */}
         <motion.h2
-          className="text-3xl md:text-3xl font-bold mb-8 text-gray-700 dark:text-gray-300 transition-colors duration-300 p-4" 
+          className="text-3xl md:text-3xl font-bold mb-8 text-gray-700 dark:text-gray-300 transition-colors duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
