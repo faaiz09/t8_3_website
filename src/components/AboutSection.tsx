@@ -10,14 +10,12 @@ import {
   Zap,
   Rocket,
   TrainIcon,
-  PhoneIcon
-
+  PhoneIcon,
 } from "lucide-react";
 
-import Products from '../assets/img/product_icon.png';
-import Services from '../assets/img/services_icon.png';
-import Domains from '../assets/img/domain_icon.png';
-
+import Products from "../assets/img/product_icon.png";
+import Services from "../assets/img/services_icon.png";
+import Domains from "../assets/img/domain_icon.png";
 
 interface StatItem {
   value: string;
@@ -31,13 +29,25 @@ interface AboutSectionProps {
 
 const AboutSection = ({
   stats = [
-    { value: "13+", label: "Products", icon: <img src={Products} alt="Products" className="h-6 w-6" /> },
-    { value: "10", label: "Services", icon: <img src={Services} alt="Services" className="h-6 w-6" /> },
-    { value: "6", label: "Domains", icon: <img src={Domains} alt="Domains" className="h-6 w-6" /> },
+    {
+      value: "13+",
+      label: "Products",
+      icon: <img src={Products} alt="Products" className="h-6 w-6" />,
+    },
+    {
+      value: "10",
+      label: "Services",
+      icon: <img src={Services} alt="Services" className="h-6 w-6" />,
+    },
+    {
+      value: "6",
+      label: "Domains",
+      icon: <img src={Domains} alt="Domains" className="h-6 w-6" />,
+    },
   ],
 }: AboutSectionProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.1 });
 
   const domains = [
     {
@@ -99,7 +109,7 @@ const AboutSection = ({
   return (
     <section
       id="about"
-      className="py-20 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden relative"
+      className="py-12 md:py-20 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden relative w-full"
       ref={ref}
     >
       {/* Background gradient effect */}
@@ -132,16 +142,16 @@ const AboutSection = ({
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 w-full">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.7 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-                About Us
-              </h2>
+            About Us
+          </h2>
           {/* <motion.div
             className="inline-block mb-4 relative"
             animate={{ rotate: [0, 5, 0, -5, 0] }}
@@ -167,13 +177,13 @@ const AboutSection = ({
         </motion.div>
 
         {/* Stats Section with 3D cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               className="group relative"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
               transition={{ delay: index * 0.2, duration: 0.7 }}
               whileHover={{ z: 20 }}
             >
@@ -253,9 +263,9 @@ const AboutSection = ({
         {/* Mission & Vision */}
         <motion.div
           className="mb-16 bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-colors duration-300"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
             {/* Mission */}
@@ -375,7 +385,7 @@ const AboutSection = ({
           <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">
             Our Domains
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
             {domains.map((domain, index) => (
               <motion.div
                 key={index}
@@ -472,7 +482,7 @@ const AboutSection = ({
 
 export default AboutSection;
 
-// Import missing icons
+// Fix for mobile devices - ensure Building2 icon renders properly
 function ShieldIcon(props: any) {
   return (
     <svg
