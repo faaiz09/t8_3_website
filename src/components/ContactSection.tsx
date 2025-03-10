@@ -5,7 +5,7 @@ import { Button } from "../components//ui/button";
 import { Input } from "../components//ui/input";
 import { Textarea } from "../components//ui/textarea";
 import { Label } from "../components/ui/label";
-import { Mail, MessageSquare, Phone, Send } from "lucide-react";
+import { Mail, Phone, Send, LocateIcon } from "lucide-react";
 import ParticleEffects from "../components/animations/ParticleEffects";
 import InteractiveMap from "./InteractiveMap";
 
@@ -111,7 +111,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
 
                   <div className="flex items-start">
-                    <MessageSquare className="h-6 w-6 mr-4 mt-1" />
+                    <LocateIcon className="h-6 w-6 mr-4 mt-1" />
                     <div>
                       <p className="font-medium">Address</p>
                       <p className="text-white/80">{address}</p>
@@ -163,16 +163,16 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                       className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
                     >
                       <svg
-                      className="h-5 w-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
-                      <path
-                        fillRule="evenodd"
-                        d="M19.615 3.184C18.4 2.8 12 2.8 12 2.8s-6.4 0-7.615.384C3.2 3.6 2.4 4.4 2.015 5.615 1.6 6.8 1.6 12 1.6 12s0 5.2.415 6.385c.384 1.215 1.184 2.015 2.4 2.4C5.6 21.2 12 21.2 12 21.2s6.4 0 7.615-.415c1.215-.384 2.015-1.184 2.4-2.4.415-1.185.415-6.385.415-6.385s0-5.2-.415-6.385c-.384-1.215-1.184-2.015-2.4-2.4zM9.6 15.2V8.8l6.4 3.2-6.4 3.2z"
-                        clipRule="evenodd"
-                      />
+                        <path
+                          fillRule="evenodd"
+                          d="M19.615 3.184C18.4 2.8 12 2.8 12 2.8s-6.4 0-7.615.384C3.2 3.6 2.4 4.4 2.015 5.615 1.6 6.8 1.6 12 1.6 12s0 5.2.415 6.385c.384 1.215 1.184 2.015 2.4 2.4C5.6 21.2 12 21.2 12 21.2s6.4 0 7.615-.415c1.215-.384 2.015-1.184 2.4-2.4.415-1.185.415-6.385.415-6.385s0-5.2-.415-6.385c-.384-1.215-1.184-2.015-2.4-2.4zM9.6 15.2V8.8l6.4 3.2-6.4 3.2z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                     </a>
                     <a

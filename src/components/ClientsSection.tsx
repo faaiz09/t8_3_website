@@ -144,7 +144,7 @@ const ClientsSection = () => {
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300"
+                  className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 data-[state=active]:text-red-600"
                 >
                   {category.name}
                 </TabsTrigger>

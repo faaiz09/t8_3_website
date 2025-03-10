@@ -196,11 +196,17 @@ const ServicesSection = () => {
                 <CardContent>
                   <motion.button
                     className="text-sm text-red-600 dark:text-red-400 font-medium flex items-center group transition-colors duration-300"
-                    whileHover={{ x: 5 }}
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      duration: 1.2,
+                      ease: "easeInOut"
+                    }}
                     onClick={() => openServiceModal(service)}
                   >
                     Learn more
-                    <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="h-4 w-4 ml-1 transition-transform" />
                   </motion.button>
                 </CardContent>
               </Card>

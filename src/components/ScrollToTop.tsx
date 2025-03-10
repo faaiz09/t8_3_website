@@ -132,16 +132,15 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
                   fill="url(#water-gradient)"
                   filter="url(#wave-effect)"
                 />
-
                 {/* Water surface highlight */}
-                <ellipse
+                {/* <ellipse
                   cx="50"
                   cy={waterFillHeight}
                   rx="40"
                   ry="2"
                   fill="url(#water-surface)"
                   opacity="0.6"
-                />
+                /> */}
               </g>
 
               {/* Shine effect on top of the glass */}

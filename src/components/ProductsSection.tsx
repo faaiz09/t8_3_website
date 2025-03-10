@@ -273,19 +273,19 @@ const ProductsSection = () => {
             <TabsList className="grid w-full max-w-md grid-cols-3 bg-gray-200 dark:bg-gray-800 transition-colors duration-300 h-100">
               <TabsTrigger
                 value="TECHSA"
-                className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3"
+                className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3 data-[state=active]:text-red-600"
               >
                 TECHSA
               </TabsTrigger>
               <TabsTrigger
                 value="INVOS"
-                className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3"
+                className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3 data-[state=active]:text-red-600"
               >
                 INVOS
               </TabsTrigger>
               <TabsTrigger
                 value="TSSAD"
-                className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3"
+                className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3 data-[state=active]:text-red-600"
               >
                 TSSAD
               </TabsTrigger>
