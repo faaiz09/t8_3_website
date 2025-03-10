@@ -34,7 +34,13 @@ const AboutSection = ({
   const domains = [
     {
       name: "Banking",
-      icon: <Server className="h-6 w-6 text-blue-500" />,
+      icon: (
+        <img
+          src="/src/assets/img/cloud_services.png"
+          alt="Banking"
+          className="h-10 w-10"
+        />
+      ),
       description: "Secure financial solutions",
     },
     {
@@ -49,12 +55,24 @@ const AboutSection = ({
     },
     {
       name: "Transit",
-      icon: <Train className="h-6 w-6 text-purple-500" />,
+      icon: (
+        <img
+          src="/src/assets/img/kiosk.png"
+          alt="Transit"
+          className="h-10 w-10"
+        />
+      ),
       description: "Smart mobility solutions",
     },
     {
       name: "Consultancy",
-      icon: <Phone className="h-6 w-6 text-yellow-500" />,
+      icon: (
+        <img
+          src="/src/assets/img/consultant.png"
+          alt="Consultancy"
+          className="h-10 w-10"
+        />
+      ),
       description: "Expert technical guidance",
     },
     {
@@ -173,20 +191,40 @@ const AboutSection = ({
               <div className="relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-500 group-hover:translate-y-[-10px] group-hover:shadow-2xl">
                 <div className="flex items-center">
                   <motion.div
-                    className="p-4 bg-red-50 dark:bg-red-900 rounded-full transition-colors duration-300 mr-4"
-                    animate={{ rotate: [0, 10, 0, -10, 0] }}
+                    className="p-4 bg-red-50 dark:bg-red-900/50 rounded-full transition-colors duration-300 mr-4"
+                    animate={{ y: [0, -5, 0] }}
                     transition={{
                       repeat: Infinity,
-                      duration: 5,
+                      duration: 2,
                       ease: "easeInOut",
                     }}
                   >
-                    <div className="text-3xl">{stat.icon}</div>
+                    <div className="text-3xl">
+                      {index === 0 ? (
+                        <img
+                          src="/src/assets/img/cloud_services.png"
+                          alt="Products"
+                          className="h-10 w-10"
+                        />
+                      ) : index === 1 ? (
+                        <img
+                          src="/src/assets/img/kiosk.png"
+                          alt="Services"
+                          className="h-10 w-10"
+                        />
+                      ) : (
+                        <img
+                          src="/src/assets/img/consultant.png"
+                          alt="Domains"
+                          className="h-10 w-10"
+                        />
+                      )}
+                    </div>
                   </motion.div>
                   <div className="text-left">
                     <motion.h3
                       className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-1 transition-colors duration-300"
-                      animate={{ scale: [1, 1.1, 1] }}
+                      animate={{ scale: [1, 1.05, 1] }}
                       transition={{
                         repeat: Infinity,
                         duration: 3,
@@ -334,7 +372,7 @@ const AboutSection = ({
           </div>
         </motion.div>
 
-        {/* Domains Section with hover effects */}
+        {/* Domains Section with simplified animations */}
         <motion.div
           className="mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -348,27 +386,24 @@ const AboutSection = ({
             {domains.map((domain, index) => (
               <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-all duration-300 h-full"
-                initial={{ opacity: 0, scale: 0.9 }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-colors duration-300 h-full"
+                initial={{ opacity: 0, y: 20 }}
                 animate={
-                  isInView
-                    ? { opacity: 1, scale: 1 }
-                    : { opacity: 0, scale: 0.9 }
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                 }
                 transition={{ delay: index * 0.1 + 0.7, duration: 0.5 }}
-                whileHover={{
-                  y: -10,
-                  boxShadow: "0 20px 25px rgba(0, 0, 0, 0.1)",
-                  backgroundColor: "rgba(239, 68, 68, 0.05)",
-                }}
               >
-                <div className="flex items-start">
+                <div className="flex flex-col items-center text-center">
                   <motion.div
-                    className="p-3 rounded-full bg-gray-100 dark:bg-gray-700 mr-4 transition-colors duration-300"
-                    whileHover={{ rotate: [0, 10, -10, 0], scale: 1.2 }}
-                    transition={{ duration: 0.5 }}
+                    className="p-3 rounded-full bg-gray-100 dark:bg-gray-700 mb-4 transition-colors duration-300"
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2,
+                      ease: "easeInOut",
+                    }}
                   >
-                    <div className="text-2xl">{domain.icon}</div>
+                    <div className="flex justify-center">{domain.icon}</div>
                   </motion.div>
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1 transition-colors duration-300">
