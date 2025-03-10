@@ -392,7 +392,7 @@ const AboutSection = ({
             ].map((achievement, index) => (
               <motion.div
                 key={index}
-                className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-2xl p-8 text-center shadow-xl transform-gpu"
+                className="bg-white/80 dark:bg-gray-800 backdrop-blur-lg rounded-2xl p-8 text-center shadow-xl transform-gpu"
                 variants={{
                   hidden: { opacity: 0, y: 40 },
                   visible: { opacity: 1, y: 0 }
