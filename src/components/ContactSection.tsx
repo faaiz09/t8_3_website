@@ -5,7 +5,7 @@ import { Button } from "../components//ui/button";
 import { Input } from "../components//ui/input";
 import { Textarea } from "../components//ui/textarea";
 import { Label } from "../components/ui/label";
-import { Mail, Phone, Send, LocateIcon } from "lucide-react";
+import { Mail, Phone, Send, MapIcon } from "lucide-react";
 import ParticleEffects from "../components/animations/ParticleEffects";
 import InteractiveMap from "./InteractiveMap";
 
@@ -111,7 +111,9 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
 
                   <div className="flex items-start">
-                    <LocateIcon className="h-6 w-6 mr-4 mt-1" />
+                    <div className="flex-shrink-0 w-6 h-6 mr-4 mt-1">
+                      <MapIcon className="h-6 w-6" />
+                    </div>
                     <div>
                       <p className="font-medium">Address</p>
                       <p className="text-white/80">{address}</p>
@@ -221,7 +223,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                       </Label>
                       <Input
                         id="firstName"
-                        placeholder="John"
+                        placeholder="First"
                         className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
@@ -234,7 +236,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                       </Label>
                       <Input
                         id="lastName"
-                        placeholder="Doe"
+                        placeholder="Last"
                         className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
@@ -251,7 +253,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                       <Input
                         id="email"
                         type="email"
-                        placeholder="john.doe@example.com"
+                        placeholder="first.last@example.com"
                         className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
@@ -264,7 +266,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                       </Label>
                       <Input
                         id="phone"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+91 555-123-4567"
                         className="border-gray-300 focus:border-[#0D47A1] focus:ring-[#0D47A1] dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                       />
                     </div>
@@ -310,7 +312,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                     >
                       I agree to the{" "}
                       <a
-                        href="#"
+                        href="#footer"
                         className="text-[#0D47A1] dark:text-blue-400 hover:underline transition-colors duration-300"
                       >
                         privacy policy
