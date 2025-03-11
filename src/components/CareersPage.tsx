@@ -41,11 +41,15 @@ import {
   Send,
   Shield,
   Users,
-  FileText
+  FileText,
+  Check, 
+  DollarSign, 
+  BookOpen
 } from "lucide-react";
 import ParticleEffects from "./animations/ParticleEffects";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import worklifeImage from "@/assets/img/work_life.png";
 
 interface JobListing {
   id: string;
@@ -1301,40 +1305,41 @@ const CareersPage = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, type: "spring" }}
                 >
-                  <div className="h-64 bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center relative overflow-hidden">
+                  <div className="h-64 bg-gradient-to-br from-blue-500 to-red-700 flex items-center justify-center relative overflow-hidden">
                     {/* Animated particles */}
-                    {[...Array(20)].map((_, i) => (
+                    {/* {[...Array(20)].map((_, i) => (
                       <motion.div
                       key={i}
                       className="absolute rounded-full bg-white/10"
                       style={{
-                        width: Math.random() * 20 + 5,
-                        height: Math.random() * 20 + 5,
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
+                      width: Math.random() * 20 + 5,
+                      height: Math.random() * 20 + 5,
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
                       }}
                       animate={{
-                        y: [0, -100],
-                        x: [0, Math.random() * 50 - 25],
-                        opacity: [0.7, 0],
-                        scale: [1, 0.5],
+                      y: [0, -100],
+                      x: [0, Math.random() * 50 - 25],
+                      opacity: [0.7, 0],
+                      scale: [1, 0.5],
                       }}
                       transition={{
-                        repeat: Infinity,
-                        duration: Math.random() * 6 + 5, // Increased duration
-                        delay: Math.random() * 3, // Increased delay
+                      repeat: Infinity,
+                      duration: Math.random() * 10 + 15, // Increased to 15-25 seconds
+                      delay: Math.random() * 5, // Increased to 0-5 seconds
+                      ease: "linear" // Added linear easing for smoother movement
                       }}
                       />
-                    ))}
+                    ))} */}
 
                     <div className="relative z-10 text-center px-6">
                       <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                      className="bg-white/10 p-4 rounded-full inline-block mb-4 backdrop-blur-sm"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                        className="bg-white/10 p-4 rounded-full inline-block mb-4 backdrop-blur-sm"
                       >
-                      <Sparkles className="h-8 w-8 text-white" />
+                        <Sparkles className="h-8 w-8 text-white" />
                       </motion.div>
                       <motion.h3
                         className="text-3xl font-bold text-white mb-2"
@@ -1357,7 +1362,7 @@ const CareersPage = () => {
 
                   <div className="p-8">
                     <div className="space-y-8">
-                        {[
+                      {[
                         {
                           title: "Innovation",
                           description: "We constantly push boundaries and explore new technologies to create cutting-edge solutions for our clients.",
@@ -1382,7 +1387,7 @@ const CareersPage = () => {
                           icon: <Shield className="h-6 w-6 text-purple-500" />,
                           color: "bg-purple-100 dark:bg-purple-900/30"
                         },
-                        ].map((value, index) => (
+                      ].map((value, index) => (
                         <motion.div
                           key={index}
                           className="flex items-center gap-4"
@@ -1391,53 +1396,60 @@ const CareersPage = () => {
                           transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
                         >
                           <div className={`p-3 rounded-xl ${value.color} flex-shrink-0`}>
-                          {value.icon}
+                            {value.icon}
                           </div>
                           <div>
-                          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                            {value.title}
-                          </h4>
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            {value.description}
-                          </p>
+                            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                              {value.title}
+                            </h4>
+                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                              {value.description}
+                            </p>
                           </div>
                         </motion.div>
-                        ))}
+                      ))}
                     </div>
                   </div>
                 </motion.div>
 
                 <div className="md:col-span-7 space-y-8">
                   <motion.div
-                    className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 transition-colors duration-300"
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, type: "spring", delay: 0.2 }}
+                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 transition-colors duration-300"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, type: "spring", delay: 0.2 }}
                   >
-                    <div className="flex items-center mb-6">
-                      <div className="p-3 rounded-xl bg-red-100 dark:bg-red-900/30 mr-4">
-                        <Coffee className="h-6 w-6 text-red-600 dark:text-red-400" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                        Life at T8
-                      </h3>
+                  <div className="flex items-center mb-6">
+                    <div className="p-3 rounded-xl bg-red-100 dark:bg-red-900/30 mr-4">
+                    <Coffee className="h-6 w-6 text-red-600 dark:text-red-400" />
                     </div>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    Life at T8
+                    </h3>
+                  </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-                      <div>
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                          At T8, we believe in creating a workplace where innovation
-                          thrives and people feel empowered to do their best work.
-                          Our culture is built on collaboration, continuous
-                          learning, and work-life balance.
-                        </p>
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                          We celebrate diversity and inclusion, recognizing that
-                          different perspectives drive innovation and help us better
-                          serve our global clients.
-                        </p>
-                      </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                    <div>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                      At T8, we believe in creating a workplace where innovation
+                      thrives and people feel empowered to do their best work.
+                      Our culture is built on collaboration, continuous
+                      learning, and work-life balance.
+                    </p>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      We celebrate diversity and inclusion, recognizing that
+                      different perspectives drive innovation and help us better
+                      serve our global clients.
+                    </p>
                     </div>
+                    <div className="relative h-48 rounded-xl overflow-hidden">
+                    <img
+                      src={worklifeImage}
+                      alt="Life at T8"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    </div>
+                  </div>
                   </motion.div>
                 </div>
               </div>
@@ -1446,118 +1458,133 @@ const CareersPage = () => {
             {/* Benefits Tab */}
             <TabsContent value="benefits" className="mt-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <motion.div
-                  className="md:col-span-3 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 text-center">
-                    Comprehensive Benefits Package
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-center max-w-3xl mx-auto mb-8">
-                    At T8, we believe in taking care of our employees. We offer
-                    a comprehensive benefits package designed to support your
-                    health, wellbeing, and financial future.
-                  </p>
-                </motion.div>
+              <motion.div
+                className="md:col-span-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl shadow-xl p-8 transition-colors duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h3 className="text-3xl font-bold text-white mb-6 text-center">
+                Comprehensive Benefits Package
+                </h3>
+                <p className="text-white text-lg text-center max-w-3xl mx-auto mb-8">
+                At T8, we believe in taking care of our employees. We offer
+                a comprehensive benefits package designed to support your
+                health, wellbeing, and financial future.
+                </p>
+              </motion.div>
 
-                {[
-                  {
-                    title: "Health & Wellness",
-                    items: [
-                      "Comprehensive health insurance",
-                      "Dental and vision coverage",
-                      "Mental health support",
-                      "Wellness programs and fitness reimbursements",
-                      "Annual health check-ups",
-                    ],
-                    delay: 0.1,
-                  },
-                  {
-                    title: "Financial Benefits",
-                    items: [
-                      "Competitive salary packages",
-                      "Performance-based bonuses",
-                      "Employee stock options",
-                      "Retirement plans with company matching",
-                      "Life and disability insurance",
-                    ],
-                    delay: 0.2,
-                  },
-                  {
-                    title: "Work-Life Balance",
-                    items: [
-                      "Flexible work arrangements",
-                      "Remote work options",
-                      "Generous paid time off",
-                      "Parental leave",
-                      "Sabbatical opportunities",
-                    ],
-                    delay: 0.3,
-                  },
-                  {
-                    title: "Professional Development",
-                    items: [
-                      "Learning and development budget",
-                      "Conference attendance",
-                      "Professional certifications",
-                      "Internal mobility opportunities",
-                      "Mentorship programs",
-                    ],
-                    delay: 0.4,
-                  },
-                  {
-                    title: "Office Perks",
-                    items: [
-                      "Modern, collaborative workspaces",
-                      "Free snacks and beverages",
-                      "Team building activities",
-                      "Recreation areas",
-                      "Regular team celebrations",
-                    ],
-                    delay: 0.5,
-                  },
-                  {
-                    title: "Community & Culture",
-                    items: [
-                      "Volunteer time off",
-                      "Charitable donation matching",
-                      "Diversity and inclusion initiatives",
-                      "Employee resource groups",
-                      "Sustainability programs",
-                    ],
-                    delay: 0.6,
-                  },
-                ].map((category, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: category.delay }}
-                  >
-                    <div className="h-12 bg-red-600 flex items-center justify-center">
-                      <h4 className="text-lg font-semibold text-white">
-                        {category.title}
-                      </h4>
-                    </div>
-                    <div className="p-6">
-                      <ul className="space-y-3">
-                        {category.items.map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-start">
-                            <div className="flex-shrink-0 h-5 w-5 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-3 mt-0.5">
-                              <div className="h-2 w-2 rounded-full bg-red-600 dark:bg-red-400"></div>
-                            </div>
-                            <span className="text-gray-700 dark:text-gray-300">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </motion.div>
-                ))}
+              {[
+                {
+                title: "Health & Wellness",
+                color: "from-blue-500 to-blue-700",
+                icon: <Heart className="h-6 w-6 text-white" />,
+                items: [
+                  "Comprehensive health insurance",
+                  "Dental and vision coverage",
+                  "Mental health support",
+                  "Wellness programs and fitness reimbursements",
+                  "Annual health check-ups",
+                ],
+                delay: 0.1,
+                },
+                {
+                title: "Financial Benefits",
+                color: "from-emerald-500 to-emerald-700",
+                icon: <DollarSign className="h-6 w-6 text-white" />,
+                items: [
+                  "Competitive salary packages",
+                  "Performance-based bonuses", 
+                  "Employee stock options",
+                  "Retirement plans with company matching",
+                  "Life and disability insurance",
+                ],
+                delay: 0.2,
+                },
+                {
+                title: "Work-Life Balance",
+                color: "from-amber-500 to-amber-700",
+                icon: <Clock className="h-6 w-6 text-white" />,
+                items: [
+                  "Flexible work arrangements",
+                  "Remote work options",
+                  "Generous paid time off",
+                  "Parental leave",
+                  "Sabbatical opportunities",
+                ],
+                delay: 0.3,
+                },
+                {
+                title: "Professional Development",
+                color: "from-violet-500 to-violet-700",
+                icon: <BookOpen className="h-6 w-6 text-white" />,
+                items: [
+                  "Learning and development budget",
+                  "Conference attendance",
+                  "Professional certifications",
+                  "Internal mobility opportunities",
+                  "Mentorship programs",
+                ],
+                delay: 0.4,
+                },
+                {
+                title: "Office Perks",
+                color: "from-rose-500 to-rose-700",
+                icon: <Coffee className="h-6 w-6 text-white" />,
+                items: [
+                  "Modern, collaborative workspaces",
+                  "Free snacks and beverages",
+                  "Team building activities",
+                  "Recreation areas",
+                  "Regular team celebrations",
+                ],
+                delay: 0.5,
+                },
+                {
+                title: "Community & Culture",
+                color: "from-cyan-500 to-cyan-700",
+                icon: <Users className="h-6 w-6 text-white" />,
+                items: [
+                  "Volunteer time off",
+                  "Charitable donation matching",
+                  "Diversity and inclusion initiatives",
+                  "Employee resource groups",
+                  "Sustainability programs",
+                ],
+                delay: 0.6,
+                },
+              ].map((category, index) => (
+                <motion.div
+                key={index}
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-4px]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: category.delay }}
+                >
+                <div className={`h-16 bg-gradient-to-r ${category.color} flex items-center justify-center gap-3 px-4`}>
+                  {category.icon}
+                  <h4 className="text-xl font-bold text-white">
+                  {category.title}
+                  </h4>
+                </div>
+                <div className="p-6">
+                  <ul className="space-y-3">
+                  {category.items.map((item, itemIndex) => (
+                    <motion.li
+                    key={itemIndex}
+                    className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: category.delay + (itemIndex * 0.1) }}
+                    >
+                    <div className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex-shrink-0" />
+                    <span>{item}</span>
+                    </motion.li>
+                  ))}
+                  </ul>
+                </div>
+                </motion.div>
+              ))}
               </div>
             </TabsContent>
           </Tabs>
