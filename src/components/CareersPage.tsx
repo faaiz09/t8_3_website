@@ -42,8 +42,8 @@ import {
   Shield,
   Users,
   FileText,
-  Check, 
-  DollarSign, 
+  Check,
+  DollarSign,
   BookOpen
 } from "lucide-react";
 import ParticleEffects from "./animations/ParticleEffects";
@@ -104,7 +104,7 @@ const CareersPage = () => {
         "Understanding of server-side rendering and its benefits",
         "Experience with banking or financial software is a plus",
       ],
-      postedDate: "2023-09-15",
+      postedDate: "2024-09-15",
     },
     {
       id: "job2",
@@ -129,7 +129,7 @@ const CareersPage = () => {
         "Experience designing for touchscreen interfaces is a plus",
         "Knowledge of banking or financial services is beneficial",
       ],
-      postedDate: "2023-09-20",
+      postedDate: "2024-09-20",
     },
     {
       id: "job3",
@@ -154,7 +154,7 @@ const CareersPage = () => {
         "Familiarity with cloud services (AWS, Azure, or GCP)",
         "Knowledge of security best practices",
       ],
-      postedDate: "2023-09-25",
+      postedDate: "2024-09-25",
     },
     {
       id: "job4",
@@ -179,7 +179,7 @@ const CareersPage = () => {
         "Understanding of the banking or financial services industry",
         "Technical background or familiarity with software development",
       ],
-      postedDate: "2023-10-01",
+      postedDate: "2024-10-01",
     },
     {
       id: "job5",
@@ -204,7 +204,7 @@ const CareersPage = () => {
         "Understanding of networking, security, and system administration",
         "Experience with monitoring and observability tools",
       ],
-      postedDate: "2023-10-05",
+      postedDate: "2024-10-05",
     },
     {
       id: "job6",
@@ -229,7 +229,7 @@ const CareersPage = () => {
         "Strong analytical and problem-solving skills",
         "Experience testing financial or banking applications is a plus",
       ],
-      postedDate: "2023-10-10",
+      postedDate: "2024-10-10",
     },
     {
       id: "job7",
@@ -254,7 +254,7 @@ const CareersPage = () => {
         "Customer-focused mindset and patience",
         "Ability to explain technical concepts to non-technical users",
       ],
-      postedDate: "2023-10-15",
+      postedDate: "2024-10-15",
     },
     {
       id: "job8",
@@ -279,7 +279,7 @@ const CareersPage = () => {
         "Familiarity with agile development methodologies",
         "Excellent communication and presentation skills",
       ],
-      postedDate: "2023-10-20",
+      postedDate: "2024-10-20",
     },
     {
       id: "job9",
@@ -304,7 +304,7 @@ const CareersPage = () => {
         "Familiarity with the banking or financial services industry is a plus",
         "Excellent communication and project management skills",
       ],
-      postedDate: "2023-10-25",
+      postedDate: "2024-10-25",
     },
     {
       id: "job10",
@@ -329,7 +329,7 @@ const CareersPage = () => {
         "Excellent communication and presentation abilities",
         "Track record of meeting or exceeding sales targets",
       ],
-      postedDate: "2023-11-01",
+      postedDate: "2024-11-01",
     },
   ];
 
@@ -549,14 +549,14 @@ const CareersPage = () => {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100 dark:border-gray-700"
+                  className="bg-white dark:bg-gray-300 rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100 dark:border-gray-500"
                   whileHover={{ y: -5 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index + 0.5, duration: 0.5 }}
                 >
                   <div className="flex flex-col items-center text-center">
-                    <div className="p-3 rounded-full bg-gray-50 dark:bg-gray-700 mb-4">
+                    <div className="p-3 rounded-full bg-gray-50 dark:bg-gray-100 mb-4">
                       {stat.icon}
                     </div>
                     <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">
@@ -1414,177 +1414,232 @@ const CareersPage = () => {
 
                 <div className="md:col-span-7 space-y-8">
                   <motion.div
-                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 transition-colors duration-300"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, type: "spring", delay: 0.2 }}
+                    className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 transition-colors duration-300"
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, type: "spring", delay: 0.2 }}
                   >
-                  <div className="flex items-center mb-6">
-                    <div className="p-3 rounded-xl bg-red-100 dark:bg-red-900/30 mr-4">
-                    <Coffee className="h-6 w-6 text-red-600 dark:text-red-400" />
+                    <div className="flex items-center mb-6">
+                      <div className="p-3 rounded-xl bg-red-100 dark:bg-red-900/30 mr-4">
+                        <Coffee className="h-6 w-6 text-red-600 dark:text-red-400" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        Life at T8
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    Life at T8
-                    </h3>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-                    <div>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                      At T8, we believe in creating a workplace where innovation
-                      thrives and people feel empowered to do their best work.
-                      Our culture is built on collaboration, continuous
-                      learning, and work-life balance.
-                    </p>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                      We celebrate diversity and inclusion, recognizing that
-                      different perspectives drive innovation and help us better
-                      serve our global clients.
-                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                      <div>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                          At T8, we believe in creating a workplace where innovation
+                          thrives and people feel empowered to do their best work.
+                          Our culture is built on collaboration, continuous
+                          learning, and work-life balance.
+                        </p>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                          We celebrate diversity and inclusion, recognizing that
+                          different perspectives drive innovation and help us better
+                          serve our global clients.
+                        </p>
+                      </div>
+                      <div className="relative h-48 rounded-xl overflow-hidden">
+                        <img
+                          src={worklifeImage}
+                          alt="Life at T8"
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      </div>
                     </div>
-                    <div className="relative h-48 rounded-xl overflow-hidden">
-                    <img
-                      src={worklifeImage}
-                      alt="Life at T8"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    </div>
-                  </div>
                   </motion.div>
                 </div>
               </div>
+              <motion.div
+                className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  What Our Employees Say
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      quote:
+                        "Working at T8 has been an incredible journey of growth and innovation. The collaborative environment and challenging projects keep me engaged every day.",
+                      name: "Vyankatesh Ghadigavakar",
+                      title: "Senior Software Engineer",
+                      years: "3 years at T8",
+                    },
+                    {
+                      quote:
+                        "What I love most about T8 is the culture of continuous learning. There's always an opportunity to expand your skills and take on new challenges.",
+                      name: "Pramod Patil",
+                      title: "Product Manager",
+                      years: "4 years at T8",
+                    },
+                    {
+                      quote:
+                        "The work-life balance at T8 is exceptional. The company truly values employee wellbeing, which makes it a great place to build a career.",
+                      name: "Faaiz Akhtar",
+                      title: "UX Designer",
+                      years: "3 years at T8",
+                    },
+                  ].map((testimonial, index) => (
+                    <Card key={index} className="border-none shadow-md">
+                      <CardContent className="p-6">
+                        <div className="mb-4 text-gray-600 dark:text-gray-300 italic">
+                          "{testimonial.quote}"
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900 dark:text-white">
+                            {testimonial.name}
+                          </p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            {testimonial.title}
+                          </p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            {testimonial.years}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </motion.div>
             </TabsContent>
 
             {/* Benefits Tab */}
             <TabsContent value="benefits" className="mt-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <motion.div
-                className="md:col-span-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl shadow-xl p-8 transition-colors duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <h3 className="text-3xl font-bold text-white mb-6 text-center">
-                Comprehensive Benefits Package
-                </h3>
-                <p className="text-white text-lg text-center max-w-3xl mx-auto mb-8">
-                At T8, we believe in taking care of our employees. We offer
-                a comprehensive benefits package designed to support your
-                health, wellbeing, and financial future.
-                </p>
-              </motion.div>
-
-              {[
-                {
-                title: "Health & Wellness",
-                color: "from-blue-500 to-blue-700",
-                icon: <Heart className="h-6 w-6 text-white" />,
-                items: [
-                  "Comprehensive health insurance",
-                  "Dental and vision coverage",
-                  "Mental health support",
-                  "Wellness programs and fitness reimbursements",
-                  "Annual health check-ups",
-                ],
-                delay: 0.1,
-                },
-                {
-                title: "Financial Benefits",
-                color: "from-emerald-500 to-emerald-700",
-                icon: <DollarSign className="h-6 w-6 text-white" />,
-                items: [
-                  "Competitive salary packages",
-                  "Performance-based bonuses", 
-                  "Employee stock options",
-                  "Retirement plans with company matching",
-                  "Life and disability insurance",
-                ],
-                delay: 0.2,
-                },
-                {
-                title: "Work-Life Balance",
-                color: "from-amber-500 to-amber-700",
-                icon: <Clock className="h-6 w-6 text-white" />,
-                items: [
-                  "Flexible work arrangements",
-                  "Remote work options",
-                  "Generous paid time off",
-                  "Parental leave",
-                  "Sabbatical opportunities",
-                ],
-                delay: 0.3,
-                },
-                {
-                title: "Professional Development",
-                color: "from-violet-500 to-violet-700",
-                icon: <BookOpen className="h-6 w-6 text-white" />,
-                items: [
-                  "Learning and development budget",
-                  "Conference attendance",
-                  "Professional certifications",
-                  "Internal mobility opportunities",
-                  "Mentorship programs",
-                ],
-                delay: 0.4,
-                },
-                {
-                title: "Office Perks",
-                color: "from-rose-500 to-rose-700",
-                icon: <Coffee className="h-6 w-6 text-white" />,
-                items: [
-                  "Modern, collaborative workspaces",
-                  "Free snacks and beverages",
-                  "Team building activities",
-                  "Recreation areas",
-                  "Regular team celebrations",
-                ],
-                delay: 0.5,
-                },
-                {
-                title: "Community & Culture",
-                color: "from-cyan-500 to-cyan-700",
-                icon: <Users className="h-6 w-6 text-white" />,
-                items: [
-                  "Volunteer time off",
-                  "Charitable donation matching",
-                  "Diversity and inclusion initiatives",
-                  "Employee resource groups",
-                  "Sustainability programs",
-                ],
-                delay: 0.6,
-                },
-              ].map((category, index) => (
                 <motion.div
-                key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-4px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: category.delay }}
+                  className="md:col-span-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl shadow-xl p-8 transition-colors duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
                 >
-                <div className={`h-16 bg-gradient-to-r ${category.color} flex items-center justify-center gap-3 px-4`}>
-                  {category.icon}
-                  <h4 className="text-xl font-bold text-white">
-                  {category.title}
-                  </h4>
-                </div>
-                <div className="p-6">
-                  <ul className="space-y-3">
-                  {category.items.map((item, itemIndex) => (
-                    <motion.li
-                    key={itemIndex}
-                    className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: category.delay + (itemIndex * 0.1) }}
-                    >
-                    <div className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex-shrink-0" />
-                    <span>{item}</span>
-                    </motion.li>
-                  ))}
-                  </ul>
-                </div>
+                  <h3 className="text-3xl font-bold text-white mb-6 text-center">
+                    Comprehensive Benefits Package
+                  </h3>
+                  <p className="text-white text-lg text-center max-w-3xl mx-auto mb-8">
+                    At T8, we believe in taking care of our employees. We offer
+                    a comprehensive benefits package designed to support your
+                    health, wellbeing, and financial future.
+                  </p>
                 </motion.div>
-              ))}
+
+                {[
+                  {
+                    title: "Health & Wellness",
+                    color: "from-blue-500 to-blue-700",
+                    icon: <Heart className="h-6 w-6 text-white" />,
+                    items: [
+                      "Comprehensive health insurance",
+                      "Dental and vision coverage",
+                      "Mental health support",
+                      "Wellness programs and fitness reimbursements",
+                      "Annual health check-ups",
+                    ],
+                    delay: 0.1,
+                  },
+                  {
+                    title: "Financial Benefits",
+                    color: "from-emerald-500 to-emerald-700",
+                    icon: <DollarSign className="h-6 w-6 text-white" />,
+                    items: [
+                      "Competitive salary packages",
+                      "Performance-based bonuses",
+                      "Employee stock options",
+                      "Retirement plans with company matching",
+                      "Life and disability insurance",
+                    ],
+                    delay: 0.2,
+                  },
+                  {
+                    title: "Work-Life Balance",
+                    color: "from-amber-500 to-amber-700",
+                    icon: <Clock className="h-6 w-6 text-white" />,
+                    items: [
+                      "Flexible work arrangements",
+                      "Remote work options",
+                      "Generous paid time off",
+                      "Parental leave",
+                      "Sabbatical opportunities",
+                    ],
+                    delay: 0.3,
+                  },
+                  {
+                    title: "Professional Development",
+                    color: "from-violet-500 to-violet-700",
+                    icon: <BookOpen className="h-6 w-6 text-white" />,
+                    items: [
+                      "Learning and development budget",
+                      "Conference attendance",
+                      "Professional certifications",
+                      "Internal mobility opportunities",
+                      "Mentorship programs",
+                    ],
+                    delay: 0.4,
+                  },
+                  {
+                    title: "Office Perks",
+                    color: "from-rose-500 to-rose-700",
+                    icon: <Coffee className="h-6 w-6 text-white" />,
+                    items: [
+                      "Modern, collaborative workspaces",
+                      "Free snacks and beverages",
+                      "Team building activities",
+                      "Recreation areas",
+                      "Regular team celebrations",
+                    ],
+                    delay: 0.5,
+                  },
+                  {
+                    title: "Community & Culture",
+                    color: "from-cyan-500 to-cyan-700",
+                    icon: <Users className="h-6 w-6 text-white" />,
+                    items: [
+                      "Volunteer time off",
+                      "Charitable donation matching",
+                      "Diversity and inclusion initiatives",
+                      "Employee resource groups",
+                      "Sustainability programs",
+                    ],
+                    delay: 0.6,
+                  },
+                ].map((category, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-4px]"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: category.delay }}
+                  >
+                    <div className={`h-16 bg-gradient-to-r ${category.color} flex items-center justify-center gap-3 px-4`}>
+                      {category.icon}
+                      <h4 className="text-xl font-bold text-white">
+                        {category.title}
+                      </h4>
+                    </div>
+                    <div className="p-6">
+                      <ul className="space-y-3">
+                        {category.items.map((item, itemIndex) => (
+                          <motion.li
+                            key={itemIndex}
+                            className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: category.delay + (itemIndex * 0.1) }}
+                          >
+                            <div className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex-shrink-0" />
+                            <span>{item}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </TabsContent>
           </Tabs>
