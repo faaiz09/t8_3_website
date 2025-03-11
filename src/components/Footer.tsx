@@ -129,7 +129,7 @@ const Footer = ({ className }: FooterProps) => {
       title: "Company",
       links: [
         { name: "About Us", href: "#about" },
-        { name: "Careers", href: "#" },
+        { name: "Careers", href: "/careers" },
         { name: "News", href: "#" },
         { name: "Contact", href: "#contact" },
       ],
