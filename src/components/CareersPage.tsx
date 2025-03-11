@@ -355,7 +355,7 @@ const CareersPage = () => {
     setSelectedJob(job);
     setShowApplicationForm(false);
     setApplicationSubmitted(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleApplyClick = () => {
@@ -411,8 +411,8 @@ const CareersPage = () => {
 
   const targetNumbers = {
     openings: 10,
-    employees: 200,
-    countries: 5,
+    employees: 85,
+    countries: 25,
     satisfaction: 98
   };
 
@@ -420,16 +420,16 @@ const CareersPage = () => {
     const duration = 2000; // ms
     const interval = 20; // ms
     const steps = duration / interval;
-    
+
     const timer = setInterval(() => {
       setCountUp(prev => ({
-        openings: prev.openings < targetNumbers.openings ? 
+        openings: prev.openings < targetNumbers.openings ?
           Math.min(prev.openings + Math.ceil(targetNumbers.openings / steps), targetNumbers.openings) : prev.openings,
-        employees: prev.employees < targetNumbers.employees ? 
+        employees: prev.employees < targetNumbers.employees ?
           Math.min(prev.employees + Math.ceil(targetNumbers.employees / steps), targetNumbers.employees) : prev.employees,
-        countries: prev.countries < targetNumbers.countries ? 
+        countries: prev.countries < targetNumbers.countries ?
           Math.min(prev.countries + Math.ceil(targetNumbers.countries / steps), targetNumbers.countries) : prev.countries,
-        satisfaction: prev.satisfaction < targetNumbers.satisfaction ? 
+        satisfaction: prev.satisfaction < targetNumbers.satisfaction ?
           Math.min(prev.satisfaction + Math.ceil(targetNumbers.satisfaction / steps), targetNumbers.satisfaction) : prev.satisfaction
       }));
     }, interval);
@@ -445,7 +445,7 @@ const CareersPage = () => {
       <section className="relative pt-32 pb-20 overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-red-50 to-white dark:from-gray-900 dark:to-gray-950 -z-10"></div>
-        
+
         {/* Animated shapes */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(5)].map((_, i) => (
@@ -492,13 +492,13 @@ const CareersPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <motion.div 
+            <motion.div
               className="inline-block mb-6"
               initial={{ scale: 0 }}
               animate={{ scale: 1, rotate: [0, 5, 0, -5, 0] }}
-              transition={{ 
+              transition={{
                 scale: { duration: 0.5 },
-                rotate: { repeat: Infinity, duration: 6, ease: "easeInOut" } 
+                rotate: { repeat: Infinity, duration: 6, ease: "easeInOut" }
               }}
             >
               <div className="relative">
@@ -510,8 +510,8 @@ const CareersPage = () => {
                 </div>
               </div>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-500 to-gray-700 dark:from-red-500 dark:via-red-400 dark:to-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -519,8 +519,8 @@ const CareersPage = () => {
             >
               Join Our Team
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -529,9 +529,9 @@ const CareersPage = () => {
               Build the future of banking technology with us. Discover exciting
               career opportunities at T8.
             </motion.p>
-            
+
             {/* Stats counter */}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -540,10 +540,10 @@ const CareersPage = () => {
               {[
                 { icon: <Briefcase className="h-6 w-6 text-red-500" />, value: countUp.openings, label: "Open Positions", suffix: "+" },
                 { icon: <Users className="h-6 w-6 text-blue-500" />, value: countUp.employees, label: "Team Members", suffix: "+" },
-                { icon: <MapPin className="h-6 w-6 text-green-500" />, value: countUp.countries, label: "Countries", suffix: "" },
+                { icon: <MapPin className="h-6 w-6 text-green-500" />, value: countUp.countries, label: "States", suffix: "" },
                 { icon: <Heart className="h-6 w-6 text-purple-500" />, value: countUp.satisfaction, label: "Employee Satisfaction", suffix: "%" },
               ].map((stat, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100 dark:border-gray-700"
                   whileHover={{ y: -5 }}
@@ -578,23 +578,23 @@ const CareersPage = () => {
             onValueChange={setActiveTab}
           >
             <div className="flex justify-center">
-              <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12 p-1.5 bg-white dark:bg-gray-800 shadow-lg rounded-full border border-gray-100 dark:border-gray-700">
-                <TabsTrigger 
-                  value="openings" 
+              <TabsList className=" h-100 grid w-full max-w-2xl mx-auto grid-cols-3 mb-12 p-1.5 bg-white dark:bg-gray-800 shadow-lg rounded-full border border-gray-100 dark:border-gray-700">
+                <TabsTrigger
+                  value="openings"
                   className="text-sm md:text-base rounded-full py-3 px-6 data-[state=active]:bg-red-600 data-[state=active]:text-white dark:data-[state=active]:bg-red-600 transition-all duration-300"
                 >
                   <Briefcase className="h-4 w-4 mr-2 inline-block" />
                   Job Openings
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="culture" 
+                <TabsTrigger
+                  value="culture"
                   className="text-sm md:text-base rounded-full py-3 px-6 data-[state=active]:bg-red-600 data-[state=active]:text-white dark:data-[state=active]:bg-red-600 transition-all duration-300"
                 >
                   <Heart className="h-4 w-4 mr-2 inline-block" />
                   Our Culture
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="benefits" 
+                <TabsTrigger
+                  value="benefits"
                   className="text-sm md:text-base rounded-full py-3 px-6 data-[state=active]:bg-red-600 data-[state=active]:text-white dark:data-[state=active]:bg-red-600 transition-all duration-300"
                 >
                   <Award className="h-4 w-4 mr-2 inline-block" />
@@ -683,7 +683,7 @@ const CareersPage = () => {
                         Updated Today
                       </Badge>
                     </div>
-                    
+
                     <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
                       {filteredJobs.length > 0 ? (
                         filteredJobs.map((job) => (
@@ -691,7 +691,7 @@ const CareersPage = () => {
                             key={job.id}
                             className={`p-5 border rounded-xl cursor-pointer transition-all duration-300 ${selectedJob?.id === job.id ? "border-red-500 bg-red-50/50 dark:bg-red-900/10 shadow-md" : "border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-700 hover:shadow-md"}`}
                             onClick={() => handleJobSelect(job)}
-                            whileHover={{ y: -5, scale: 1.02 }}
+                            whileHover={{ y: 0, scale: 1.0 }}
                             transition={{ type: "spring", stiffness: 300 }}
                           >
                             <div className="flex justify-between items-start">
@@ -699,14 +699,14 @@ const CareersPage = () => {
                                 {job.title}
                               </h3>
                               <div className="flex space-x-1">
-                                <motion.button 
+                                <motion.button
                                   className="p-1.5 rounded-full text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
                                   whileHover={{ scale: 1.1 }}
                                   whileTap={{ scale: 0.9 }}
                                 >
                                   <Bookmark size={16} />
                                 </motion.button>
-                                <motion.button 
+                                <motion.button
                                   className="p-1.5 rounded-full text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                                   whileHover={{ scale: 1.1 }}
                                   whileTap={{ scale: 0.9 }}
@@ -715,7 +715,7 @@ const CareersPage = () => {
                                 </motion.button>
                               </div>
                             </div>
-                            
+
                             <div className="flex flex-wrap gap-3 mb-3">
                               <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">
                                 <MapPin size={14} className="mr-1 text-red-500" />
@@ -726,13 +726,13 @@ const CareersPage = () => {
                                 {job.department}
                               </div>
                             </div>
-                            
+
                             <div className="flex justify-between items-center mt-2">
-                              <Badge 
-                                variant="secondary" 
-                                className={`${job.type === "Remote" ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" : 
-                                  job.type === "Contract" ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" : 
-                                  "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"} px-2.5 py-1 rounded-full`}
+                              <Badge
+                                variant="secondary"
+                                className={`${job.type === "Remote" ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" :
+                                  job.type === "Contract" ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" :
+                                    "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"} px-2.5 py-1 rounded-full`}
                               >
                                 {job.type}
                               </Badge>
@@ -743,7 +743,7 @@ const CareersPage = () => {
                           </motion.div>
                         ))
                       ) : (
-                        <motion.div 
+                        <motion.div
                           className="text-center py-12 px-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-dashed border-gray-300 dark:border-gray-700"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -752,8 +752,8 @@ const CareersPage = () => {
                           <Search className="h-12 w-12 mx-auto mb-4 text-gray-400" />
                           <h4 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">No matching positions</h4>
                           <p className="text-gray-500 dark:text-gray-400 mb-4">Try adjusting your search or filters to find what you're looking for.</p>
-                          <Button 
-                            variant="outline" 
+                          <Button
+                            variant="outline"
                             onClick={() => {
                               setSearchTerm("");
                               setSelectedDepartment("All");
@@ -798,14 +798,14 @@ const CareersPage = () => {
                               </h2>
                             </div>
                             <div className="flex space-x-2">
-                              <motion.button 
+                              <motion.button
                                 className="p-2 rounded-full text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                               >
                                 <Bookmark size={20} />
                               </motion.button>
-                              <motion.button 
+                              <motion.button
                                 className="p-2 rounded-full text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
@@ -814,7 +814,7 @@ const CareersPage = () => {
                               </motion.button>
                             </div>
                           </div>
-                          
+
                           <div className="mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
                             <div className="flex flex-wrap gap-6 mb-4">
                               <div className="flex items-center text-gray-600 dark:text-gray-300">
@@ -854,7 +854,7 @@ const CareersPage = () => {
                                 </div>
                               </div>
                             </div>
-                            
+
                             <div className="mt-6 flex flex-wrap gap-3">
                               {[
                                 { icon: <Star className="h-4 w-4 text-yellow-500" />, text: "Competitive Salary" },
@@ -862,9 +862,9 @@ const CareersPage = () => {
                                 { icon: <Laptop className="h-4 w-4 text-green-500" />, text: "Remote Work Options" },
                                 { icon: <Rocket className="h-4 w-4 text-purple-500" />, text: "Career Growth" },
                               ].map((perk, index) => (
-                                <Badge 
-                                  key={index} 
-                                  variant="outline" 
+                                <Badge
+                                  key={index}
+                                  variant="outline"
                                   className="flex items-center gap-1 px-3 py-1 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
                                 >
                                   {perk.icon}
@@ -895,8 +895,8 @@ const CareersPage = () => {
                             </h3>
                             <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                               {selectedJob.responsibilities.map((item, index) => (
-                                <motion.li 
-                                  key={index} 
+                                <motion.li
+                                  key={index}
                                   className="flex items-start gap-3"
                                   initial={{ opacity: 0, x: -10 }}
                                   animate={{ opacity: 1, x: 0 }}
@@ -920,8 +920,8 @@ const CareersPage = () => {
                             </h3>
                             <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                               {selectedJob.requirements.map((item, index) => (
-                                <motion.li 
-                                  key={index} 
+                                <motion.li
+                                  key={index}
                                   className="flex items-start gap-3"
                                   initial={{ opacity: 0, x: -10 }}
                                   animate={{ opacity: 1, x: 0 }}
@@ -1155,138 +1155,139 @@ const CareersPage = () => {
                       )}
 
                     {applicationSubmitted && (
+                      <motion.div
+                        key="success-message"
+                        className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12 text-center border border-gray-100 dark:border-gray-700 transition-colors duration-300"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.5, type: "spring" }}
+                      >
                         <motion.div
-                          key="success-message"
-                          className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12 text-center border border-gray-100 dark:border-gray-700 transition-colors duration-300"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.5, type: "spring" }}
+                          className="flex flex-col items-center justify-center"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2, duration: 0.5 }}
                         >
-                          <motion.div 
-                            className="flex flex-col items-center justify-center"
+                          <motion.div
+                            className="relative mb-8"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.3 }}
+                          >
+                            <div className="absolute -inset-4 rounded-full bg-green-500/20 animate-pulse"></div>
+                            <div className="relative bg-green-100 dark:bg-green-900/50 p-6 rounded-full">
+                              <CheckCircle size={64} className="text-green-600 dark:text-green-400" />
+                            </div>
+                          </motion.div>
+
+                          <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
+                            transition={{ delay: 0.5, duration: 0.5 }}
                           >
-                            <motion.div 
-                              className="relative mb-8"
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.3 }}
-                            >
-                              <div className="absolute -inset-4 rounded-full bg-green-500/20 animate-pulse"></div>
-                              <div className="relative bg-green-100 dark:bg-green-900/50 p-6 rounded-full">
-                                <CheckCircle size={64} className="text-green-600 dark:text-green-400" />
-                              </div>
-                            </motion.div>
-                            
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                              Application Submitted Successfully!
+                            </h2>
+                            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto text-lg leading-relaxed">
+                              Thank you for applying for the <span className="font-semibold text-gray-800 dark:text-gray-200">{selectedJob.title}</span>{" "}
+                              position. Our team will review your application and
+                              get back to you soon.
+                            </p>
+
+                            <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 mb-8 max-w-md mx-auto">
+                              <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-2">What happens next?</h3>
+                              <ul className="text-left space-y-3 text-gray-600 dark:text-gray-300">
+                                <li className="flex items-start gap-2">
+                                  <div className="min-w-[24px] mt-0.5 flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">1</div>
+                                  <span>Our team will review your application within 3-5 business days</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <div className="min-w-[24px] mt-0.5 flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">2</div>
+                                  <span>You'll receive an email confirmation with next steps</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                  <div className="min-w-[24px] mt-0.5 flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">3</div>
+                                  <span>Shortlisted candidates will be invited for an interview</span>
+                                </li>
+                              </ul>
+                            </div>
+
                             <motion.div
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.5, duration: 0.5 }}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
                             >
-                              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                                Application Submitted Successfully!
-                              </h2>
-                              <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto text-lg leading-relaxed">
-                                Thank you for applying for the <span className="font-semibold text-gray-800 dark:text-gray-200">{selectedJob.title}</span>{" "}
-                                position. Our team will review your application and
-                                get back to you soon.
-                              </p>
-                              
-                              <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 mb-8 max-w-md mx-auto">
-                                <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-2">What happens next?</h3>
-                                <ul className="text-left space-y-3 text-gray-600 dark:text-gray-300">
-                                  <li className="flex items-start gap-2">
-                                    <div className="min-w-[24px] mt-0.5 flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">1</div>
-                                    <span>Our team will review your application within 3-5 business days</span>
-                                  </li>
-                                  <li className="flex items-start gap-2">
-                                    <div className="min-w-[24px] mt-0.5 flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">2</div>
-                                    <span>You'll receive an email confirmation with next steps</span>
-                                  </li>
-                                  <li className="flex items-start gap-2">
-                                    <div className="min-w-[24px] mt-0.5 flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">3</div>
-                                    <span>Shortlisted candidates will be invited for an interview</span>
-                                  </li>
-                                </ul>
-                              </div>
-                              
-                              <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                              <Button
+                                onClick={() => {
+                                  setSelectedJob(null);
+                                  setShowApplicationForm(false);
+                                  setApplicationSubmitted(false);
+                                }}
+                                className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 h-auto text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                               >
-                                <Button
-                                  onClick={() => {
-                                    setSelectedJob(null);
-                                    setShowApplicationForm(false);
-                                    setApplicationSubmitted(false);
-                                  }}
-                                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 h-auto text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                                >
-                                  Browse More Jobs
-                                </Button>
-                              </motion.div>
+                                Browse More Jobs
+                              </Button>
                             </motion.div>
                           </motion.div>
                         </motion.div>
-                      )}
+                      </motion.div>
+                    )}
 
                     {!selectedJob && (
-                        <motion.div 
-                          key="select-job-prompt"
-                          className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12 text-center border border-gray-100 dark:border-gray-700 transition-colors duration-300 h-full flex flex-col items-center justify-center"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.4 }}
-                        >
-                          <div className="max-w-md mx-auto">
-                            <motion.div 
-                              className="bg-red-100 dark:bg-red-900/30 p-4 rounded-full inline-block mb-6"
-                              animate={{ y: [0, -10, 0] }}
-                              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                            >
-                              <Briefcase size={40} className="text-red-600 dark:text-red-400" />
-                            </motion.div>
-                            
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                              Find Your Perfect Role
-                            </h3>
-                            
-                            <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">
-                              Browse our open positions and select a job from the list to view details. We have exciting opportunities across various departments.
-                            </p>
-                            
-                            <div className="flex flex-wrap justify-center gap-3 mb-6">
-                              {departments.filter(dept => dept !== "All").slice(0, 5).map((dept, index) => (
-                                <motion.div
-                                  key={dept}
-                                  initial={{ opacity: 0, y: 20 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  transition={{ delay: index * 0.1 }}
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
+                      <motion.div
+                        key="select-job-prompt"
+                        className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12 text-center border border-gray-100 dark:border-gray-700 transition-colors duration-300 h-full flex flex-col items-center justify-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <div className="max-w-md mx-auto">
+                          <motion.div
+                            className="bg-red-100 dark:bg-red-900/30 p-4 rounded-full inline-block mb-6"
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            <Briefcase size={40} className="text-red-600 dark:text-red-400" />
+                          </motion.div>
+
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                            Find Your Perfect Role
+                          </h3>
+
+                          <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">
+                            Browse our open positions and select a job from the list to view details. We have exciting opportunities across various departments.
+                          </p>
+
+                          <div className="flex flex-wrap justify-center gap-3 mb-6">
+                            {departments.filter(dept => dept !== "All").slice(0, 5).map((dept, index) => (
+                              <motion.div
+                                key={dept}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                              >
+                                <Badge
+                                  variant="outline"
+                                  className="cursor-pointer px-3 py-1.5 text-sm font-medium rounded-full border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
+                                  onClick={() => setSelectedDepartment(dept)}
                                 >
-                                  <Badge 
-                                    variant="outline" 
-                                    className="cursor-pointer px-3 py-1.5 text-sm font-medium rounded-full border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
-                                    onClick={() => setSelectedDepartment(dept)}
-                                  >
-                                    {dept}
-                                  </Badge>
-                                </motion.div>
-                              ))}
-                            </div>
-                            
-                            <div className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1">
-                              <ArrowRight size={14} className="text-red-500" />
-                              <span>Select a position from the left to view details</span>
-                            </div>
+                                  {dept}
+                                </Badge>
+                              </motion.div>
+                            ))}
                           </div>
-                        </motion.div>
-                      )}
+
+                          <div className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1">
+                            <ArrowRight size={14} className="text-red-500" />
+                            <span>Select a position from the left to view details</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </TabsContent>
@@ -1304,38 +1305,38 @@ const CareersPage = () => {
                     {/* Animated particles */}
                     {[...Array(20)].map((_, i) => (
                       <motion.div
-                        key={i}
-                        className="absolute rounded-full bg-white/10"
-                        style={{
-                          width: Math.random() * 20 + 5,
-                          height: Math.random() * 20 + 5,
-                          top: `${Math.random() * 100}%`,
-                          left: `${Math.random() * 100}%`,
-                        }}
-                        animate={{
-                          y: [0, -100],
-                          x: [0, Math.random() * 50 - 25],
-                          opacity: [0.7, 0],
-                          scale: [1, 0.5],
-                        }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: Math.random() * 4 + 3,
-                          delay: Math.random() * 2,
-                        }}
+                      key={i}
+                      className="absolute rounded-full bg-white/10"
+                      style={{
+                        width: Math.random() * 20 + 5,
+                        height: Math.random() * 20 + 5,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                      }}
+                      animate={{
+                        y: [0, -100],
+                        x: [0, Math.random() * 50 - 25],
+                        opacity: [0.7, 0],
+                        scale: [1, 0.5],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: Math.random() * 6 + 5, // Increased duration
+                        delay: Math.random() * 3, // Increased delay
+                      }}
                       />
                     ))}
-                    
+
                     <div className="relative z-10 text-center px-6">
                       <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                        className="bg-white/10 p-4 rounded-full inline-block mb-4 backdrop-blur-sm"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                      className="bg-white/10 p-4 rounded-full inline-block mb-4 backdrop-blur-sm"
                       >
-                        <Sparkles className="h-8 w-8 text-white" />
+                      <Sparkles className="h-8 w-8 text-white" />
                       </motion.div>
-                      <motion.h3 
+                      <motion.h3
                         className="text-3xl font-bold text-white mb-2"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -1343,7 +1344,7 @@ const CareersPage = () => {
                       >
                         Our Values
                       </motion.h3>
-                      <motion.p 
+                      <motion.p
                         className="text-white/80 text-sm max-w-xs mx-auto"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -1353,10 +1354,10 @@ const CareersPage = () => {
                       </motion.p>
                     </div>
                   </div>
-                  
+
                   <div className="p-8">
                     <div className="space-y-8">
-                      {[
+                        {[
                         {
                           title: "Innovation",
                           description: "We constantly push boundaries and explore new technologies to create cutting-edge solutions for our clients.",
@@ -1381,27 +1382,27 @@ const CareersPage = () => {
                           icon: <Shield className="h-6 w-6 text-purple-500" />,
                           color: "bg-purple-100 dark:bg-purple-900/30"
                         },
-                      ].map((value, index) => (
+                        ].map((value, index) => (
                         <motion.div
                           key={index}
-                          className="flex gap-4"
+                          className="flex items-center gap-4"
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
                         >
-                          <div className={`p-3 rounded-xl ${value.color} flex-shrink-0 mt-1`}>
-                            {value.icon}
+                          <div className={`p-3 rounded-xl ${value.color} flex-shrink-0`}>
+                          {value.icon}
                           </div>
                           <div>
-                            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                              {value.title}
-                            </h4>
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                              {value.description}
-                            </p>
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                            {value.title}
+                          </h4>
+                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            {value.description}
+                          </p>
                           </div>
                         </motion.div>
-                      ))}
+                        ))}
                     </div>
                   </div>
                 </motion.div>
@@ -1421,7 +1422,7 @@ const CareersPage = () => {
                         Life at T8
                       </h3>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
                       <div>
                         <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
