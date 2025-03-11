@@ -24,7 +24,7 @@ interface ClientCategory {
 }
 
 const ClientsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("finance");
+  const [activeCategory, setActiveCategory] = useState("banking");
   const [autoRotate, setAutoRotate] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
   const [hoveredClient, setHoveredClient] = useState<string | null>(null);
@@ -33,7 +33,7 @@ const ClientsSection = () => {
   useEffect(() => {
     if (!autoRotate) return;
 
-    const categories = ["finance", "finserv", "transit", "healthcare"];
+    const categories = ["banking", "finserv", "transit", "healthcare"];
     const interval = setInterval(() => {
       setActiveCategory((prevCategory) => {
         const currentIndex = categories.indexOf(prevCategory);
@@ -51,8 +51,8 @@ const ClientsSection = () => {
 
   const clientCategories: ClientCategory[] = [
     {
-      id: "finance",
-      name: "Finance",
+      id: "banking",
+      name: "Banking",
       clients: [
         { id: "hdfc", name: "HDFC Bank", logo: hdfc },
         { id: "axis", name: "Axis Bank", logo: axis },

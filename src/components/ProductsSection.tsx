@@ -46,25 +46,25 @@ interface Product {
   name: string;
   description: string;
   icon: React.ReactNode;
-  category: "KIOSK" | "SOLUTIONS" | "SERVICES";
+  category: "BANKING" | "SOLUTIONS" | "SERVICES";
   image?: string;
   details?: string;
 }
 
 const ProductsSection = () => {
   const [activeCategory, setActiveCategory] = useState<
-    "KIOSK" | "SOLUTIONS" | "SERVICES"
-  >("KIOSK");
+    "BANKING" | "SOLUTIONS" | "SERVICES"
+  >("BANKING");
 
   const products: Product[] = [
-    // KIOSK Products
+    // BANKING Products
     {
       id: "visitor-kiosk",
       name: "Visitor Management Kiosk",
       description:
         "Streamline visitor registration and management with our advanced kiosk solution.",
       icon: <Users size={24} />,
-      category: "KIOSK",
+      category: "BANKING",
       image:
         visitorkiosk,
       details:
@@ -76,7 +76,7 @@ const ProductsSection = () => {
       description:
         "Enhance customer shopping experience with self-service retail kiosks.",
       icon: <ShoppingBag size={24} />,
-      category: "KIOSK",
+      category: "BANKING",
       image:
         retailkiosk,
       details:
@@ -88,7 +88,7 @@ const ProductsSection = () => {
       description:
         "Simplify HR processes with employee self-service kiosks for attendance and more.",
       icon: <Users size={24} />,
-      category: "KIOSK",
+      category: "BANKING",
       image:
         hrmskiosk,
       details:
@@ -100,7 +100,7 @@ const ProductsSection = () => {
       description:
         "Enable customers to print statements and reports securely with ease.",
       icon: <FileText size={24} />,
-      category: "KIOSK",
+      category: "BANKING",
       image:
         reportkiosk,
       details:
@@ -112,7 +112,7 @@ const ProductsSection = () => {
       description:
         "Provide interactive information access to customers and visitors.",
       icon: <Monitor size={24} />,
-      category: "KIOSK",
+      category: "BANKING",
       image:
         infokisok,
       details:
@@ -265,17 +265,17 @@ const ProductsSection = () => {
         </motion.div>
 
         <Tabs
-          defaultValue="KIOSK"
+          defaultValue="BANKING"
           className="w-full"
           onValueChange={(value) => setActiveCategory(value as any)}
         >
           <div className="flex justify-center mb-10">
             <TabsList className="grid w-full max-w-md grid-cols-3 bg-gray-200 dark:bg-gray-800 transition-colors duration-300 h-100">
               <TabsTrigger
-                value="KIOSK"
+                value="BANKING"
                 className="text-sm md:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 transition-colors duration-300 py-3 data-[state=active]:text-red-600"
               >
-                KIOSK
+                BANKING
               </TabsTrigger>
               <TabsTrigger
                 value="SOLUTIONS"

@@ -42,7 +42,7 @@ const AboutSection = ({
       icon: <img src={Services} alt="Services" className="h-6 w-6" />,
     },
     {
-      value: "6",
+      value: "8",
       label: "Domains",
       icon: <img src={Domains} alt="Domains" className="h-6 w-6" />,
     },
@@ -58,9 +58,14 @@ const AboutSection = ({
       description: "Secure financial solutions",
     },
     {
-      name: "Health",
-      icon: <HeartPulse className="h-6 w-6 text-green-500" />,
-      description: "Patient-centric systems",
+      name: "Transit",
+      icon: <TrainIcon className="h-6 w-6 text-purple-500" />,
+      description: "Smart mobility solutions",
+    },
+    {
+      name: "Retail",
+      icon: <ShoppingBag className="h-6 w-6 text-pink-500" />,
+      description: "Enhanced purchase experiences",
     },
     {
       name: "Government",
@@ -68,20 +73,16 @@ const AboutSection = ({
       description: "Public service automation",
     },
     {
-      name: "Transit",
-      icon: <TrainIcon className="h-6 w-6 text-purple-500" />,
-      description: "Smart mobility solutions",
+      name: "Health",
+      icon: <HeartPulse className="h-6 w-6 text-green-500" />,
+      description: "Patient-centric systems",
     },
     {
       name: "Consultancy",
       icon: <PhoneIcon className="h-6 w-6 text-blue-500" />,
       description: "Expert technical guidance",
     },
-    {
-      name: "Retail",
-      icon: <ShoppingBag className="h-6 w-6 text-pink-500" />,
-      description: "Enhanced purchase experiences",
-    },
+
   ];
 
   const containerVariants = {
@@ -115,7 +116,7 @@ const AboutSection = ({
     },
     {
       value: "15,000+",
-      description: "Online Kiosks Across India"
+      description: "Machine under management across India"
     },
     {
       value: "200+",
@@ -372,14 +373,8 @@ const AboutSection = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                number: 25,
-                label: "Channel Partners",
-                icon: <Users className="w-14 h-14 text-red-500 mb-5" />,
-                gradient: ["from-red-400", "to-red-600"]
-              },
-              {
                 number: 15000,
-                label: "Online Kiosks",
+                label: "Machines under management",
                 icon: <Monitor className="w-14 h-14 text-blue-500 mb-5" />,
                 gradient: ["from-blue-400", "to-blue-600"]
               },
@@ -389,6 +384,13 @@ const AboutSection = ({
                 icon: <User className="w-14 h-14 text-green-500 mb-5" />,
                 gradient: ["from-green-400", "to-green-600"]
               },
+              {
+                number: 25,
+                label: "Channel Partners",
+                icon: <Users className="w-14 h-14 text-red-500 mb-5" />,
+                gradient: ["from-red-400", "to-red-600"]
+              },
+
             ].map((achievement, index) => (
               <motion.div
                 key={index}

@@ -159,7 +159,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                       </svg>
                     </a> */}
                     <a
-                      href="https://www.youtube.com/@technocraftsswitchgears6096"
+                      href="https://www.youtube.com/@technocraftsautomation"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"

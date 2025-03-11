@@ -148,7 +148,7 @@ const Footer = ({ className }: FooterProps) => {
   const socialLinks = [
     { icon: <Facebook className="h-5 w-5" />, href: "https://www.facebook.com/share/1BPeKHmUKG/?mibextid=wwXIfr", rel: "noopener noreferrer", target: "_blank", label: "Facebook" },
     // { icon: <Twitter className="h-5 w-5" />, href: "#", label: "Twitter" },
-    { icon: <Youtube className="h-5 w-5" />, href: "https://www.youtube.com/@technocraftsswitchgears6096", rel: "noopener noreferrer", target: "_blank", label: "Instagram" },
+    { icon: <Youtube className="h-5 w-5" />, href: "https://www.youtube.com/@technocraftsautomation", rel: "noopener noreferrer", target: "_blank", label: "Instagram" },
     { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/company/technocrafts-kiosk-and-automation-division/", rel: "noopener noreferrer", target: "_blank", label: "LinkedIn" },
   ];
 
