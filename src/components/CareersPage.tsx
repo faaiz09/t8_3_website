@@ -442,7 +442,7 @@ const CareersPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <Navbar />
 
       {/* Hero Section */}
@@ -451,7 +451,7 @@ const CareersPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-red-50 to-white dark:from-gray-900 dark:to-gray-950 -z-10"></div>
 
         {/* Animated shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
@@ -476,14 +476,14 @@ const CareersPage = () => {
               }}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Particle effect overlay */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
           <ParticleEffects
             color="#ef4444"
-            opacity={0.3}
-            particleCount={30}
+            opacity={0.85}
+            particleCount={100}
             width="100%"
             height="100%"
           />
@@ -507,7 +507,7 @@ const CareersPage = () => {
             >
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-400 rounded-lg blur opacity-30 animate-pulse"></div>
-                <div className="relative bg-white dark:bg-gray-900 px-4 py-1 rounded-lg">
+                <div className="relative bg-white dark:bg-gray-950 px-4 py-1 rounded-lg">
                   <Badge variant="outline" className="bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800 px-3 py-1 text-sm font-medium">
                     We're Hiring!
                   </Badge>
@@ -516,7 +516,7 @@ const CareersPage = () => {
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-500 to-gray-700 dark:from-red-500 dark:via-red-400 dark:to-gray-300"
+              className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-500 to-gray-700 dark:from-red-600 dark:via-red-500 dark:to-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
