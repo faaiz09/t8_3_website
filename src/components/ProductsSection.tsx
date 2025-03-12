@@ -24,20 +24,60 @@ import {
   Building,
   Download,
   ArrowRight,
+  Printer,
+  FileCheck,
+  CreditCard as CardIcon,
+  Building2,
+  ShoppingCart,
+  Receipt,
+  Landmark,
+  Ticket,
+  Cog,
+  BarChart,
+  Code,
+  Users2,
+  Clock,
 } from "lucide-react";
 
-import hrmskiosk from "../assets/img/hrms.png";
-import infokisok from "../assets/img/infoko.png";
-import reportkiosk from "../assets/img/reportp.png";
-import retailkiosk from "../assets/img/retail_kiosk.png";
-import visitorkiosk from "../assets/img/visitor.png";
+// import hrmskiosk from "../assets/img/hrms.png";
+// import infokisok from "../assets/img/infoko.png";
+// import reportkiosk from "../assets/img/reportp.png";
+// import retailkiosk from "../assets/img/retail_kiosk.png";
+// import visitorkiosk from "../assets/img/visitor.png";
 import bankingkiosk from "../assets/img/banking_kiosk.png";
 import consultativekiosk from "../assets/img/consultative.png";
 import transportkiosk from "../assets/img/transit_Kiosk.png";
 import digitalbanking from "../assets/img/digital_banking.png";
-import collmngmt from "../assets/img/collection_management.webp";
-import remote_monitor from "../assets/img/remote_monitoring.png";
-import self_service from "../assets/img/self_service_kiosk.png";
+// import collmngmt from "../assets/img/collection_management.webp";
+// import remote_monitor from "../assets/img/remote_monitoring.png";
+// import self_service from "../assets/img/self_service_kiosk.png";
+
+import cashdeposit from "../assets/img/cash_deposit.png";
+import passbook from "../assets/img/passbook.png";
+import policy from "../assets/img/policy.png";
+import cheque from "../assets/img/cheque.png";
+import accountopening from "../assets/img/account_opening.png";
+
+import registration from "../assets/img/registration.png";
+import healthcarepayment from "../assets/img/healthcare_payment.png";
+import healthcarereport from "../assets/img/healthcare_report.png";
+
+import selfcheckout from "../assets/img/self_checkout.png";
+import selfordering from "../assets/img/self_ordering.png";
+import paymentskiosk from "../assets/img/payments_kiosk.png";
+import preorder from "../assets/img/pre_order.png";
+
+import judiciary from "../assets/img/judiciary.png";
+import smartcity from "../assets/img/smart_city.png";
+import billpayment from "../assets/img/bill_payment.png";
+import landrecord from "../assets/img/land_record.png";
+import ticketvending from "../assets/img/ticket_vending.png";
+
+import s8platform from "../assets/img/s8_platform.png";
+import invos from "../assets/img/invos.png";
+import middleware from "../assets/img/middleware.png";
+import qms from "../assets/img/qms.png";
+import customsoftware from "../assets/img/custom_software.png";
 
 import brochure from "../assets/documents/brochure.pdf";
 
@@ -47,6 +87,7 @@ interface Product {
   description: string;
   icon: React.ReactNode;
   category: "BANKING" | "SOLUTIONS" | "SERVICES";
+  subCategory?: string;
   image?: string;
   details?: string;
 }
@@ -55,105 +96,233 @@ const ProductsSection = () => {
   const [activeCategory, setActiveCategory] = useState<
     "BANKING" | "SOLUTIONS" | "SERVICES"
   >("BANKING");
+  
+  const [activeBankingSubCategory, setActiveBankingSubCategory] = useState("FINANCE_SERVICE");
 
   const products: Product[] = [
-    // BANKING Products
+    // BANKING Products - Finance Service
     {
-      id: "visitor-kiosk",
-      name: "Visitor Management Kiosk",
-      description:
-        "Streamline visitor registration and management with our advanced kiosk solution.",
+      id: "cash-deposit",
+      name: "Cash Deposit Kiosk",
+      description: "Secure and efficient cash deposit solution for banks.",
+      icon: <CreditCard size={24} />,
+      category: "BANKING",
+      subCategory: "FINANCE_SERVICE",
+      image: cashdeposit,
+      details: "Our Cash Deposit Kiosk revolutionizes the way customers handle cash deposits. Featuring advanced counterfeit detection technology, real-time account crediting, and multi-currency support. The system provides instant transaction receipts, supports both loose notes and bundled deposits, and maintains detailed audit trails. Perfect for reducing branch queues and extending deposit services beyond banking hours.",
+    },
+    {
+      id: "passbook-printing",
+      name: "Passbook Printing Kiosk",
+      description: "Self-service passbook printing and updating.",
+      icon: <Printer size={24} />,
+      category: "BANKING",
+      subCategory: "FINANCE_SERVICE",
+      image: passbook,
+      details: "Our Passbook Printing Kiosk modernizes traditional banking with automated passbook updating services. Features include high-speed printing, magnetic stripe reading, barcode scanning, and automatic page detection. The system supports multiple passbook formats, provides clear transaction histories, and offers digital backup options. Enhanced with user-friendly interface and multi-language support for diverse customer bases.",
+    },
+    {
+      id: "policy-printing",
+      name: "Policy Printing Kiosk",
+      description: "On-demand insurance policy printing solution.",
+      icon: <FileCheck size={24} />,
+      category: "BANKING",
+      subCategory: "FINANCE_SERVICE",
+      image: policy,
+      details: "The Policy Printing Kiosk streamlines insurance document access and delivery. Equipped with secure authentication, digital signature verification, and high-quality printing capabilities. Customers can instantly print policies, endorsements, and certificates. The system maintains document integrity with watermarking and secure QR codes, while offering digital copies via email for paperless options.",
+    },
+    {
+      id: "cheque-deposit",
+      name: "Cheque Deposit Kiosk",
+      description: "Automated cheque processing and deposit system.",
+      icon: <Receipt size={24} />,
+      category: "BANKING",
+      subCategory: "FINANCE_SERVICE",
+      image: cheque,
+      details: "Our Cheque Deposit Kiosk transforms cheque processing with advanced MICR reading and image capture technology. Features include real-time verification, instant validation, and secure processing. The system supports multiple cheque deposits, provides clear scan images for records, and offers immediate transaction confirmations. Enhanced with fraud detection capabilities and integration with core banking systems.",
+    },
+    {
+      id: "account-opening",
+      name: "Account Opening/Card Issuance",
+      description: "Self-service account opening and card issuance.",
+      icon: <CardIcon size={24} />,
+      category: "BANKING",
+      subCategory: "FINANCE_SERVICE",
+      image: accountopening,
+      details: "The Account Opening and Card Issuance Kiosk provides end-to-end account creation and instant card delivery. Features include ID scanning, biometric verification, digital signature capture, and immediate debit card printing. Supports multiple account types, KYC verification, and instant activation. The system includes video KYC options and secure document upload capabilities for complete digital onboarding.",
+    },
+
+    // BANKING Products - Healthcare
+    {
+      id: "registration-kiosk",
+      name: "Registration Kiosk",
+      description: "Patient registration and appointment management.",
       icon: <Users size={24} />,
       category: "BANKING",
-      image:
-        visitorkiosk,
-      details:
-        "Our Visitor Management Kiosk provides a seamless check-in experience for visitors while enhancing security protocols. Features include ID scanning, photo capture, badge printing, and real-time notifications to hosts. The system maintains a digital log of all visitors for compliance and security purposes.",
+      subCategory: "HEALTHCARE",
+      image: registration,
+      details: "Our Healthcare Registration Kiosk streamlines patient intake and appointment management in medical facilities. Features include digital form filling, insurance card scanning, ID verification, and appointment scheduling. The system integrates with hospital management software, maintains electronic health records, and provides wait time estimates. Enhanced with multi-language support and accessibility features for all patients.",
     },
     {
-      id: "retail-kiosk",
-      name: "Retail Kiosk",
-      description:
-        "Enhance customer shopping experience with self-service retail kiosks.",
-      icon: <ShoppingBag size={24} />,
+      id: "payment-kiosk-healthcare",
+      name: "Payment Kiosk",
+      description: "Healthcare payment processing solution.",
+      icon: <CreditCard size={24} />,
       category: "BANKING",
-      image:
-        retailkiosk,
-      details:
-        "Our Retail Kiosks transform the shopping experience by enabling customers to browse products, check prices, place orders, and make payments without assistance. These kiosks reduce wait times, increase sales opportunities through upselling, and provide valuable customer data for marketing insights.",
+      subCategory: "HEALTHCARE",
+      image: healthcarepayment,
+      details: "The Healthcare Payment Kiosk simplifies medical bill payments and insurance processing. Supports multiple payment methods, insurance card scanning, and co-payment calculations. Features include itemized bill printing, payment plan setup, and insurance claim status checking. The system provides digital receipts, HSA/FSA card processing, and secure payment processing integrated with healthcare billing systems.",
     },
     {
-      id: "hrms-kiosk",
-      name: "HRMS Kiosk",
-      description:
-        "Simplify HR processes with employee self-service kiosks for attendance and more.",
-      icon: <Users size={24} />,
-      category: "BANKING",
-      image:
-        hrmskiosk,
-      details:
-        "The HRMS Kiosk streamlines human resource management by allowing employees to handle routine tasks independently. Features include attendance tracking, leave management, payslip access, benefits enrollment, and company announcement viewing. This solution reduces HR administrative burden while empowering employees.",
-    },
-    {
-      id: "report-kiosk",
+      id: "report-kiosk-healthcare",
       name: "Report Printing Kiosk",
-      description:
-        "Enable customers to print statements and reports securely with ease.",
+      description: "Medical report and prescription printing.",
       icon: <FileText size={24} />,
       category: "BANKING",
-      image:
-        reportkiosk,
-      details:
-        "Our Report Printing Kiosks allow customers to securely access and print account statements, transaction histories, and other important documents on demand. These kiosks feature secure authentication, high-quality printing, and digital delivery options, reducing branch workload while improving customer convenience.",
+      subCategory: "HEALTHCARE",
+      image: healthcarereport,
+      details: "Our Medical Report Printing Kiosk provides secure access to medical records and test results. Features include authenticated access, digital signature verification, and high-quality printing of lab reports, prescriptions, and medical certificates. The system maintains patient confidentiality with secure login options, audit trails, and HIPAA compliance. Supports digital sharing options and integration with hospital information systems.",
+    },
+
+    // BANKING Products - Retail
+    {
+      id: "self-checkout",
+      name: "Self-checkout Kiosk",
+      description: "Complete self-checkout solution for retail.",
+      icon: <ShoppingCart size={24} />,
+      category: "BANKING",
+      subCategory: "RETAIL",
+      image: selfcheckout,
+      details: "Our Self-Checkout Kiosk revolutionizes retail transactions with comprehensive self-service capabilities. Features include barcode scanning, weight verification, multiple payment options, and receipt printing. The system supports loyalty programs, digital coupons, and promotional offers. Enhanced with anti-theft measures, age verification for restricted items, and integration with inventory management systems.",
     },
     {
-      id: "info-kiosk",
-      name: "Information Kiosk",
-      description:
-        "Provide interactive information access to customers and visitors.",
+      id: "payments-kiosk",
+      name: "Payments Kiosk",
+      description: "Interactive self-ordering system.",
+      icon: <CreditCard size={24} />,
+      category: "BANKING",
+      subCategory: "RETAIL",
+      image: paymentskiosk,
+      details: "The Retail Payment Kiosk offers versatile payment processing for modern retail environments. Supports contactless payments, mobile wallets, and traditional card transactions. Features include split payment options, loyalty point redemption, and gift card processing. The system provides real-time transaction reporting, automated reconciliation, and integration with major payment networks.",
+    },
+    {
+      id: "self-ordering",
+      name: "Self Ordering Kiosk",
+      description: "Interactive self-ordering system.",
       icon: <Monitor size={24} />,
       category: "BANKING",
-      image:
-        infokisok,
-      details:
-        "Information Kiosks serve as digital concierges, providing users with wayfinding assistance, product information, service details, and promotional content. These interactive displays feature intuitive touchscreen interfaces, multilingual support, and accessibility options to serve diverse user populations.",
+      subCategory: "RETAIL",
+      image: selfordering,
+      details: "Our Self-Ordering Kiosk enhances customer experience with intuitive ordering interfaces. Features include customizable menu displays, nutritional information, allergen alerts, and order customization options. The system supports multi-language ordering, combo meal suggestions, and promotional upselling. Integrated with kitchen display systems and inventory management for seamless operation.",
+    },
+    {
+      id: "pre-order",
+      name: "Pre-order Kiosk",
+      description: "Advance ordering and payment solution.",
+      icon: <Clock size={24} />,
+      category: "BANKING",
+      subCategory: "RETAIL",
+      image: preorder,
+      details: "The Pre-Order Kiosk system enables customers to place and pay for orders in advance. Features include scheduled pickup times, order customization, and advance payment processing. The system sends order confirmations via SMS/email, supports order modification, and provides real-time status updates. Enhanced with queue management and integration with order fulfillment systems.",
+    },
+
+    // BANKING Products - Government
+    {
+      id: "judiciary-kiosk",
+      name: "Judiciary Kiosk",
+      description: "Legal information and service access point.",
+      icon: <Building2 size={24} />,
+      category: "BANKING",
+      subCategory: "GOVERNMENT",
+      image: judiciary,
+      details: "Our Judiciary Kiosk provides citizens with easy access to legal services and information. Features include case status checking, court schedule viewing, and document filing capabilities. The system offers secure authentication, digital document submission, and court fee payments. Enhanced with legal document templates, lawyer directory access, and multi-language support for improved accessibility.",
+    },
+    {
+      id: "smart-city",
+      name: "Smart City Kiosk",
+      description: "Urban services and information hub.",
+      icon: <Landmark size={24} />,
+      category: "BANKING",
+      subCategory: "GOVERNMENT",
+      image: smartcity,
+      details: "The Smart City Kiosk serves as a comprehensive urban information and service hub. Features include city maps, public transport information, emergency services contact, and civic service applications. The system provides real-time updates on city events, weather alerts, and air quality indices. Supports municipal tax payments, permit applications, and citizen feedback submission.",
+    },
+    {
+      id: "bill-payment",
+      name: "Bill Payment Kiosk",
+      description: "Utility and government bill payment solution.",
+      icon: <Receipt size={24} />,
+      category: "BANKING",
+      subCategory: "GOVERNMENT",
+      image: billpayment,
+      details: "Our Bill Payment Kiosk simplifies utility and government payment processing. Features include multiple utility bill payments, tax payments, and fine settlements. The system supports various payment methods, provides instant receipts, and maintains payment histories. Enhanced with bill validation, partial payment options, and automatic payment reminders.",
+    },
+    {
+      id: "land-record",
+      name: "Land Record Kiosk",
+      description: "Land record access and certificate printing.",
+      icon: <FileText size={24} />,
+      category: "BANKING",
+      subCategory: "GOVERNMENT",
+      image: landrecord,
+      details: "The Land Record Kiosk provides citizens with secure access to property and land documentation. Features include property record searches, ownership certificate printing, and tax assessment information. The system supports digital map viewing, mutation status tracking, and secure document verification. Enhanced with historical record access and integration with land registration systems.",
+    },
+    {
+      id: "ticket-vending",
+      name: "Ticket Vending Kiosk",
+      description: "Automated ticket vending for various services.",
+      icon: <Ticket size={24} />,
+      category: "BANKING",
+      subCategory: "GOVERNMENT",
+      image: ticketvending,
+      details: "Our Ticket Vending Kiosk streamlines ticket distribution for government services and events. Features include multiple ticket types, scheduled appointment booking, and instant printing. The system supports QR code generation, digital ticket delivery, and queue management. Enhanced with real-time availability updates and integration with event management systems.",
     },
 
     // SOLUTIONS Products
     {
-      id: "self-service",
-      name: "Self-Service Kiosk Applications",
-      description:
-        "Comprehensive applications for various self-service scenarios.",
-      icon: <Smartphone size={24} />,
-      category: "SOLUTIONS",
-      image:
-        self_service,
-      details:
-        "Our Self-Service Kiosk Applications suite includes customizable software solutions for banking, retail, healthcare, and government sectors. These applications feature modular designs that can be tailored to specific business requirements, with robust security, analytics capabilities, and seamless integration with existing systems.",
-    },
-    {
-      id: "remote-monitoring",
-      name: "Remote Monitoring Solutions",
-      description: "Monitor and manage your kiosk network from anywhere in real-time.",
+      id: "s8",
+      name: "s8 Platform",
+      description: "Advanced enterprise software platform.",
       icon: <Server size={24} />,
       category: "SOLUTIONS",
-      image:
-        remote_monitor,
-      details:
-        "Our Remote Monitoring Solutions provide real-time oversight of your entire kiosk network from a centralized dashboard. Features include hardware status monitoring, software performance tracking, automated alerts for maintenance needs, remote troubleshooting capabilities, and detailed usage analytics to optimize deployment.",
+      image: s8platform,
+      details: "The s8 Platform is our flagship enterprise software solution designed for modern business needs. This comprehensive platform offers modular architecture, scalable deployment options, and robust security features. It includes real-time analytics, automated workflow management, and seamless third-party integrations. The platform supports multi-tenant architecture, provides detailed audit trails, and offers customizable reporting tools for enhanced business intelligence.",
     },
     {
-      id: "collection-management",
-      name: "Collection Management Solutions",
-      description:
-        "Streamline payment collection processes with our integrated solutions.",
-      icon: <Database size={24} />,
+      id: "invos",
+      name: "INVOS",
+      description: "Intelligent network visualization and operations system.",
+      icon: <BarChart size={24} />,
       category: "SOLUTIONS",
-      image:
-        collmngmt,
-      details:
-        "Our Collection Management Solutions automate and optimize the entire payment collection lifecycle. The system handles multiple payment methods, provides real-time reconciliation, generates comprehensive reports, and integrates with accounting systems. Advanced features include recurring payment scheduling, automated reminders, and fraud detection.",
+      image: invos,
+      details: "INVOS delivers advanced network monitoring and visualization capabilities for complex IT infrastructures. Features include real-time network mapping, performance monitoring, and predictive maintenance alerts. The system provides detailed analytics, automated issue resolution, and customizable dashboards. Enhanced with AI-driven insights, security threat detection, and comprehensive reporting tools.",
+    },
+    {
+      id: "middleware",
+      name: "Middleware Solutions",
+      description: "Enterprise application integration platform.",
+      icon: <Cog size={24} />,
+      category: "SOLUTIONS",
+      image: middleware,
+      details: "Our Middleware Solutions enable seamless integration between diverse enterprise applications and systems. Features include API management, data transformation, and message queuing capabilities. The platform supports multiple protocols, provides robust error handling, and ensures reliable message delivery. Enhanced with monitoring tools, scalable architecture, and comprehensive security features.",
+    },
+    {
+      id: "qms",
+      name: "QMS",
+      description: "Queue Management System",
+      icon: <Users2 size={24} />,
+      category: "SOLUTIONS",
+      image: qms,
+      details: "The Queue Management System optimizes customer flow and service delivery in various environments. Features include multi-counter support, priority queuing, and real-time wait time estimates. The system provides detailed analytics, staff performance monitoring, and customer feedback collection. Enhanced with mobile queue updates, appointment scheduling, and integration with digital signage systems.",
+    },
+    {
+      id: "custom-software",
+      name: "Customized Software Solutions",
+      description: "Tailored software development services.",
+      icon: <Code size={24} />,
+      category: "SOLUTIONS",
+      image: customsoftware,
+      details: "Our Custom Software Development service delivers tailored solutions for unique business requirements. We offer end-to-end development services including requirement analysis, design, development, testing, and deployment. Our solutions incorporate modern technologies, follow best practices in security and scalability, and provide ongoing support and maintenance. Enhanced with agile development methodology and comprehensive documentation.",
     },
 
     // SERVICES Products
@@ -209,7 +378,12 @@ const ProductsSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredProducts = products.filter(
-    (product) => product.category === activeCategory,
+    (product) => {
+      if (product.category === "BANKING") {
+        return product.category === activeCategory && product.subCategory === activeBankingSubCategory;
+      }
+      return product.category === activeCategory;
+    }
   );
 
   const openProductModal = (product: Product) => {
@@ -291,6 +465,42 @@ const ProductsSection = () => {
               </TabsTrigger>
             </TabsList>
           </div>
+
+          {/* Banking Sub-categories */}
+          {activeCategory === "BANKING" && (
+            <Tabs
+              value={activeBankingSubCategory}
+              className="mb-8"
+              onValueChange={setActiveBankingSubCategory}
+            >
+              <TabsList className="flex justify-center space-x-2 bg-transparent">
+                <TabsTrigger
+                  value="FINANCE_SERVICE"
+                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
+                >
+                  Finance Service
+                </TabsTrigger>
+                <TabsTrigger
+                  value="HEALTHCARE"
+                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
+                >
+                  Healthcare
+                </TabsTrigger>
+                <TabsTrigger
+                  value="RETAIL"
+                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
+                >
+                  Retail
+                </TabsTrigger>
+                <TabsTrigger
+                  value="GOVERNMENT"
+                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
+                >
+                  Government
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+          )}
 
           <AnimatePresence mode="wait">
             <motion.div
