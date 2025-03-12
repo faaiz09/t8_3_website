@@ -79,7 +79,7 @@ const Navbar = ({
             <span
               className={`ml-2 font-bold text-xl ${isScrolled ? "text-gray-800 dark:text-white" : "text-red-600"} transition-colors duration-300`}
             >
-              T8
+              T<span className="animate-pulse dark:text-white text-red-600">8</span>
             </span>
           </motion.a>
 
