@@ -13,11 +13,20 @@ import {
   PhoneIcon,
   User,
   Monitor,
+  Linkedin,
+  Mail,
+  Twitter,
+  BriefcaseIcon,
+  GraduationCap,
 } from "lucide-react";
 
 import Products from "../assets/img/product_icon.png";
 import Services from "../assets/img/services_icon.png";
 import Domains from "../assets/img/domain_icon.png";
+
+import chairman from "../assets/img/ganesh_samant.jpg";
+import director from "../assets/img/prasad_samant_2.jpg";
+import cro from "../assets/img/prit_gupta.jpg";
 
 interface StatItem {
   value: string;
@@ -125,6 +134,48 @@ const AboutSection = ({
     {
       value: "1M+",
       description: "Satisfied Customers Nationwide"
+    }
+  ];
+
+  const keyPeople = [
+    {
+      name: "Ganesh Samant",
+      role: "Chairman and Managing Director",
+      image: chairman,
+      bio: "25+ years of experience",
+      expertise: ["R&D", "Product Development", "Marketing​"],
+      education: "Bachelor’s degree in engineering from Mumbai University and a Master’s in technology in material sciences from IIT Bombay.​",
+      social: {
+        linkedin: "https://www.linkedin.com/in/ganesh-samant-7915b4121/",
+        twitter: "https://twitter.com",
+        email: "mailto:vyankatesh@t8.com"
+      }
+    },
+    {
+      name: "Prasad Samant",
+      role: "Director",
+      image: director,
+      bio: "25+ years of experience",
+      expertise: ["Manufacturing​", "Finance Functions"],
+      education: "Post-graduation in materials management from Mumbai University",
+      social: {
+        linkedin: "https://www.linkedin.com/in/samantprasad/",
+        twitter: "https://twitter.com",
+        email: "mailto:pramod@t8.com"
+      }
+    },
+    {
+      name: "Prit Gupta",
+      role: "Chief Revenue Officer",
+      image: cro,
+      bio: "18+ years of experience",
+      expertise: ["Sales", "Business Development", "Program & Project Management", " Business Analyst & Pre-Sales"],
+      education: "Bachelor of Technology (B.Tech.), Electronics & Instrumentation",
+      social: {
+        linkedin: "https://www.linkedin.com/in/prit-gupta-378a384/",
+        twitter: "https://twitter.com",
+        email: "mailto:prit.gupta@technocrafts.co.in"
+      }
     }
   ];
 
@@ -536,6 +587,125 @@ const AboutSection = ({
                 <span className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">
                   {item.value}
                 </span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Key People Section */}
+        <motion.div
+          className="mb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3
+              }
+            },
+            hidden: { opacity: 0 }
+          }}
+        >
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center transition-colors duration-300">
+            Meet Our Key People
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {keyPeople.map((person, index) => (
+              <motion.div
+                key={index}
+                className="group relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl transition-all duration-500 hover:shadow-2xl dark:shadow-blue-500/10"
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20,
+                  delay: index * 0.2
+                }}
+              >
+                {/* Decorative gradient blob */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-red-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-500" />
+                
+                <div className="relative">
+                  {/* Profile Image */}
+                  <div className="relative mb-6">
+                    <div className="w-32 h-32 mx-auto rounded-full overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900 transition-all duration-300 group-hover:ring-blue-200 dark:group-hover:ring-blue-800">
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <motion.div
+                      className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-red-600 text-white px-4 py-1 rounded-full text-sm font-medium"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {person.role}
+                    </motion.div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="text-center mb-6">
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {person.name}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      {person.bio}
+                    </p>
+
+                    {/* Education & Experience */}
+                    <div className="space-y-2 mb-6">
+                      <div className="flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+                        <GraduationCap className="w-4 h-4 mr-2" />
+                        {person.education}
+                      </div>
+                      <div className="flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+                        <BriefcaseIcon className="w-4 h-4 mr-2" />
+                        {person.expertise.join(" • ")}
+                      </div>
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="flex justify-center space-x-4">
+                      <motion.a
+                        href={person.social.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Linkedin className="w-5 h-5" />
+                      </motion.a>
+                      <motion.a
+                        href={person.social.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Twitter className="w-5 h-5" />
+                      </motion.a>
+                      <motion.a
+                        href={person.social.email}
+                        className="text-gray-400 hover:text-red-500 transition-colors duration-300"
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Mail className="w-5 h-5" />
+                      </motion.a>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
