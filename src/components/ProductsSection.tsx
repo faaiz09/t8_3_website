@@ -474,32 +474,34 @@ const ProductsSection = () => {
               className="mb-8"
               onValueChange={setActiveBankingSubCategory}
             >
-              <TabsList className="flex justify-center space-x-2 bg-transparent">
-                <TabsTrigger
-                  value="FINANCE_SERVICE"
-                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
-                >
-                  Finance Service
-                </TabsTrigger>
-                <TabsTrigger
-                  value="HEALTHCARE"
-                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
-                >
-                  Healthcare
-                </TabsTrigger>
-                <TabsTrigger
-                  value="RETAIL"
-                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
-                >
-                  Retail
-                </TabsTrigger>
-                <TabsTrigger
-                  value="GOVERNMENT"
-                  className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700"
-                >
-                  Government
-                </TabsTrigger>
-              </TabsList>
+              <div className="flex justify-center overflow-x-auto pb-2">
+                <TabsList className="flex space-x-2 bg-transparent">
+                  <TabsTrigger
+                    value="FINANCE_SERVICE"
+                    className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700 whitespace-nowrap"
+                  >
+                    Finance Service
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="HEALTHCARE"
+                    className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700 whitespace-nowrap"
+                  >
+                    Healthcare
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="RETAIL"
+                    className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700 whitespace-nowrap"
+                  >
+                    Retail
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="GOVERNMENT"
+                    className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700 whitespace-nowrap"
+                  >
+                    Government
+                  </TabsTrigger>
+                </TabsList>
+              </div>
             </Tabs>
           )}
 
