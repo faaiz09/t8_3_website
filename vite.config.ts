@@ -22,6 +22,7 @@ export default defineConfig({
     }),
     tempo(),
   ],
+  assetsInclude: ['**/*.xlsx'],
   resolve: {
     preserveSymlinks: true,
     alias: {

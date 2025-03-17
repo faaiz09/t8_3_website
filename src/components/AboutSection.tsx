@@ -144,7 +144,7 @@ const AboutSection = ({
       image: chairman,
       bio: "25+ years of experience",
       expertise: ["R&D", "Product Development", "Marketing​"],
-      education: "Bachelor’s degree in engineering from Mumbai University and a Master’s in technology in material sciences from IIT Bombay.​",
+      education: "Bachelor's degree in engineering from Mumbai University and a Master's in technology in material sciences from IIT Bombay.​",
       social: {
         linkedin: "https://www.linkedin.com/in/ganesh-samant-7915b4121/",
         twitter: "https://twitter.com",
@@ -177,6 +177,74 @@ const AboutSection = ({
         email: "mailto:prit.gupta@technocrafts.co.in"
       }
     }
+  ];
+
+  const extendedTeam = [
+    {
+      name: "Vandana Salaskar",
+      role: "VP Service",
+      image: "https://ui-avatars.com/api/?name=Vandana+Salaskar&background=ABC80D&color=fff",
+    },
+    {
+      name: "Pramod Patil",
+      role: "AGM Software",
+      image: "https://ui-avatars.com/api/?name=Pramod+Patil&background=0D8ABC&color=fff",
+    },
+    {
+      name: "Sameer Shaikh",
+      role: "AGM Software",
+      image: "https://ui-avatars.com/api/?name=Sameer+Shaikh&background=BC0D8A&color=fff",
+    },
+    {
+      name: "Jitendra Bhaskar",
+      role: "AVP IT",
+      image: "https://ui-avatars.com/api/?name=Jitendra+Bhaskar&background=8ABC0D&color=fff",
+    },
+    {
+      name: "Satish Gholap",
+      role: "Channel Head",
+      image: "https://ui-avatars.com/api/?name=Satish+Gholap&background=0DABC8&color=fff",
+    },
+    {
+      name: "Samruddhi K",
+      role: "Manager QA",
+      image: "https://ui-avatars.com/api/?name=Samruddhi+K&background=C80DAB&color=fff",
+    },
+    {
+      name: "Ravindra Kini",
+      role: "AVP Sales South",
+      image: "https://ui-avatars.com/api/?name=Ravindra+Kini&background=0DC8AB&color=fff",
+    },
+    {
+      name: "Paresh Bhosle",
+      role: "Production",
+      image: "https://ui-avatars.com/api/?name=Paresh+Bhosle&background=C0DAB8&color=fff",
+    },
+    {
+      name: "Vrushali Shirke",
+      role: "Pre Sales and Purchase",
+      image: "https://ui-avatars.com/api/?name=Vrushali+Shirke&background=AB8C0D&color=fff",
+    },
+    {
+      name: "Prathmesh P",
+      role: "R&D",
+      image: "https://ui-avatars.com/api/?name=Prathmesh+P&background=8C0DAB&color=fff",
+    },
+    {
+      name: "Rupesh Mohite",
+      role: "Accounts",
+      image: "https://ui-avatars.com/api/?name=Rupesh+Mohite&background=0D8CAB&color=fff",
+    },
+    {
+      name: "Mukesh Singh",
+      role: "Commercial",
+      image: "https://ui-avatars.com/api/?name=Mukesh+Singh&background=AB0D8C&color=fff",
+    },
+    // {
+    //   name: "Ruchita More",
+    //   role: "Purchase",
+    //   image: "https://ui-avatars.com/api/?name=Ruchita+More&background=8CAB0D&color=fff",
+    // },
   ];
 
   return (
@@ -539,7 +607,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Values Section */}
-        <motion.div
+        {/* <motion.div
           className="mb-16 text-center"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -590,7 +658,7 @@ const AboutSection = ({
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Key People Section */}
         <motion.div
@@ -631,7 +699,7 @@ const AboutSection = ({
               >
                 {/* Decorative gradient blob */}
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-red-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-500" />
-                
+
                 <div className="relative">
                   {/* Profile Image */}
                   <div className="relative mb-6">
@@ -710,6 +778,66 @@ const AboutSection = ({
             ))}
           </div>
         </motion.div>
+
+        {/* Extended Team Section */}
+        <motion.div
+          className="mb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.3
+              }
+            },
+            hidden: { opacity: 0 }
+          }}
+        >
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center transition-colors duration-300">
+            Our Extended Team
+          </h3>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-7xl mx-auto">
+            {extendedTeam.map((member, index) => (
+              <motion.div
+                key={index}
+                className="group flex flex-col items-center"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20,
+                  delay: index * 0.1
+                }}
+              >
+                <div className="relative mb-4">
+                  <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-blue-100 dark:ring-blue-900 transition-all duration-300 group-hover:ring-4 group-hover:ring-blue-200 dark:group-hover:ring-blue-800">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <h4 className="font-medium text-gray-900 dark:text-white text-sm mb-1 transition-colors duration-300">
+                    {member.name}
+                  </h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                    {member.role}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -717,7 +845,7 @@ const AboutSection = ({
 
 export default AboutSection;
 
-// Fix for mobile devices - ensure Building2 icon renders properly
+// Fix for mobile devices 
 function ShieldIcon(props: any) {
   return (
     <svg
