@@ -79,7 +79,7 @@ const ClientsSection = () => {
       name: "Finserv",
       clients: [
         { id: "mv-retail", name: "MV Retail", logo: mvretail },
-        { id: "sci", name: "SCI", logo: sci },
+        // { id: "sci", name: "SCI", logo: sci },
         { id: "vedanta", name: "Vedanta", logo: vedanta },
       ],
     },
