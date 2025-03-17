@@ -225,11 +225,11 @@ const AboutSection = ({
       role: "Pre Sales and Purchase",
       image: "https://ui-avatars.com/api/?name=Vrushali+Shirke&background=AB8C0D&color=fff",
     },
-    {
-      name: "Prathmesh P",
-      role: "R&D",
-      image: "https://ui-avatars.com/api/?name=Prathmesh+P&background=8C0DAB&color=fff",
-    },
+    // {
+    //   name: "Prathmesh P",
+    //   role: "R&D",
+    //   image: "https://ui-avatars.com/api/?name=Prathmesh+P&background=8C0DAB&color=fff",
+    // },
     {
       name: "Rupesh Mohite",
       role: "Accounts",
@@ -240,11 +240,11 @@ const AboutSection = ({
       role: "Commercial",
       image: "https://ui-avatars.com/api/?name=Mukesh+Singh&background=AB0D8C&color=fff",
     },
-    // {
-    //   name: "Ruchita More",
-    //   role: "Purchase",
-    //   image: "https://ui-avatars.com/api/?name=Ruchita+More&background=8CAB0D&color=fff",
-    // },
+    {
+      name: "Ruchita More",
+      role: "Purchase",
+      image: "https://ui-avatars.com/api/?name=Ruchita+More&background=8CAB0D&color=fff",
+    },
   ];
 
   return (
