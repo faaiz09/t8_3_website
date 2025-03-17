@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Download, Search, CheckCircle2, MapPin, Phone, Globe2, Shield, Bell, Info, X } from 'lucide-react';
-import IndiaMap from './IndiaMap';
-import { STATES_DATA } from '../data/serviceLocations';
+import IndiaMapComponent from './IndiaMap';
 
 // Service highlights with enhanced icons and descriptions
 const SERVICE_HIGHLIGHTS = [
@@ -47,13 +46,26 @@ const ServicesMap = () => {
   const [searchResult, setSearchResult] = useState<{ found: boolean; message: string } | null>(null);
   const [hoveredService, setHoveredService] = useState<string | null>(null);
   const [showGuide, setShowGuide] = useState(true);
+  const [pincodeData, setPincodeData] = useState<any[]>([]);
+
+  // Load pincode data
+  useEffect(() => {
+    fetch('/data/pincodes.json')
+      .then(response => response.json())
+      .then(data => {
+        setPincodeData(data.pincodes);
+      })
+      .catch(error => {
+        console.error("Error loading pincode data:", error);
+      });
+  }, []);
 
   const handleSearch = () => {
     let found = null;
     let state = null;
 
-    for (const stateData of STATES_DATA) {
-      const pincode = stateData.pincodes.find(p => p.code === searchPincode);
+    for (const stateData of pincodeData) {
+      const pincode = stateData.cities.find((p: any) => p.pincode === searchPincode);
       if (pincode) {
         found = pincode;
         state = stateData;
@@ -63,10 +75,41 @@ const ServicesMap = () => {
 
     if (found && state) {
       setActivePin(searchPincode);
-      setActiveState(state.code);
+      // Map state name to code
+      const stateCode = state.state === 'Andhra Pradesh' ? 'AP' :
+                        state.state === 'Arunachal Pradesh' ? 'AR' :
+                        state.state === 'Assam' ? 'AS' :
+                        state.state === 'Bihar' ? 'BR' :
+                        state.state === 'Chhattisgarh' ? 'CG' :
+                        state.state === 'Delhi' ? 'DL' :
+                        state.state === 'Goa' ? 'GA' :
+                        state.state === 'Gujarat' ? 'GJ' :
+                        state.state === 'Haryana' ? 'HR' :
+                        state.state === 'Himachal Pradesh' ? 'HP' :
+                        state.state === 'Jharkhand' ? 'JH' :
+                        state.state === 'Karnataka' ? 'KA' :
+                        state.state === 'Kerala' ? 'KL' :
+                        state.state === 'Madhya Pradesh' ? 'MP' :
+                        state.state === 'Maharashtra' ? 'MH' :
+                        state.state === 'Manipur' ? 'MN' :
+                        state.state === 'Meghalaya' ? 'ML' :
+                        state.state === 'Mizoram' ? 'MZ' :
+                        state.state === 'Nagaland' ? 'NL' :
+                        state.state === 'Odisha' ? 'OD' :
+                        state.state === 'Punjab' ? 'PB' :
+                        state.state === 'Rajasthan' ? 'RJ' :
+                        state.state === 'Sikkim' ? 'SK' :
+                        state.state === 'Tamil Nadu' ? 'TN' :
+                        state.state === 'Telangana' ? 'TS' :
+                        state.state === 'Tripura' ? 'TR' :
+                        state.state === 'Uttar Pradesh' ? 'UP' :
+                        state.state === 'Uttarakhand' ? 'UK' :
+                        state.state === 'West Bengal' ? 'WB' : '';
+      
+      setActiveState(stateCode);
       setSearchResult({ 
         found: true, 
-        message: `Service available in ${found.city}, ${state.name}` 
+        message: `Service available in ${found.name}, ${state.state}` 
       });
     } else {
       setActivePin(null);
@@ -90,175 +133,188 @@ const ServicesMap = () => {
   };
 
   // Get active state data
-  const activeStateData = STATES_DATA.find(state => state.code === activeState);
+  const activeStateData = pincodeData.find(state => {
+    const stateCode = state.state === 'Andhra Pradesh' ? 'AP' :
+                      state.state === 'Arunachal Pradesh' ? 'AR' :
+                      state.state === 'Assam' ? 'AS' :
+                      state.state === 'Bihar' ? 'BR' :
+                      state.state === 'Chhattisgarh' ? 'CG' :
+                      state.state === 'Delhi' ? 'DL' :
+                      state.state === 'Goa' ? 'GA' :
+                      state.state === 'Gujarat' ? 'GJ' :
+                      state.state === 'Haryana' ? 'HR' :
+                      state.state === 'Himachal Pradesh' ? 'HP' :
+                      state.state === 'Jharkhand' ? 'JH' :
+                      state.state === 'Karnataka' ? 'KA' :
+                      state.state === 'Kerala' ? 'KL' :
+                      state.state === 'Madhya Pradesh' ? 'MP' :
+                      state.state === 'Maharashtra' ? 'MH' :
+                      state.state === 'Manipur' ? 'MN' :
+                      state.state === 'Meghalaya' ? 'ML' :
+                      state.state === 'Mizoram' ? 'MZ' :
+                      state.state === 'Nagaland' ? 'NL' :
+                      state.state === 'Odisha' ? 'OD' :
+                      state.state === 'Punjab' ? 'PB' :
+                      state.state === 'Rajasthan' ? 'RJ' :
+                      state.state === 'Sikkim' ? 'SK' :
+                      state.state === 'Tamil Nadu' ? 'TN' :
+                      state.state === 'Telangana' ? 'TS' :
+                      state.state === 'Tripura' ? 'TR' :
+                      state.state === 'Uttar Pradesh' ? 'UP' :
+                      state.state === 'Uttarakhand' ? 'UK' :
+                      state.state === 'West Bengal' ? 'WB' : '';
+    return stateCode === activeState;
+  });
 
   return (
-    <div className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 space-y-8">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
       {/* Service Highlights */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {/* <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">
-          Our Services
-        </h3> */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICE_HIGHLIGHTS.map((service) => (
-            <motion.div
-              key={service.name}
-              className="relative group"
-              onMouseEnter={() => setHoveredService(service.name)}
-              onMouseLeave={() => setHoveredService(null)}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-red-100 dark:bg-red-900/20">
+      <div className="lg:col-span-1 space-y-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Service Highlights</h3>
+          <div className="space-y-4">
+            {SERVICE_HIGHLIGHTS.map((service, index) => (
+              <motion.div 
+                key={service.name}
+                className={`p-4 rounded-lg transition-all duration-200 cursor-pointer
+                  ${hoveredService === service.name 
+                    ? 'bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30' 
+                    : 'bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800'
+                  }`}
+                whileHover={{ scale: 1.02 }}
+                onMouseEnter={() => setHoveredService(service.name)}
+                onMouseLeave={() => setHoveredService(null)}
+              >
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
                     {service.icon}
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-lg text-gray-900 dark:text-white mb-2">
-                      {service.name}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {service.description}
-                    </p>
+                  <div className="ml-4">
+                    <h4 className="text-md font-semibold text-gray-900 dark:text-white">{service.name}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{service.description}</p>
+                    
+                    <AnimatePresence>
+                      {hoveredService === service.name && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="mt-2 text-xs text-gray-500 dark:text-gray-400"
+                        >
+                          {service.details}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
-                
-                <AnimatePresence>
-                  {hoveredService === service.name && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="mt-4 text-sm text-gray-500 dark:text-gray-400"
-                    >
-                      {service.details}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </motion.div>
-
-      {/* Search and Download Section */}
-      <motion.div 
-        className="flex flex-col md:flex-row justify-between items-center gap-6 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-800/50 p-6 rounded-xl shadow-md"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <div className="flex-1 w-full md:w-auto">
-          <div className="relative">
-            <Input
-              type="text"
-              placeholder="Enter pincode to check service availability"
-              value={searchPincode}
-              onChange={(e) => setSearchPincode(e.target.value)}
-              className="w-full pr-12 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 focus:border-red-500 dark:focus:border-red-500 transition-colors duration-200"
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleSearch();
-                }
-              }}
-            />
-            <Button
+        
+        {/* Download Section */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Resources</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            Download our complete service location list with detailed information about each center.
+          </p>
+          <Button 
+            onClick={handleDownloadExcel}
+            className="w-full bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2"
+          >
+            <Download className="h-4 w-4" />
+            Download Service Locations
+          </Button>
+        </div>
+      </div>
+      
+      {/* Map Section */}
+      <div className="lg:col-span-2 space-y-6">
+        {/* Search Bar */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="flex-grow">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <Search className="h-5 w-5 text-gray-400" />
+                </div>
+                <Input
+                  type="text"
+                  placeholder="Enter pincode to check service availability"
+                  className="pl-10 pr-4 py-2 w-full"
+                  value={searchPincode}
+                  onChange={(e) => setSearchPincode(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                />
+              </div>
+            </div>
+            <Button 
               onClick={handleSearch}
-              className="absolute right-0 top-0 h-full px-3 bg-red-600 hover:bg-red-700 transition-colors duration-200"
+              className="bg-red-600 hover:bg-red-700 text-white"
             >
-              <Search className="h-4 w-4" />
+              Check Availability
             </Button>
           </div>
-          <AnimatePresence mode="wait">
+          
+          {/* Search Result */}
+          <AnimatePresence>
             {searchResult && (
               <motion.div
-                key={searchResult.message}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className={`mt-2 flex items-center gap-2 ${
-                  searchResult.found ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+                transition={{ duration: 0.2 }}
+                className={`mt-3 p-3 rounded-md flex items-center gap-2 ${
+                  searchResult.found 
+                    ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300' 
+                    : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300'
                 }`}
               >
                 {searchResult.found ? (
-                  <CheckCircle2 className="h-4 w-4" />
+                  <CheckCircle2 className="h-5 w-5 text-green-500 dark:text-green-400" />
                 ) : (
-                  <X className="h-4 w-4" />
+                  <X className="h-5 w-5 text-red-500 dark:text-red-400" />
                 )}
-                <p className="text-sm">{searchResult.message}</p>
+                <span className="text-sm">{searchResult.message}</span>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        <Button
-          onClick={handleDownloadExcel}
-          className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2 px-6 py-2 rounded-lg transform hover:scale-105 transition-all duration-200 whitespace-nowrap"
-        >
-          <Download className="h-4 w-4" />
-          Download Service Areas
-        </Button>
-      </motion.div>
-
-      {/* Map Section with Title */}
-      <div className="space-y-4">
-        <motion.div 
-          className="flex justify-between items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Service Coverage Map
-          </h3>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-            onClick={() => setShowGuide(!showGuide)}
-          >
-            <Info className="h-4 w-4 mr-1" />
-            {showGuide ? 'Hide Guide' : 'Show Guide'}
-          </Button>
-        </motion.div>
         
+        {/* Map Container */}
         <motion.div 
-          className="relative w-full h-[600px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-xl overflow-hidden shadow-lg"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700 h-[600px] relative"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {/* Interactive Guide Overlay */}
+          {/* Map Guide Overlay */}
           <AnimatePresence>
             {showGuide && (
-              <motion.div 
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-8"
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-black/50 z-40 flex items-center justify-center p-4"
               >
                 <motion.div 
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-md shadow-2xl"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-md"
                   initial={{ scale: 0.9 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">How to Use the Map</h3>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
+                      <Info className="h-5 w-5 text-red-500 mr-2" />
+                      How to use the map
+                    </h3>
+                    <button 
                       className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                       onClick={() => setShowGuide(false)}
                     >
-                      <X className="h-4 w-4" />
-                    </Button>
+                      <X className="h-5 w-5" />
+                    </button>
                   </div>
                   <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                     <li className="flex items-start gap-2">
@@ -268,10 +324,10 @@ const ServicesMap = () => {
                       <p className="text-sm">Click on any state to see service locations within that state</p>
                     </li>
                     <li className="flex items-start gap-2">
-                      <div className="bg-yellow-100 dark:bg-yellow-900/20 p-1 rounded-full mt-0.5">
-                        <div className="h-4 w-4 rounded-full bg-yellow-400"></div>
+                      <div className="bg-green-100 dark:bg-green-900/20 p-1 rounded-full mt-0.5">
+                        <div className="h-4 w-4 rounded-full bg-green-500"></div>
                       </div>
-                      <p className="text-sm">Yellow dots represent cities where our services are available</p>
+                      <p className="text-sm">Green dots represent cities where our services are available</p>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-full mt-0.5">
@@ -291,9 +347,8 @@ const ServicesMap = () => {
             )}
           </AnimatePresence>
           
-          <IndiaMap 
+          <IndiaMapComponent 
             activePincode={activePin}
-            states={STATES_DATA}
             onStateClick={handleStateClick}
             activeState={activeState}
           />
@@ -312,30 +367,35 @@ const ServicesMap = () => {
               <div className="flex justify-between items-center mb-3">
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
                   <MapPin className="h-5 w-5 text-red-500 mr-2" />
-                  {activeStateData.name} Service Locations
+                  {activeStateData.state} Service Locations
                 </h4>
                 <span className="bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                  {activeStateData.pincodes.length} locations
+                  {activeStateData.cities.length} locations
                 </span>
               </div>
               
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                {activeStateData.pincodes.map((pincode) => (
-                  <motion.div
-                    key={pincode.code}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className={`p-3 rounded-lg text-center cursor-pointer transition-colors duration-200 ${
-                      activePin === pincode.code
-                        ? 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800'
-                        : 'bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700'
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
+                {activeStateData.cities.map((city: any) => (
+                  <div 
+                    key={city.pincode}
+                    className={`p-3 rounded-lg border ${
+                      activePin === city.pincode
+                        ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
+                        : 'bg-gray-50 dark:bg-gray-900/50 border-gray-200 dark:border-gray-700'
                     }`}
-                    onClick={() => setActivePin(activePin === pincode.code ? null : pincode.code)}
                   >
-                    <p className="font-medium text-gray-900 dark:text-white">{pincode.city}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{pincode.code}</p>
-                  </motion.div>
+                    <div className="flex items-start">
+                      <div className={`w-3 h-3 rounded-full mt-1.5 ${
+                        activePin === city.pincode
+                          ? 'bg-blue-500'
+                          : 'bg-green-500'
+                      }`}></div>
+                      <div className="ml-2">
+                        <h5 className="text-sm font-medium text-gray-900 dark:text-white">{city.name}</h5>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Pincode: {city.pincode}</p>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>

@@ -1,37 +1,185 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import indiaSvg from '../assets/documents/indiaMap.svg';
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+import Maps from 'fusioncharts/fusioncharts.maps';
+import India from 'fusionmaps/maps/fusioncharts.india';
+import ReactFC from 'react-fusioncharts';
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+
+// Initialize FusionCharts with all modules
+try {
+  ReactFC.fcRoot(FusionCharts, Charts, Maps, India, FusionTheme);
+  
+  // @ts-ignore
+  FusionCharts.options.license = {
+    key: "qqA3ydjA5C5B3C4F4G4D4H4C10B2D3D2nyqE1C3fd1npaE4D4tlA-21D7E4F4F1F1E1E4F1C11C6C2B5A4E2F2D1hwqD1B5D1aG4A19A32twbC6D3G4lhJ-7A9C11A5B-13ddA2I3A1B9B3D7A2B4G2H3H1F-7smC8B2XB4cetB8A7A5mxD3SG4F2tvgB2A3B2E4C3I3C9B3E5C5A2C3A2G4J-7==",
+    creditLabel: false
+  };
+} catch (error) {
+  console.error("Error initializing FusionCharts:", error);
+}
+
+// Define the TopoJSON URL for Indian states
+const INDIA_TOPO_JSON = '/india.json';
+const PINCODES_JSON = '/data/pincodes.json';
 
 interface PincodeLocation {
-  code: string;
-  city: string;
-  coordinates: { x: number; y: number };
+  name: string;
+  pincode: string;
+  coordinates: [number, number];
 }
 
 interface StateData {
-  name: string;
   code: string;
-  coordinates: { x: number; y: number };
+  name: string;
   pincodes: PincodeLocation[];
 }
 
 interface IndiaMapProps {
   activePincode: string | null;
-  states: StateData[];
   onStateClick: (stateCode: string) => void;
   activeState: string | null;
 }
 
-const IndiaMap: React.FC<IndiaMapProps> = ({ 
+// Map state names to their codes
+const stateNameToCode: Record<string, string> = {
+  'Andhra Pradesh': 'AP',
+  'Arunachal Pradesh': 'AR',
+  'Assam': 'AS',
+  'Bihar': 'BR',
+  'Chhattisgarh': 'CG',
+  'Delhi': 'DL',
+  'Goa': 'GA',
+  'Gujarat': 'GJ',
+  'Haryana': 'HR',
+  'Himachal Pradesh': 'HP',
+  'Jharkhand': 'JH',
+  'Karnataka': 'KA',
+  'Kerala': 'KL',
+  'Madhya Pradesh': 'MP',
+  'Maharashtra': 'MH',
+  'Manipur': 'MN',
+  'Meghalaya': 'ML',
+  'Mizoram': 'MZ',
+  'Nagaland': 'NL',
+  'Odisha': 'OD',
+  'Punjab': 'PB',
+  'Rajasthan': 'RJ',
+  'Sikkim': 'SK',
+  'Tamil Nadu': 'TN',
+  'Telangana': 'TS',
+  'Tripura': 'TR',
+  'Uttar Pradesh': 'UP',
+  'Uttarakhand': 'UK',
+  'West Bengal': 'WB'
+};
+
+// Map state codes to their IDs in FusionMaps
+const stateCodeToId: Record<string, string> = {
+  'AP': '01',
+  'AR': '02',
+  'AS': '03',
+  'BR': '04',
+  'CG': '33',
+  'DL': '07',
+  'GA': '08',
+  'GJ': '09',
+  'HR': '10',
+  'HP': '11',
+  'JH': '34',
+  'KA': '12',
+  'KL': '13',
+  'MP': '14',
+  'MH': '15',
+  'MN': '16',
+  'ML': '17',
+  'MZ': '18',
+  'NL': '19',
+  'OD': '20',
+  'PB': '21',
+  'RJ': '22',
+  'SK': '23',
+  'TN': '24',
+  'TS': '36',
+  'TR': '25',
+  'UP': '26',
+  'UK': '35',
+  'WB': '28'
+};
+
+// List of states with their positions for the simplified map
+const states = [
+  { code: 'JK', name: 'Jammu & Kashmir', x: 120, y: 60 },
+  { code: 'HP', name: 'Himachal Pradesh', x: 150, y: 100 },
+  { code: 'PB', name: 'Punjab', x: 120, y: 120 },
+  { code: 'UK', name: 'Uttarakhand', x: 180, y: 120 },
+  { code: 'HR', name: 'Haryana', x: 140, y: 140 },
+  { code: 'DL', name: 'Delhi', x: 150, y: 160 },
+  { code: 'RJ', name: 'Rajasthan', x: 100, y: 180 },
+  { code: 'UP', name: 'Uttar Pradesh', x: 200, y: 180 },
+  { code: 'BR', name: 'Bihar', x: 260, y: 200 },
+  { code: 'SK', name: 'Sikkim', x: 300, y: 180 },
+  { code: 'AR', name: 'Arunachal Pradesh', x: 360, y: 160 },
+  { code: 'NL', name: 'Nagaland', x: 360, y: 190 },
+  { code: 'MN', name: 'Manipur', x: 360, y: 210 },
+  { code: 'MZ', name: 'Mizoram', x: 340, y: 230 },
+  { code: 'TR', name: 'Tripura', x: 320, y: 230 },
+  { code: 'AS', name: 'Assam', x: 330, y: 190 },
+  { code: 'ML', name: 'Meghalaya', x: 310, y: 210 },
+  { code: 'WB', name: 'West Bengal', x: 280, y: 230 },
+  { code: 'JH', name: 'Jharkhand', x: 250, y: 230 },
+  { code: 'OD', name: 'Odisha', x: 240, y: 260 },
+  { code: 'CG', name: 'Chhattisgarh', x: 200, y: 250 },
+  { code: 'MP', name: 'Madhya Pradesh', x: 170, y: 220 },
+  { code: 'GJ', name: 'Gujarat', x: 80, y: 230 },
+  { code: 'MH', name: 'Maharashtra', x: 140, y: 280 },
+  { code: 'TS', name: 'Telangana', x: 180, y: 300 },
+  { code: 'AP', name: 'Andhra Pradesh', x: 180, y: 330 },
+  { code: 'KA', name: 'Karnataka', x: 140, y: 340 },
+  { code: 'TN', name: 'Tamil Nadu', x: 170, y: 380 },
+  { code: 'KL', name: 'Kerala', x: 140, y: 390 },
+  { code: 'GA', name: 'Goa', x: 110, y: 330 },
+];
+
+const IndiaMapComponent: React.FC<IndiaMapProps> = ({ 
   activePincode, 
-  states, 
   onStateClick,
   activeState 
 }) => {
   const [hoveredState, setHoveredState] = useState<string | null>(null);
-  const [hoveredPincode, setHoveredPincode] = useState<string | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [statesLoaded, setStatesLoaded] = useState(false);
+  const [pincodeData, setPincodeData] = useState<StateData[]>([]);
+  const [markers, setMarkers] = useState<any[]>([]);
+  const [useFallback, setUseFallback] = useState(false);
+  const chartRef = useRef<HTMLDivElement>(null);
+  const chartInstanceRef = useRef<any>(null);
+  const [chartConfig, setChartConfig] = useState<any>(null);
+  const [fusionChartsError, setFusionChartsError] = useState<boolean>(false);
+
+  // Load pincode data
+  useEffect(() => {
+    fetch(PINCODES_JSON)
+      .then(response => response.json())
+      .then(data => {
+        const formattedData = data.pincodes.map((item: any) => ({
+          code: stateNameToCode[item.state] || '',
+          name: item.state,
+          pincodes: item.cities.map((city: any) => ({
+            name: city.name,
+            pincode: city.pincode,
+            coordinates: city.coordinates
+          }))
+        }));
+        setPincodeData(formattedData);
+        setStatesLoaded(true);
+      })
+      .catch(error => {
+        console.error("Error loading pincode data:", error);
+        setStatesLoaded(true); // Set to true even on error to avoid infinite loading
+      });
+  }, []);
 
   // Simulate a loading effect
   useEffect(() => {
@@ -39,270 +187,385 @@ const IndiaMap: React.FC<IndiaMapProps> = ({
       setMapLoaded(true);
     }, 500);
 
-    const statesTimer = setTimeout(() => {
-      setStatesLoaded(true);
-    }, 1000);
-
     return () => {
       clearTimeout(timer);
-      clearTimeout(statesTimer);
     };
   }, []);
 
+  // Handle FusionCharts error
+  useEffect(() => {
+    const handleError = (event: ErrorEvent) => {
+      if (event.message.includes('FusionCharts') || event.message.includes('chart type')) {
+        console.error('FusionCharts error detected, switching to fallback map');
+        setUseFallback(true);
+      }
+    };
+
+    window.addEventListener('error', handleError);
+    
+    return () => {
+      window.removeEventListener('error', handleError);
+    };
+  }, []);
+
+  // Update markers when active state changes
+  useEffect(() => {
+    if (activeState && statesLoaded) {
+      const state = pincodeData.find(s => s.code === activeState);
+      if (state && state.pincodes.length > 0) {
+        const newMarkers = state.pincodes.map(pincode => ({
+          id: pincode.pincode,
+          x: pincode.coordinates[1].toString(),
+          y: pincode.coordinates[0].toString(),
+          label: pincode.name,
+          tooltext: `${pincode.name}: ${pincode.pincode}`,
+          shape: "circle",
+          radius: activePincode === pincode.pincode ? "8" : "5",
+          fillcolor: activePincode === pincode.pincode ? "#3b82f6" : "#10b981",
+          bordercolor: "#ffffff",
+          borderthickness: "2"
+        }));
+        setMarkers(newMarkers);
+      } else {
+        setMarkers([]);
+      }
+    } else {
+      setMarkers([]);
+    }
+  }, [activeState, pincodeData, activePincode, statesLoaded]);
+
+  // Update chart configuration for ReactFC
+  useEffect(() => {
+    try {
+      const config = {
+        type: 'maps/india',
+        width: '100%',
+        height: '100%',
+        dataFormat: 'json',
+        dataSource: {
+          chart: {
+            animation: "1",
+            showbevel: "0",
+            usehovercolor: "1",
+            showlegend: "0",
+            legendposition: "BOTTOM",
+            legendborderalpha: "0",
+            legendbordercolor: "ffffff",
+            legendallowdrag: "0",
+            legendshadow: "0",
+            caption: "",
+            connectorcolor: "F1F1F1",
+            fillalpha: "100",
+            hovercolor: "#f87171",
+            theme: "fusion",
+            bordercolor: "#FFFFFF",
+            borderthickness: "0.5",
+            showlabels: "1",
+            entityfillhovercolor: "#f87171",
+            entitytooltext: "$lname",
+            key: "qqA3ydjA5C5B3C4F4G4D4H4C10B2D3D2nyqE1C3fd1npaE4D4tlA-21D7E4F4F1F1E1E4F1C11C6C2B5A4E2F2D1hwqD1B5D1aG4A19A32twbC6D3G4lhJ-7A9C11A5B-13ddA2I3A1B9B3D7A2B4G2H3H1F-7smC8B2XB4cetB8A7A5mxD3SG4F2tvgB2A3B2E4C3I3C9B3E5C5A2C3A2G4J-7=="
+          },
+          colorrange: {
+            gradient: "0",
+            color: [
+              {
+                maxvalue: "100",
+                displayvalue: "States",
+                code: "#e5e7eb"
+              }
+            ]
+          },
+          markers: {
+            items: markers
+          },
+          data: Object.entries(stateCodeToId).map(([code, id]) => ({
+            id,
+            value: "10",
+            showlabel: "1",
+            shortlabel: code,
+            displayvalue: code,
+            color: code === activeState ? "#ef4444" : "#e5e7eb",
+            hovercolor: "#f87171",
+            alpha: code === activeState ? "100" : "80",
+            fontbold: "1"
+          }))
+        },
+        events: {
+          entityClick: function(eventObj: any, dataObj: any) {
+            const stateId = dataObj.id;
+            const stateCode = Object.entries(stateCodeToId).find(([code, id]) => id === stateId)?.[0];
+            if (stateCode) {
+              onStateClick(stateCode);
+            }
+          },
+          entityRollOver: function(eventObj: any, dataObj: any) {
+            const stateId = dataObj.id;
+            const stateCode = Object.entries(stateCodeToId).find(([code, id]) => id === stateId)?.[0];
+            if (stateCode) {
+              setHoveredState(stateCode);
+            }
+          },
+          entityRollOut: function() {
+            setHoveredState(null);
+          },
+          renderComplete: function() {
+            setMapLoaded(true);
+          }
+        }
+      };
+
+      setChartConfig(config);
+    } catch (error) {
+      console.error("Error creating chart config:", error);
+      setUseFallback(true);
+    }
+  }, [markers, activeState, onStateClick]);
+
+  // Initialize and update the chart using direct FusionCharts API
+  useEffect(() => {
+    if (useFallback || !chartRef.current) return;
+
+    try {
+      // Dispose previous chart instance if it exists
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.dispose();
+        chartInstanceRef.current = null;
+      }
+
+      const chartConfig = {
+        type: 'maps/india',
+        renderAt: chartRef.current,
+        width: '100%',
+        height: '100%',
+        dataFormat: 'json',
+        dataSource: {
+          chart: {
+            animation: "1",
+            showbevel: "0",
+            usehovercolor: "1",
+            showlegend: "0",
+            legendposition: "BOTTOM",
+            legendborderalpha: "0",
+            legendbordercolor: "ffffff",
+            legendallowdrag: "0",
+            legendshadow: "0",
+            caption: "",
+            connectorcolor: "F1F1F1",
+            fillalpha: "100",
+            hovercolor: "#f87171",
+            theme: "fusion",
+            bordercolor: "#FFFFFF",
+            borderthickness: "0.5",
+            showlabels: "1",
+            entityfillhovercolor: "#f87171",
+            entitytooltext: "$lname",
+            key: "qqA3ydjA5C5B3C4F4G4D4H4C10B2D3D2nyqE1C3fd1npaE4D4tlA-21D7E4F4F1F1E1E4F1C11C6C2B5A4E2F2D1hwqD1B5D1aG4A19A32twbC6D3G4lhJ-7A9C11A5B-13ddA2I3A1B9B3D7A2B4G2H3H1F-7smC8B2XB4cetB8A7A5mxD3SG4F2tvgB2A3B2E4C3I3C9B3E5C5A2C3A2G4J-7=="
+          },
+          colorrange: {
+            gradient: "0",
+            color: [
+              {
+                maxvalue: "100",
+                displayvalue: "States",
+                code: "#e5e7eb"
+              }
+            ]
+          },
+          markers: {
+            items: markers
+          },
+          data: Object.entries(stateCodeToId).map(([code, id]) => ({
+            id,
+            value: "10",
+            showlabel: "1",
+            shortlabel: code,
+            displayvalue: code,
+            color: code === activeState ? "#ef4444" : "#e5e7eb",
+            hovercolor: "#f87171",
+            alpha: code === activeState ? "100" : "80",
+            fontbold: "1"
+          }))
+        }
+      };
+
+      // Create new chart instance
+      chartInstanceRef.current = new FusionCharts(chartConfig);
+
+      // Add event listeners
+      chartInstanceRef.current.addEventListener('entityClick', function(eventObj: any, dataObj: any) {
+        const stateId = dataObj.id;
+        const stateCode = Object.entries(stateCodeToId).find(([code, id]) => id === stateId)?.[0];
+        if (stateCode) {
+          onStateClick(stateCode);
+        }
+      });
+
+      chartInstanceRef.current.addEventListener('entityRollOver', function(eventObj: any, dataObj: any) {
+        const stateId = dataObj.id;
+        const stateCode = Object.entries(stateCodeToId).find(([code, id]) => id === stateId)?.[0];
+        if (stateCode) {
+          setHoveredState(stateCode);
+        }
+      });
+
+      chartInstanceRef.current.addEventListener('entityRollOut', function() {
+        setHoveredState(null);
+      });
+
+      chartInstanceRef.current.addEventListener('renderComplete', function() {
+        setMapLoaded(true);
+      });
+
+      // Render the chart
+      chartInstanceRef.current.render();
+    } catch (error) {
+      console.error("Error initializing FusionCharts:", error);
+      setUseFallback(true);
+    }
+
+    // Cleanup function
+    return () => {
+      if (chartInstanceRef.current) {
+        try {
+          chartInstanceRef.current.dispose();
+          chartInstanceRef.current = null;
+        } catch (error) {
+          console.error("Error disposing chart:", error);
+        }
+      }
+    };
+  }, [markers, activeState, onStateClick, useFallback]);
+
+  // Render fallback SVG map
+  const renderFallbackMap = () => {
   return (
-    <div className="relative w-full h-full overflow-hidden">
-      {/* Background Map with enhanced animation */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      />
-      
-      <motion.img 
-        src={indiaSvg} 
-        alt="India Map" 
-        className="w-full h-full object-contain opacity-80 dark:opacity-60 z-0"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ 
-          opacity: mapLoaded ? 0.8 : 0,
-          scale: mapLoaded ? 1 : 0.9,
-        }}
-        transition={{ 
-          duration: 1.2,
-          ease: "easeOut"
-        }}
-        onLoad={() => setMapLoaded(true)}
-      />
-      
-      {/* Map Overlay - Adds a subtle glow effect when a state is active */}
-      {activeState && (
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-yellow-500/5 dark:from-red-500/10 dark:to-yellow-500/10 z-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        />
-      )}
-      
-      {/* State Labels with enhanced animations */}
-      <AnimatePresence>
-        {states.map((state, index) => (
-          <motion.div
-            key={state.code}
-            className={`absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2 z-10`}
-            style={{
-              left: `${state.coordinates.x}%`,
-              top: `${state.coordinates.y}%`,
-            }}
+      <div className="w-full h-full flex items-center justify-center">
+        <svg 
+          viewBox="0 0 450 450" 
+          className="w-full h-full max-w-3xl"
+          style={{ maxHeight: '80vh' }}
+        >
+          {/* Map outline */}
+          <path 
+            d="M80,50 C60,100 40,150 50,200 C60,250 70,300 100,350 C130,400 180,420 230,400 C280,380 320,350 350,300 C380,250 390,200 370,150 C350,100 300,70 250,60 C200,50 150,40 100,50 Z" 
+            fill="#e5e7eb" 
+            stroke="#d1d5db" 
+            strokeWidth="2"
+          />
+          
+          {/* States */}
+        {states.map((state) => (
+            <g key={state.code}>
+              <circle 
+                cx={state.x} 
+                cy={state.y} 
+                r={activeState === state.code ? 18 : 15}
+                fill={activeState === state.code ? '#ef4444' : (hoveredState === state.code ? '#f87171' : '#e5e7eb')}
+                stroke="#ffffff"
+                strokeWidth="1"
             onClick={() => onStateClick(state.code)}
             onMouseEnter={() => setHoveredState(state.code)}
             onMouseLeave={() => setHoveredState(null)}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ 
-              scale: statesLoaded ? 1 : 0,
-              opacity: statesLoaded ? 1 : 0,
-            }}
-            transition={{ 
-              type: "spring", 
-              duration: 0.5,
-              delay: index * 0.03, // Staggered animation
-              bounce: 0.4
-            }}
+                style={{ cursor: 'pointer', transition: 'all 0.3s ease' }}
+              />
+              <text 
+                x={state.x} 
+                y={state.y} 
+                textAnchor="middle" 
+                dominantBaseline="middle"
+                fontSize="10"
+                fontWeight={activeState === state.code ? 'bold' : 'normal'}
+                fill={activeState === state.code ? '#ffffff' : '#4b5563'}
+                style={{ pointerEvents: 'none' }}
+              >
+                {state.code}
+              </text>
+            </g>
+          ))}
+          
+          {/* Active state pincodes */}
+          {activeState && pincodeData.find(s => s.code === activeState)?.pincodes.map((pincode, index) => (
+            <g key={pincode.pincode}>
+              <circle 
+                cx={states.find(s => s.code === activeState)?.x || 0 + (index % 3 - 1) * 20} 
+                cy={states.find(s => s.code === activeState)?.y || 0 + Math.floor(index / 3) * 20} 
+                r={activePincode === pincode.pincode ? 8 : 5}
+                fill={activePincode === pincode.pincode ? '#3b82f6' : '#10b981'}
+                stroke="#ffffff"
+                strokeWidth="1"
+                onClick={() => onStateClick(activeState)}
+                style={{ cursor: 'pointer', transition: 'all 0.3s ease' }}
+              />
+            </g>
+          ))}
+        </svg>
+      </div>
+    );
+  };
+
+  return (
+    <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 rounded-xl">
+      {/* Loading overlay */}
+      <AnimatePresence>
+        {!mapLoaded && (
+          <motion.div 
+            className="absolute inset-0 flex items-center justify-center bg-white dark:bg-gray-900 z-50"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
           >
             <motion.div
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300
-                ${activeState === state.code || hoveredState === state.code
-                  ? 'bg-red-600 text-white shadow-lg scale-110'
-                  : 'bg-white/90 text-gray-800 dark:bg-gray-800/90 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-900/20'
-                } backdrop-blur-sm`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              layout
+              className="flex flex-col items-center"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
             >
-              {state.name}
-              
-              {/* State selection indicator */}
-              {activeState === state.code && (
-                <motion.div 
-                  className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{ 
-                    duration: 1.5, 
-                    repeat: Infinity,
-                    repeatType: "reverse" 
-                  }}
-                />
-              )}
+              <div className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p className="text-gray-600 dark:text-gray-300">Loading map...</p>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-            {/* Connection lines from state to pincodes */}
-            <AnimatePresence>
-              {activeState === state.code && state.pincodes.length > 0 && (
+      {/* Map Container */}
                 <motion.div
-                  className="absolute top-0 left-0 w-full h-full"
+        className="w-full h-full"
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {state.pincodes.map((pincode) => (
-                    <motion.div
-                      key={`line-${pincode.code}`}
-                      className="absolute top-0 left-0 w-full h-full"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.5 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3, delay: 0.1 }}
-                    >
-                      <svg className="absolute top-0 left-0 w-full h-full">
-                        <motion.line
-                          x1="50%"
-                          y1="50%"
-                          x2={`${50 + pincode.coordinates.x}%`}
-                          y2={`${50 + pincode.coordinates.y}%`}
-                          stroke={activePincode === pincode.code ? "#FBBF24" : "#CBD5E1"}
-                          strokeWidth="1.5"
-                          strokeDasharray="2,2"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.5, delay: 0.1 }}
-                        />
-                      </svg>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Pincodes for Active State with enhanced animations */}
-            <AnimatePresence>
-              {activeState === state.code && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute top-0 left-0"
-                >
-                  {state.pincodes.map((pincode, pIndex) => (
-                    <motion.div
-                      key={pincode.code}
-                      className="absolute"
-                      style={{
-                        left: `${50 + pincode.coordinates.x}%`,
-                        top: `${50 + pincode.coordinates.y}%`,
-                      }}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0, opacity: 0 }}
-                      transition={{ 
-                        type: "spring", 
-                        stiffness: 300, 
-                        delay: 0.1 + (pIndex * 0.05) // Staggered animation
-                      }}
-                      onMouseEnter={() => setHoveredPincode(pincode.code)}
-                      onMouseLeave={() => setHoveredPincode(null)}
-                    >
-                      {/* Pincode Marker with enhanced effects */}
-                      <motion.div
-                        className={`relative w-3 h-3 rounded-full cursor-pointer transform -translate-x-1/2 -translate-y-1/2
-                          ${activePincode === pincode.code
-                            ? 'bg-yellow-400 shadow-lg shadow-yellow-400/50'
-                            : 'bg-yellow-300 hover:bg-yellow-400'
-                          }`}
-                        initial={{ scale: 0 }}
-                        animate={{ 
-                          scale: activePincode === pincode.code ? 1.5 : 1,
-                          boxShadow: activePincode === pincode.code ? '0 0 20px rgba(250, 204, 21, 0.5)' : 'none'
-                        }}
-                        whileHover={{ scale: 1.3 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        {/* Ripple Effect - Enhanced with multiple ripples for active pincodes */}
-                        {activePincode === pincode.code && (
-                          <>
-                            <motion.div
-                              className="absolute inset-0 rounded-full bg-yellow-400"
-                              initial={{ scale: 1, opacity: 0.5 }}
-                              animate={{ scale: 2, opacity: 0 }}
-                              transition={{ duration: 1, repeat: Infinity }}
-                            />
-                            <motion.div
-                              className="absolute inset-0 rounded-full bg-yellow-400"
-                              initial={{ scale: 1, opacity: 0.5 }}
-                              animate={{ scale: 2, opacity: 0 }}
-                              transition={{ duration: 1, repeat: Infinity, delay: 0.3 }}
-                            />
-                          </>
-                        )}
-                        
-                        {/* Single ripple for hovered pincodes */}
-                        {hoveredPincode === pincode.code && !activePincode && (
-                          <motion.div
-                            className="absolute inset-0 rounded-full bg-yellow-400"
-                            initial={{ scale: 1, opacity: 0.5 }}
-                            animate={{ scale: 2, opacity: 0 }}
-                            transition={{ duration: 1, repeat: Infinity }}
-                          />
+        animate={{ opacity: mapLoaded ? 1 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {useFallback ? (
+          renderFallbackMap()
+        ) : (
+          <div ref={chartRef} className="w-full h-full"></div>
                         )}
                       </motion.div>
 
-                      {/* Pincode Tooltip with enhanced styling */}
+      {/* State Info Panel */}
                       <AnimatePresence>
-                        {(hoveredPincode === pincode.code || activePincode === pincode.code) && (
-                          <motion.div
-                            initial={{ opacity: 0, y: -10, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                            className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-20"
-                          >
-                            <div className={`
-                              rounded-lg shadow-lg p-2 text-center whitespace-nowrap backdrop-blur-sm
-                              ${activePincode === pincode.code 
-                                ? 'bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700'
-                                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'
-                              }
-                            `}>
-                              <p className={`font-semibold ${activePincode === pincode.code ? 'text-yellow-700 dark:text-yellow-300' : 'text-gray-900 dark:text-white'}`}>
-                                {pincode.city}
-                              </p>
-                              <p className={`text-sm ${activePincode === pincode.code ? 'text-yellow-600 dark:text-yellow-400' : 'text-gray-500 dark:text-gray-400'}`}>
-                                {pincode.code}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
-      </AnimatePresence>
-      
-      {/* State Info Panel - Shows when a state is active */}
-      <AnimatePresence>
         {activeState && (
-          <motion.div
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg p-3 z-30 border border-gray-200 dark:border-gray-700"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
+                          <motion.div
+            className="absolute top-4 left-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 max-w-xs"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                {states.find(s => s.code === activeState)?.name || ''}
-              </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500">
-                {states.find(s => s.code === activeState)?.pincodes.length || 0} service locations
-              </p>
-            </div>
+            <h3 className="text-lg font-bold text-gray-800 dark:text-white">
+              {pincodeData.find(s => s.code === activeState)?.name || 
+               states.find(s => s.code === activeState)?.name || 
+               activeState}
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+              {pincodeData.find(s => s.code === activeState)?.pincodes.length || 0} service locations
+            </p>
+            <button
+              className="mt-2 text-xs text-blue-600 dark:text-blue-400 hover:underline"
+              onClick={() => onStateClick('')}
+            >
+              Back to all states
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -310,4 +573,4 @@ const IndiaMap: React.FC<IndiaMapProps> = ({
   );
 };
 
-export default IndiaMap; 
+export default memo(IndiaMapComponent); 
