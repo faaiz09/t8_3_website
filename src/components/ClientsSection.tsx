@@ -12,6 +12,14 @@ import bmrcl from "../assets/img/bmrcl.png";
 import mumbaiMetro from "../assets/img/mmrc.png";
 import mvretail from "../assets/img/mvretail.png";
 import drlals from "../assets/img/drlalpathlabs.png";
+import rbl from "../assets/img/rbl.png";
+import smriti from "../assets/img/smriti.png";
+import karnataka from "../assets/img/karnataka.png";
+import sewa from "../assets/img/sewabank.png";
+import chola from "../assets/img/chola.png";
+import mahagenco from "../assets/img/mahagenco.png";
+import sci from "../assets/img/sci.png";
+import vedanta from "../assets/img/vedanta.png";
 
 interface ClientCategory {
   id: string;
@@ -33,7 +41,7 @@ const ClientsSection = () => {
   useEffect(() => {
     if (!autoRotate) return;
 
-    const categories = ["banking", "finserv", "transit", "healthcare"];
+    const categories = ["banking", "finserv", "government", "healthcare"];
     const interval = setInterval(() => {
       setActiveCategory((prevCategory) => {
         const currentIndex = categories.indexOf(prevCategory);
@@ -60,25 +68,38 @@ const ClientsSection = () => {
         { id: "icici", name: "ICICI Bank", logo: icici },
         { id: "kalupur", name: "Kalupur Bank", logo: kalupur },
         { id: "dbs", name: "DBS Bank", logo: dbs },
+        { id: "rbl", name: "RBL Bank", logo: rbl },
+        { id: "smriti", name: "Smriti Bank", logo: smriti },
+        { id: "karnataka", name: "Karnataka Bank", logo: karnataka },
+        { id: "sewa", name: "Shri Mahila Sewa Sahakari Bank", logo: sewa },
       ],
     },
     {
       id: "finserv",
       name: "Finserv",
-      clients: [{ id: "mv-retail", name: "MV Retail", logo: mvretail }],
+      clients: [
+        { id: "mv-retail", name: "MV Retail", logo: mvretail },
+        { id: "sci", name: "SCI", logo: sci },
+        { id: "vedanta", name: "Vedanta", logo: vedanta },
+      ],
     },
     {
-      id: "transit",
-      name: "Transit",
+      id: "government",
+      name: "Government",
       clients: [
         { id: "bmrcl", name: "BMRCL", logo: bmrcl },
         { id: "mumbai-metro", name: "Mumbai Metro", logo: mumbaiMetro },
+        { id: "mahagenco", name: "Maha Genco", logo: mahagenco },
       ],
     },
     {
       id: "healthcare",
       name: "Health Care",
-      clients: [{ id: "dr-lals", name: "Dr. Lals Pathlab", logo: drlals }],
+      clients: [
+        { id: "dr-lals", name: "Dr. Lals Pathlab", logo: drlals },
+        { id: "chola", name: "Chola MS Insurence", logo: chola }
+      ],
+
     },
   ];
 
