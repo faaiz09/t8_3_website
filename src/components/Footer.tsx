@@ -21,6 +21,7 @@ interface FooterProps {
 const Footer = ({ className }: FooterProps) => {
   const currentYear = new Date().getFullYear();
   const particlesRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
 
   // 3D particles effect
   useEffect(() => {
@@ -174,11 +175,11 @@ const Footer = ({ className }: FooterProps) => {
 
   return (
     <footer
+      ref={footerRef}
       className={cn(
-        "bg-gray-900 dark:bg-gray-950 text-white py-12 px-4 relative overflow-hidden transition-colors duration-300",
-        className,
+        "relative bg-gray-900 text-white py-12 overflow-hidden",
+        className
       )}
-      id="footer"
     >
       {/* 3D Particles Background */}
       <div
@@ -292,6 +293,30 @@ const Footer = ({ className }: FooterProps) => {
               </ul>
             </motion.div>
           ))}
+
+          {/* Certifications and Partnerships */}
+          <div className="lg:col-span-2">
+            <h3 className="text-lg font-semibold mb-4">Certifications & Partnerships</h3>
+            <div className="flex items-center space-x-6">
+              <motion.a
+                href="https://www.makeinindia.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img
+                  src="/assets/images/make-in-india.png"
+                  alt="Make in India Logo"
+                  className="h-16 w-auto filter brightness-0 invert opacity-80 hover:opacity-100 hover:brightness-100 transition-opacity duration-300"
+                />
+                <div className="absolute -bottom-6 left-0 right-0 text-center text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Make in India
+                </div>
+              </motion.a>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar with 3D separator */}
