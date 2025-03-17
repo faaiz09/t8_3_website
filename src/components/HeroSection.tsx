@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, AnimationControls } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import logo from "@/assets/img/logo.png";
@@ -13,15 +13,34 @@ interface HeroSectionProps {
   backgroundImage?: string;
 }
 
-const HeroSection = ({
+interface FloatingCircleProps {
+  index: number;
+}
+
+const FloatingCircle: React.FC<FloatingCircleProps> = ({ index }) => (
+  <motion.div
+    className="absolute rounded-full bg-red-500/10 dark:bg-red-500/20 animate-float"
+    style={{
+      width: Math.random() * 200 + 50,
+      height: Math.random() * 200 + 50,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      filter: "blur(40px)",
+      animationDelay: `${index * 0.5}s`,
+    }}
+    aria-hidden="true"
+  />
+);
+
+const HeroSection: React.FC<HeroSectionProps> = ({
   title = "Revolutionizing Banking",
   subtitle = "with Intelligent Software & Kiosks",
   ctaText = "Explore Solutions",
   onCtaClick = () => {},
   backgroundImage = bg,
-}: HeroSectionProps) => {
-  const controls = useAnimation();
-  const ref = useRef(null);
+}) => {
+  const controls: AnimationControls = useAnimation();
+  const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const logoRef = useRef<HTMLDivElement>(null);
 
@@ -36,7 +55,7 @@ const HeroSection = ({
     const logo = logoRef.current;
     if (!logo) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e: MouseEvent): void => {
       const rect = logo.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
@@ -46,7 +65,7 @@ const HeroSection = ({
       logo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     };
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = (): void => {
       logo.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
     };
 
@@ -63,23 +82,13 @@ const HeroSection = ({
     <section
       className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300"
       ref={ref}
+      aria-labelledby="hero-title"
     >
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         {/* Floating circles */}
         {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-red-500/10 dark:bg-red-500/20 animate-float"
-            style={{
-              width: Math.random() * 200 + 50,
-              height: Math.random() * 200 + 50,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              filter: "blur(40px)",
-              animationDelay: `${i * 0.5}s`,
-            }}
-          />
+          <FloatingCircle key={i} index={i} />
         ))}
       </div>
 
@@ -90,6 +99,7 @@ const HeroSection = ({
           backgroundImage: `url(${backgroundImage})`,
           transform: "translateZ(-10px) scale(2)",
         }}
+        aria-hidden="true"
       />
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -105,14 +115,17 @@ const HeroSection = ({
           <div className="w-40 h-40 md:w-48 md:h-48 flex items-center justify-center mx-auto animate-pulse-glow rounded-2xl">
             <img
               src={logo}
-              alt="T8 Logo"
+              alt="T8 - Digital Kiosk & Automation Solutions Logo"
               className="w-full h-full object-contain drop-shadow-2xl"
+              width="192"
+              height="192"
             />
           </div>
         </motion.div>
 
         {/* Title with Animation */}
         <motion.h1
+          id="hero-title"
           className="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-gray-500 dark:from-red-500 dark:to-gray-300 transition-colors duration-300 p-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -141,6 +154,7 @@ const HeroSection = ({
             size="lg"
             onClick={onCtaClick}
             className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 text-lg rounded-md shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 animate-pulse-glow"
+            aria-label={`${ctaText} - Scrolls to products section`}
           >
             {ctaText}
           </Button>
@@ -152,13 +166,14 @@ const HeroSection = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
+          aria-hidden="true"
         >
-          <ArrowDown className="h-8 w-8 text-red-500 dark:text-red-400 animate-bounce transition-colors duration-300" />
+          <ArrowDown 
+            className="h-8 w-8 text-red-500 dark:text-red-400 animate-bounce transition-colors duration-300"
+            aria-hidden="true"
+          />
         </motion.div>
       </div>
-
-      {/* Glass effect overlay at the bottom */}
-      {/* <div className="absolute bottom-0 left-0 right-0 h-20 glass-effect z-10"></div> */}
     </section>
   );
 };

@@ -9,13 +9,21 @@ import ClientsSection from "./ClientsSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
+import { SEO } from "./SEO";
+import { OrganizationJsonLd, WebPageJsonLd } from "./JsonLd";
 import canara from "../assets/img/canara.png";
 import hdfc from "../assets/img/hdfc.png";
 import icici from "../assets/img/icici.png";
 import axis from "../assets/img/axis.png";
 
-function Home() {
-  const handleHeroCtaClick = () => {
+interface BankLogo {
+  name: string;
+  src: string;
+  alt: string;
+}
+
+const Home: React.FC = () => {
+  const handleHeroCtaClick = (): void => {
     // Smooth scroll to products section
     const productsSection = document.getElementById("products");
     if (productsSection) {
@@ -24,67 +32,110 @@ function Home() {
   };
 
   // Custom bank logos
-  const bankLogos = [
+  const bankLogos: BankLogo[] = [
     {
       name: "HDFC Bank",
       src: hdfc,
-      alt: "HDFC Bank Logo",
+      alt: "HDFC Bank - Leading Private Sector Bank in India",
     },
     {
       name: "ICICI Bank",
       src: icici,
-      alt: "ICICI Bank Logo",
+      alt: "ICICI Bank - Major Indian Multinational Banking and Financial Services Company",
     },
     {
       name: "Axis Bank",
       src: axis,
-      alt: "Axis Bank Logo",
+      alt: "Axis Bank - Third Largest Private Sector Bank in India",
     },
     {
       name: "Canara Bank",
       src: canara,
-      alt: "Canara Bank Logo",
+      alt: "Canara Bank - One of the Largest Public Sector Banks in India",
     },
   ];
 
-  return (
-    <div className="w-full min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
-      {/* Navbar */}
-      <Navbar />
+  const siteUrl = window.location.origin;
+  const pageTitle = "T8 - Digital Kiosk & Automation Solutions";
+  const pageDescription = "T8 provides cutting-edge digital kiosk solutions and automation services for modern banking needs. Transform your banking experience with our innovative technology.";
 
-      {/* Hero Section */}
-      <HeroSection
-        title="A Digital Kiosk & Automation Company"
-        // subtitle="with Seamless transactions anytime, anywhere, with preferred payment modes on cutting-edge platforms."
-        ctaText="Explore Our Solutions"
-        onCtaClick={handleHeroCtaClick}
+  return (
+    <>
+      <SEO 
+        title={pageTitle}
+        description={pageDescription}
+        keywords="digital kiosk, banking automation, self-service kiosk, banking solutions, fintech, HDFC Bank, ICICI Bank, Axis Bank, Canara Bank"
+        ogImage="/og-image.jpg"
       />
 
-      {/* About Section */}
-      <AboutSection />
+      <OrganizationJsonLd
+        name="T8"
+        logo={`${siteUrl}/logo.png`}
+        url={siteUrl}
+        description="T8 is a leading provider of digital kiosk solutions and automation services for modern banking needs."
+      />
 
-      {/* Products Section */}
-      <ProductsSection />
+      <WebPageJsonLd
+        title={pageTitle}
+        description={pageDescription}
+        url={siteUrl}
+        organizationName="T8"
+      />
 
-      {/* Clients Section */}
-      <ClientsSection />
+      <div className="w-full min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+        <header>
+          <Navbar />
+        </header>
 
-      {/* Services Section */}
-      <ServicesSection />
+        <main>
+          {/* Hero Section */}
+          <section aria-label="Hero">
+            <HeroSection
+              title="A Digital Kiosk & Automation Company"
+              // subtitle="with Seamless transactions anytime, anywhere, with preferred payment modes on cutting-edge platforms."
+              ctaText="Explore Our Solutions"
+              onCtaClick={handleHeroCtaClick}
+            />
+          </section>
 
-      {/* Client Logo Slider */}
-      {/* <ClientLogoSlider logos={bankLogos} /> */}
+          {/* About Section */}
+          <section aria-label="About Us">
+            <AboutSection />
+          </section>
 
-      {/* Contact Section */}
-      <ContactSection />
+          {/* Products Section */}
+          <section id="products" aria-label="Our Products">
+            <ProductsSection />
+          </section>
 
-      {/* Footer with Modal Triggers */}
-      <Footer />
+          {/* Clients Section */}
+          <section aria-label="Our Clients">
+            <ClientsSection />
+          </section>
 
-      {/* Scroll to Top Button with Progress Indicator */}
-      <ScrollToTop showBelow={300} />
-    </div>
+          {/* Services Section */}
+          <section aria-label="Our Services">
+            <ServicesSection />
+          </section>
+
+          {/* Client Logo Slider */}
+          {/* <ClientLogoSlider logos={bankLogos} /> */}
+
+          {/* Contact Section */}
+          <section aria-label="Contact Us">
+            <ContactSection />
+          </section>
+        </main>
+
+        <footer>
+          <Footer />
+        </footer>
+
+        {/* Scroll to Top Button with Progress Indicator */}
+        <ScrollToTop showBelow={300} />
+      </div>
+    </>
   );
-}
+};
 
 export default Home;
