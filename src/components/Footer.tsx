@@ -13,6 +13,7 @@ import PrivacyPolicyModal from "./modals/PrivacyPolicyModal";
 import TermsOfServiceModal from "./modals/TermsOfServiceModal";
 import CookiePolicyModal from "./modals/CookiePolicyModal";
 import logo from "@/assets/img/logo.png";
+import { InstagramLogoIcon } from "@radix-ui/react-icons";
 
 interface FooterProps {
   className?: string;
@@ -148,8 +149,8 @@ const Footer = ({ className }: FooterProps) => {
 
   const socialLinks = [
     { icon: <Facebook className="h-5 w-5" />, href: "https://www.facebook.com/share/1BPeKHmUKG/?mibextid=wwXIfr", rel: "noopener noreferrer", target: "_blank", label: "Facebook" },
-    // { icon: <Twitter className="h-5 w-5" />, href: "#", label: "Twitter" },
-    { icon: <Youtube className="h-5 w-5" />, href: "https://www.youtube.com/@technocraftsautomation", rel: "noopener noreferrer", target: "_blank", label: "Instagram" },
+    { icon: <InstagramLogoIcon className="h-5 w-5" />, href: "https://www.instagram.com/technocraftscare?igsh=dnpsMnFjbTAzdW53", rel: "noopener noreferrer", target: "_blank", label: "Instagram" },
+    { icon: <Youtube className="h-5 w-5" />, href: "https://www.youtube.com/@technocraftsautomation", rel: "noopener noreferrer", target: "_blank", label: "Youtube" },
     { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/company/technocrafts-kiosk-and-automation-division/", rel: "noopener noreferrer", target: "_blank", label: "LinkedIn" },
   ];
 
@@ -253,6 +254,8 @@ const Footer = ({ className }: FooterProps) => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
+                  rel={social.rel}
+                  target={social.target}
                   className="bg-gray-800 dark:bg-gray-900 p-2 rounded-full text-gray-400 hover:text-white hover:bg-red-600 transition-colors duration-300"
                   whileHover={{
                     y: -5,
