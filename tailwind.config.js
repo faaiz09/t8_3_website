@@ -110,4 +110,7 @@ export const theme = {
     },
   },
 };
-export const plugins = [tailwindcssAnimate];
+export const plugins = [
+  tailwindcssAnimate,
+  require('@tailwindcss/aspect-ratio')
+];

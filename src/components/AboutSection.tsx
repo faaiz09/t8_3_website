@@ -91,7 +91,16 @@ const AboutSection = ({
       icon: <PhoneIcon className="h-6 w-6 text-blue-500" />,
       description: "Expert technical guidance",
     },
-
+    {
+      name: "Education",
+      icon: <GraduationCap className="h-6 w-6 text-orange-500" />,
+      description: "Learning management solutions",
+    },
+    {
+      name: "Telecom",
+      icon: <Globe className="h-6 w-6 text-indigo-500" />,
+      description: "Connectivity service systems",
+    },
   ];
 
   const containerVariants = {
@@ -559,6 +568,112 @@ const AboutSection = ({
           </div>
         </motion.div>
 
+        {/* Company Video Section */}
+        <motion.div
+          className="mb-24 relative"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+        >
+          {/* Background decoration elements */}
+          <div className="absolute -z-10 inset-0 overflow-hidden">
+            <div className="absolute top-1/4 -left-10 w-72 h-72 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 -right-10 w-72 h-72 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
+          </div>
+
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+          >
+            <div className="relative inline-block">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">
+                Watch Our Story
+              </h3>
+              <motion.div
+                // className="h-1 w-24 bg-gradient-to-r from-red-500 to-blue-500 rounded-full mx-auto"
+                initial={{ width: 0 }}
+                animate={{ width: "6rem" }}
+                transition={{ duration: 1, delay: 0.7 }}
+              />
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-4 transition-colors duration-300">
+              Discover how we're transforming banking technology across India
+            </p>
+          </motion.div>
+
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+            {/* Video container with fancy border */}
+            <motion.div
+              className="relative group"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 100, 
+                damping: 15,
+                delay: 0.7
+              }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {/* Gradient border effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-blue-600 to-red-600 rounded-xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
+              
+              {/* Video container */}
+              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800 transition-colors duration-300">
+                <div className="aspect-w-16 aspect-h-9">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/hmB1ktCmMKY?rel=0" 
+                    title="T8 Company Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen>
+                  </iframe>
+                </div>
+
+                {/* Floating decorative elements that appear on hover */}
+                <motion.div 
+                  className="absolute -top-3 -right-3 bg-gradient-to-br from-red-500 to-pink-500 w-12 h-12 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  animate={{ 
+                    y: [0, -10, 0],
+                    rotate: [0, 5, 0, -5, 0]
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 5,
+                    ease: "easeInOut" 
+                  }}
+                />
+                <motion.div 
+                  className="absolute -bottom-3 -left-3 bg-gradient-to-tr from-blue-500 to-teal-400 w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  animate={{ 
+                    y: [0, 10, 0],
+                    rotate: [0, -5, 0, 5, 0]
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 5,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Caption with subtle animation */}
+            <motion.div
+              className="text-center mt-6 text-gray-500 dark:text-gray-400 text-sm italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+            >
+              Filmed at our headquarters in Bhiwandi, Vashere
+            </motion.div>
+          </div>
+        </motion.div>
+        
         {/* Domains Section with simplified animations */}
         <motion.div
           className="mb-16"
