@@ -116,14 +116,14 @@ const Navbar = ({
               {isOpen ? (
                 <X
                   className={
-                    isScrolled ? "text-gray-800 dark:text-white" : "text-white"
+                    isScrolled ? "text-gray-800 dark:text-white" : "text-grey-800"
                   }
                   size={24}
                 />
               ) : (
                 <Menu
                   className={
-                    isScrolled ? "text-gray-800 dark:text-white" : "text-white"
+                    isScrolled ? "text-gray-800 dark:text-white" : "text-grey-800"
                   }
                   size={24}
                 />
