@@ -14,7 +14,7 @@ const LoadingFallback: React.FC = () => {
     // For testing - keep the loader visible for 5 seconds
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 5000);
+    }, 2500);
     
     return () => clearTimeout(timer);
   }, []);
