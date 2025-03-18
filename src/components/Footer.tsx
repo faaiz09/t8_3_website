@@ -71,7 +71,7 @@ const Footer = ({ className }: FooterProps) => {
   // Handle copyright clicks
   const handleCopyrightClick = () => {
     setCopyrightClicks(prev => prev + 1);
-    if (copyrightClicks + 1 === 3) {
+    if (copyrightClicks + 1 === 5) {
       setShowEasterEgg(true);
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
@@ -271,7 +271,7 @@ const Footer = ({ className }: FooterProps) => {
                     "Coding is like humor. When you have to explain it, it's bad."
                   </p>
                   <p className="text-sm text-gray-500 mt-2">
-                    Try typing "T8DEV" or the Konami code (↑↑↓↓←→←→BA) to see this again!
+                    Try typing "T8DEV", the Konami code (↑↑↓↓←→←→BA), or clicking the copyright year 5 times to see this again!
                   </p>
                 </div>
               </motion.div>
