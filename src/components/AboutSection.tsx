@@ -895,7 +895,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Extended Team Section */}
-        {/* <motion.div
+        <motion.div
           className="mb-24"
           initial="hidden"
           whileInView="visible"
@@ -952,7 +952,7 @@ const AboutSection = ({
               </motion.div>
             ))}
           </div>
-        </motion.div> */}
+        </motion.div>
       </div>
     </section>
   );
