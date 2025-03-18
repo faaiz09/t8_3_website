@@ -92,7 +92,7 @@ const AboutSection = ({
       description: "Expert technical guidance",
     },
     {
-      name: "Education",
+      name: "Research",
       icon: <GraduationCap className="h-6 w-6 text-orange-500" />,
       description: "Learning management solutions",
     },
