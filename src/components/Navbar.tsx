@@ -77,7 +77,7 @@ const Navbar = ({
           >
             <img src={logo} alt="T8 Logo" className="h-10 w-auto" />
             <span
-              className={`ml-2 font-bold text-xl ${isScrolled ? "text-gray-800 dark:text-white" : "text-red-600"} transition-colors duration-300`}
+              className={`ml-2 font-bold text-2xl ${isScrolled ? "text-gray-800 dark:text-white" : "text-red-600"} transition-colors duration-300`}
             >
               T<span className="animate-pulse dark:text-white text-red-600">8</span>
             </span>
