@@ -73,12 +73,12 @@ const AboutSection = ({
     },
     {
       name: "Retail",
-      icon: <ShoppingBag className="h-6 w-6 text-pink-500" />,
+      icon: <ShoppingBag className="h-6 w-6 text-red-500" />,
       description: "Enhanced purchase experiences",
     },
     {
       name: "Government",
-      icon: <Building2 className="h-6 w-6 text-red-500" />,
+      icon: <Building2 className="h-6 w-6 text-cyan-500" />,
       description: "Public service automation",
     },
     {
