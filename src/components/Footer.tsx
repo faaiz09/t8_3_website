@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Facebook,
   Linkedin,
@@ -14,6 +14,7 @@ import TermsOfServiceModal from "./modals/TermsOfServiceModal";
 import CookiePolicyModal from "./modals/CookiePolicyModal";
 import logo from "@/assets/img/logo.png";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
+import Confetti from "./animations/Confetti";
 
 interface FooterProps {
   className?: string;
@@ -23,6 +24,62 @@ const Footer = ({ className }: FooterProps) => {
   const currentYear = new Date().getFullYear();
   const particlesRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement>(null);
+  const [keySequence, setKeySequence] = useState<string>("");
+  const [showEasterEgg, setShowEasterEgg] = useState<boolean>(false);
+  const [copyrightClicks, setCopyrightClicks] = useState<number>(0);
+  const [konamiSequence, setKonamiSequence] = useState<number>(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Easter egg key sequence handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // T8DEV sequence
+      const newSequence = keySequence + e.key.toUpperCase();
+      setKeySequence(newSequence.slice(-5));
+
+      // Konami code sequence
+      const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+      if (e.keyCode === konamiCode[konamiSequence]) {
+        setKonamiSequence(prev => prev + 1);
+      } else {
+        setKonamiSequence(0);
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [keySequence, konamiSequence]);
+  
+  // Check for the secret sequences
+  useEffect(() => {
+    if (keySequence === "T8DEV" || konamiSequence === 10) {
+      setShowEasterEgg(true);
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(() => {});
+      }
+      
+      // Hide the easter egg after 5 seconds
+      const timer = setTimeout(() => {
+        setShowEasterEgg(false);
+      }, 5000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [keySequence, konamiSequence]);
+
+  // Handle copyright clicks
+  const handleCopyrightClick = () => {
+    setCopyrightClicks(prev => prev + 1);
+    if (copyrightClicks + 1 === 3) {
+      setShowEasterEgg(true);
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(() => {});
+      }
+      setCopyrightClicks(0);
+    }
+  };
 
   // 3D particles effect
   useEffect(() => {
@@ -182,6 +239,47 @@ const Footer = ({ className }: FooterProps) => {
         className
       )}
     >
+      {/* Audio element for easter egg sound */}
+      <audio ref={audioRef} src="/assets/sounds/easter-egg.mp3" preload="auto" />
+
+      {/* Easter Egg Modal */}
+      <AnimatePresence>
+        {showEasterEgg && (
+          <>
+            <Confetti isActive={true} />
+            <motion.div 
+              className="fixed inset-0 flex items-center justify-center z-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="absolute inset-0 bg-black/60" onClick={() => setShowEasterEgg(false)} />
+              <motion.div 
+                className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 p-1 rounded-lg relative z-10"
+                initial={{ scale: 0.8, rotate: -5 }}
+                animate={{ scale: 1, rotate: 0 }}
+                exit={{ scale: 0.8, rotate: 5 }}
+                transition={{ type: "spring", bounce: 0.5 }}
+              >
+                <div className="bg-gray-900 rounded-md p-8 flex flex-col items-center">
+                  <h3 className="text-2xl font-bold mb-2 text-white">Easter Egg Found! 🎉</h3>
+                  <p className="text-gray-300 mb-4">This website was designed and developed by:</p>
+                  <p className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 animate-gradient">
+                    Faaiz Akhtar
+                  </p>
+                  <p className="text-gray-400 mt-4 italic text-center max-w-md">
+                    "Coding is like humor. When you have to explain it, it's bad."
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Try typing "T8DEV" or the Konami code (↑↑↓↓←→←→BA) to see this again!
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       {/* 3D Particles Background */}
       <div
         ref={particlesRef}
@@ -333,7 +431,7 @@ const Footer = ({ className }: FooterProps) => {
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
 
           <p className="text-gray-500 text-sm">
-            © {currentYear} T8. All rights reserved.
+            © <span onClick={handleCopyrightClick} className="cursor-pointer hover:text-white transition-colors">{currentYear}</span> T8. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <PrivacyPolicyModal
