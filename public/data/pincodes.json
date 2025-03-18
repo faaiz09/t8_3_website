@@ -12,6 +12,26 @@
           "name": "Vijayawada",
           "pincode": "520001",
           "coordinates": [16.5062, 80.6480]
+        },
+        {
+          "name": "Tirupati",
+          "pincode": "517501",
+          "coordinates": [13.6288, 79.4192]
+        },
+        {
+          "name": "Guntur",
+          "pincode": "522001",
+          "coordinates": [16.3067, 80.4365]
+        },
+        {
+          "name": "Kakinada",
+          "pincode": "533001",
+          "coordinates": [16.9891, 82.2475]
+        },
+        {
+          "name": "Nellore",
+          "pincode": "524001",
+          "coordinates": [14.4426, 79.9865]
         }
       ]
     },
@@ -22,6 +42,16 @@
           "name": "Itanagar",
           "pincode": "791111",
           "coordinates": [27.0844, 93.6053]
+        },
+        {
+          "name": "Naharlagun",
+          "pincode": "791110",
+          "coordinates": [27.1047, 93.6952]
+        },
+        {
+          "name": "Pasighat",
+          "pincode": "791102",
+          "coordinates": [28.0629, 95.3280]
         }
       ]
     },
@@ -37,6 +67,21 @@
           "name": "Dibrugarh",
           "pincode": "786001",
           "coordinates": [27.4728, 94.9120]
+        },
+        {
+          "name": "Silchar",
+          "pincode": "788001",
+          "coordinates": [24.8333, 92.7789]
+        },
+        {
+          "name": "Jorhat",
+          "pincode": "785001",
+          "coordinates": [26.7509, 94.2034]
+        },
+        {
+          "name": "Tezpur",
+          "pincode": "784001",
+          "coordinates": [26.6528, 92.7926]
         }
       ]
     },
@@ -52,6 +97,21 @@
           "name": "Gaya",
           "pincode": "823001",
           "coordinates": [24.7914, 84.9994]
+        },
+        {
+          "name": "Muzaffarpur",
+          "pincode": "842001",
+          "coordinates": [26.1209, 85.3647]
+        },
+        {
+          "name": "Bhagalpur",
+          "pincode": "812001",
+          "coordinates": [25.2535, 86.9850]
+        },
+        {
+          "name": "Darbhanga",
+          "pincode": "846004",
+          "coordinates": [26.1542, 85.8918]
         }
       ]
     },
@@ -62,6 +122,21 @@
           "name": "Raipur",
           "pincode": "492001",
           "coordinates": [21.2514, 81.6296]
+        },
+        {
+          "name": "Bhilai",
+          "pincode": "490001",
+          "coordinates": [21.2092, 81.4285]
+        },
+        {
+          "name": "Bilaspur",
+          "pincode": "495001",
+          "coordinates": [22.0796, 82.1391]
+        },
+        {
+          "name": "Korba",
+          "pincode": "495677",
+          "coordinates": [22.3595, 82.7501]
         }
       ]
     },
@@ -72,6 +147,26 @@
           "name": "New Delhi",
           "pincode": "110001",
           "coordinates": [28.6139, 77.2090]
+        },
+        {
+          "name": "Noida",
+          "pincode": "201301",
+          "coordinates": [28.5355, 77.3910]
+        },
+        {
+          "name": "Gurgaon",
+          "pincode": "122001",
+          "coordinates": [28.4595, 77.0266]
+        },
+        {
+          "name": "Dwarka",
+          "pincode": "110075",
+          "coordinates": [28.5823, 77.0500]
+        },
+        {
+          "name": "Rohini",
+          "pincode": "110085",
+          "coordinates": [28.7410, 77.1321]
         }
       ]
     },
@@ -82,6 +177,21 @@
           "name": "Panaji",
           "pincode": "403001",
           "coordinates": [15.4909, 73.8278]
+        },
+        {
+          "name": "Margao",
+          "pincode": "403601",
+          "coordinates": [15.2733, 73.9583]
+        },
+        {
+          "name": "Vasco da Gama",
+          "pincode": "403802",
+          "coordinates": [15.4989, 73.8358]
+        },
+        {
+          "name": "Mapusa",
+          "pincode": "403507",
+          "coordinates": [15.5937, 73.8142]
         }
       ]
     },
@@ -97,6 +207,26 @@
           "name": "Surat",
           "pincode": "395001",
           "coordinates": [21.1702, 72.8311]
+        },
+        {
+          "name": "Vadodara",
+          "pincode": "390001",
+          "coordinates": [22.3072, 73.1812]
+        },
+        {
+          "name": "Rajkot",
+          "pincode": "360001",
+          "coordinates": [22.3039, 70.8022]
+        },
+        {
+          "name": "Gandhinagar",
+          "pincode": "382010",
+          "coordinates": [23.2156, 72.6369]
+        },
+        {
+          "name": "Jamnagar",
+          "pincode": "361001",
+          "coordinates": [22.4707, 70.0577]
         }
       ]
     },
@@ -107,6 +237,26 @@
           "name": "Gurugram",
           "pincode": "122001",
           "coordinates": [28.4595, 77.0266]
+        },
+        {
+          "name": "Faridabad",
+          "pincode": "121001",
+          "coordinates": [28.4089, 77.3178]
+        },
+        {
+          "name": "Chandigarh",
+          "pincode": "160001",
+          "coordinates": [30.7333, 76.7794]
+        },
+        {
+          "name": "Panipat",
+          "pincode": "132103",
+          "coordinates": [29.3909, 76.9635]
+        },
+        {
+          "name": "Ambala",
+          "pincode": "133001",
+          "coordinates": [30.3752, 76.7821]
         }
       ]
     },
@@ -117,6 +267,21 @@
           "name": "Shimla",
           "pincode": "171001",
           "coordinates": [31.1048, 77.1734]
+        },
+        {
+          "name": "Dharamshala",
+          "pincode": "176215",
+          "coordinates": [32.2190, 76.3234]
+        },
+        {
+          "name": "Manali",
+          "pincode": "175131",
+          "coordinates": [32.2432, 77.1892]
+        },
+        {
+          "name": "Kullu",
+          "pincode": "175101",
+          "coordinates": [31.9592, 77.1090]
         }
       ]
     },
@@ -127,6 +292,21 @@
           "name": "Ranchi",
           "pincode": "834001",
           "coordinates": [23.3441, 85.3096]
+        },
+        {
+          "name": "Jamshedpur",
+          "pincode": "831001",
+          "coordinates": [22.8046, 86.2029]
+        },
+        {
+          "name": "Dhanbad",
+          "pincode": "826001",
+          "coordinates": [23.7957, 86.4304]
+        },
+        {
+          "name": "Bokaro Steel City",
+          "pincode": "827001",
+          "coordinates": [23.6693, 86.1511]
         }
       ]
     },
@@ -142,6 +322,26 @@
           "name": "Mysuru",
           "pincode": "570001",
           "coordinates": [12.2958, 76.6394]
+        },
+        {
+          "name": "Hubli",
+          "pincode": "580001",
+          "coordinates": [15.3647, 75.1240]
+        },
+        {
+          "name": "Mangalore",
+          "pincode": "575001",
+          "coordinates": [12.9141, 74.8560]
+        },
+        {
+          "name": "Belagavi",
+          "pincode": "590001",
+          "coordinates": [15.8497, 74.4977]
+        },
+        {
+          "name": "Kalaburagi",
+          "pincode": "585101",
+          "coordinates": [17.3297, 76.8343]
         }
       ]
     },
@@ -157,6 +357,21 @@
           "name": "Kochi",
           "pincode": "682001",
           "coordinates": [9.9312, 76.2673]
+        },
+        {
+          "name": "Kozhikode",
+          "pincode": "673001",
+          "coordinates": [11.2588, 75.7804]
+        },
+        {
+          "name": "Thrissur",
+          "pincode": "680001",
+          "coordinates": [10.5276, 76.2144]
+        },
+        {
+          "name": "Kollam",
+          "pincode": "691001",
+          "coordinates": [8.8932, 76.6141]
         }
       ]
     },
@@ -172,6 +387,21 @@
           "name": "Indore",
           "pincode": "452001",
           "coordinates": [22.7196, 75.8577]
+        },
+        {
+          "name": "Jabalpur",
+          "pincode": "482001",
+          "coordinates": [23.1815, 79.9864]
+        },
+        {
+          "name": "Gwalior",
+          "pincode": "474001",
+          "coordinates": [26.2183, 78.1828]
+        },
+        {
+          "name": "Ujjain",
+          "pincode": "456001",
+          "coordinates": [23.1765, 75.7885]
         }
       ]
     },
@@ -192,6 +422,26 @@
           "name": "Nagpur",
           "pincode": "440001",
           "coordinates": [21.1458, 79.0882]
+        },
+        {
+          "name": "Thane",
+          "pincode": "400601",
+          "coordinates": [19.2183, 72.9781]
+        },
+        {
+          "name": "Nashik",
+          "pincode": "422001",
+          "coordinates": [20.0060, 73.7897]
+        },
+        {
+          "name": "Aurangabad",
+          "pincode": "431001",
+          "coordinates": [19.8762, 75.3433]
+        },
+        {
+          "name": "Navi Mumbai",
+          "pincode": "400703",
+          "coordinates": [19.0330, 73.0297]
         }
       ]
     },
@@ -202,6 +452,16 @@
           "name": "Imphal",
           "pincode": "795001",
           "coordinates": [24.8170, 93.9368]
+        },
+        {
+          "name": "Thoubal",
+          "pincode": "795138",
+          "coordinates": [24.6223, 94.0100]
+        },
+        {
+          "name": "Churachandpur",
+          "pincode": "795128",
+          "coordinates": [24.3318, 93.6831]
         }
       ]
     },
@@ -212,6 +472,16 @@
           "name": "Shillong",
           "pincode": "793001",
           "coordinates": [25.5788, 91.8933]
+        },
+        {
+          "name": "Tura",
+          "pincode": "794001",
+          "coordinates": [25.5142, 90.2020]
+        },
+        {
+          "name": "Jowai",
+          "pincode": "793150",
+          "coordinates": [25.4504, 92.2029]
         }
       ]
     },
@@ -222,6 +492,16 @@
           "name": "Aizawl",
           "pincode": "796001",
           "coordinates": [23.7271, 92.7176]
+        },
+        {
+          "name": "Lunglei",
+          "pincode": "796701",
+          "coordinates": [22.8847, 92.7388]
+        },
+        {
+          "name": "Champhai",
+          "pincode": "796321",
+          "coordinates": [23.4500, 93.3300]
         }
       ]
     },
@@ -232,6 +512,16 @@
           "name": "Kohima",
           "pincode": "797001",
           "coordinates": [25.6751, 94.1086]
+        },
+        {
+          "name": "Dimapur",
+          "pincode": "797112",
+          "coordinates": [25.9117, 93.7217]
+        },
+        {
+          "name": "Mokokchung",
+          "pincode": "798601",
+          "coordinates": [26.3297, 94.5138]
         }
       ]
     },
@@ -242,6 +532,26 @@
           "name": "Bhubaneswar",
           "pincode": "751001",
           "coordinates": [20.2961, 85.8245]
+        },
+        {
+          "name": "Cuttack",
+          "pincode": "753001",
+          "coordinates": [20.4625, 85.8830]
+        },
+        {
+          "name": "Puri",
+          "pincode": "752001",
+          "coordinates": [19.8135, 85.8312]
+        },
+        {
+          "name": "Rourkela",
+          "pincode": "769001",
+          "coordinates": [22.2604, 84.8536]
+        },
+        {
+          "name": "Berhampur",
+          "pincode": "760001",
+          "coordinates": [19.3149, 84.7941]
         }
       ]
     },
@@ -254,9 +564,24 @@
           "coordinates": [30.7333, 76.7794]
         },
         {
+          "name": "Ludhiana",
+          "pincode": "141001",
+          "coordinates": [30.9010, 75.8573]
+        },
+        {
           "name": "Amritsar",
           "pincode": "143001",
           "coordinates": [31.6340, 74.8723]
+        },
+        {
+          "name": "Jalandhar",
+          "pincode": "144001",
+          "coordinates": [31.3260, 75.5762]
+        },
+        {
+          "name": "Patiala",
+          "pincode": "147001",
+          "coordinates": [30.3398, 76.3869]
         }
       ]
     },
@@ -272,6 +597,26 @@
           "name": "Jodhpur",
           "pincode": "342001",
           "coordinates": [26.2389, 73.0243]
+        },
+        {
+          "name": "Udaipur",
+          "pincode": "313001",
+          "coordinates": [24.5854, 73.7125]
+        },
+        {
+          "name": "Kota",
+          "pincode": "324001",
+          "coordinates": [25.2138, 75.8648]
+        },
+        {
+          "name": "Ajmer",
+          "pincode": "305001",
+          "coordinates": [26.4499, 74.6399]
+        },
+        {
+          "name": "Bikaner",
+          "pincode": "334001",
+          "coordinates": [28.0229, 73.3119]
         }
       ]
     },
@@ -281,7 +626,17 @@
         {
           "name": "Gangtok",
           "pincode": "737101",
-          "coordinates": [27.3389, 88.6065]
+          "coordinates": [27.3314, 88.6138]
+        },
+        {
+          "name": "Namchi",
+          "pincode": "737126",
+          "coordinates": [27.1648, 88.3448]
+        },
+        {
+          "name": "Jorethang",
+          "pincode": "737121",
+          "coordinates": [27.1167, 88.3222]
         }
       ]
     },
@@ -297,6 +652,26 @@
           "name": "Coimbatore",
           "pincode": "641001",
           "coordinates": [11.0168, 76.9558]
+        },
+        {
+          "name": "Madurai",
+          "pincode": "625001",
+          "coordinates": [9.9252, 78.1198]
+        },
+        {
+          "name": "Tiruchirappalli",
+          "pincode": "620001",
+          "coordinates": [10.7905, 78.7047]
+        },
+        {
+          "name": "Salem",
+          "pincode": "636001",
+          "coordinates": [11.6643, 78.1460]
+        },
+        {
+          "name": "Tirunelveli",
+          "pincode": "627001",
+          "coordinates": [8.7139, 77.7567]
         }
       ]
     },
@@ -307,6 +682,26 @@
           "name": "Hyderabad",
           "pincode": "500001",
           "coordinates": [17.3850, 78.4867]
+        },
+        {
+          "name": "Warangal",
+          "pincode": "506001",
+          "coordinates": [17.9689, 79.5941]
+        },
+        {
+          "name": "Nizamabad",
+          "pincode": "503001",
+          "coordinates": [18.6711, 78.0938]
+        },
+        {
+          "name": "Karimnagar",
+          "pincode": "505001",
+          "coordinates": [18.4392, 79.1246]
+        },
+        {
+          "name": "Khammam",
+          "pincode": "507001",
+          "coordinates": [17.2473, 80.1514]
         }
       ]
     },
@@ -317,6 +712,16 @@
           "name": "Agartala",
           "pincode": "799001",
           "coordinates": [23.8315, 91.2868]
+        },
+        {
+          "name": "Udaipur",
+          "pincode": "799114",
+          "coordinates": [23.5251, 91.4822]
+        },
+        {
+          "name": "Dharmanagar",
+          "pincode": "799250",
+          "coordinates": [24.3670, 92.1647]
         }
       ]
     },
@@ -334,9 +739,29 @@
           "coordinates": [26.4499, 80.3319]
         },
         {
+          "name": "Agra",
+          "pincode": "282001",
+          "coordinates": [27.1767, 78.0081]
+        },
+        {
           "name": "Varanasi",
           "pincode": "221001",
           "coordinates": [25.3176, 82.9739]
+        },
+        {
+          "name": "Prayagraj",
+          "pincode": "211001",
+          "coordinates": [25.4358, 81.8463]
+        },
+        {
+          "name": "Meerut",
+          "pincode": "250001",
+          "coordinates": [28.9845, 77.7064]
+        },
+        {
+          "name": "Ghaziabad",
+          "pincode": "201001",
+          "coordinates": [28.6692, 77.4538]
         }
       ]
     },
@@ -347,6 +772,26 @@
           "name": "Dehradun",
           "pincode": "248001",
           "coordinates": [30.3165, 78.0322]
+        },
+        {
+          "name": "Haridwar",
+          "pincode": "249401",
+          "coordinates": [29.9457, 78.1642]
+        },
+        {
+          "name": "Rishikesh",
+          "pincode": "249201",
+          "coordinates": [30.0869, 78.2676]
+        },
+        {
+          "name": "Nainital",
+          "pincode": "263001",
+          "coordinates": [29.3919, 79.4542]
+        },
+        {
+          "name": "Mussoorie",
+          "pincode": "248179",
+          "coordinates": [30.4598, 78.0644]
         }
       ]
     },
@@ -357,6 +802,31 @@
           "name": "Kolkata",
           "pincode": "700001",
           "coordinates": [22.5726, 88.3639]
+        },
+        {
+          "name": "Howrah",
+          "pincode": "711101",
+          "coordinates": [22.5958, 88.2636]
+        },
+        {
+          "name": "Durgapur",
+          "pincode": "713201",
+          "coordinates": [23.5204, 87.3119]
+        },
+        {
+          "name": "Siliguri",
+          "pincode": "734001",
+          "coordinates": [26.7271, 88.3953]
+        },
+        {
+          "name": "Asansol",
+          "pincode": "713301",
+          "coordinates": [23.6739, 86.9973]
+        },
+        {
+          "name": "Darjeeling",
+          "pincode": "734101",
+          "coordinates": [27.0410, 88.2663]
         }
       ]
     }
