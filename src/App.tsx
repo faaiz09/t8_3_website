@@ -11,10 +11,10 @@ const LoadingFallback: React.FC = () => {
   const [showLoader, setShowLoader] = useState(true);
   
   useEffect(() => {
-    // For testing - keep the loader visible for 5 seconds
+    // Hide loader after a short delay for better UX
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 2500);
+    }, 800);
     
     return () => clearTimeout(timer);
   }, []);
