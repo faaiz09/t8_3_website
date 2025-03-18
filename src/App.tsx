@@ -14,7 +14,7 @@ const LoadingFallback: React.FC = () => {
     // Hide loader after a short delay for better UX
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 1500);
+    }, 800);
     
     return () => clearTimeout(timer);
   }, []);
