@@ -481,7 +481,7 @@ const ProductsSection = () => {
                       value="FINANCE_SERVICE"
                       className="px-4 py-2 rounded-md data-[state=active]:bg-red-600 data-[state=active]:text-white bg-gray-200 text-gray-700 whitespace-nowrap"
                     >
-                      Finance Service
+                      Banking
                     </TabsTrigger>
                     <TabsTrigger
                       value="HEALTHCARE"
