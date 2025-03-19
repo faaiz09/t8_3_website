@@ -73,7 +73,7 @@ const AboutSection = ({
   ],
 }: AboutSectionProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const domains = [
     {
@@ -141,14 +141,14 @@ const AboutSection = ({
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 10, opacity: 0 },
     visible: { y: 0, opacity: 1 },
   };
 
@@ -325,7 +325,7 @@ const AboutSection = ({
           className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
             About Us
@@ -346,9 +346,12 @@ const AboutSection = ({
             <motion.div
               key={index}
               className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
-              transition={{ delay: index * 0.2, duration: 0.7 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+              transition={{ 
+                delay: index * 0.1,
+                duration: 0.4
+              }}
               whileHover={{ z: 20 }}
             >
               {/* Card glow effect */}
@@ -429,7 +432,7 @@ const AboutSection = ({
           className="mb-10 md:mb-16 bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-colors duration-300"
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
             {/* Mission */}
@@ -491,7 +494,7 @@ const AboutSection = ({
           className="mb-10 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
           <div className="text-center mb-8 md:mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
@@ -682,8 +685,8 @@ const AboutSection = ({
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3
+                staggerChildren: 0.1,
+                delayChildren: 0.1
               }
             }
           }}
@@ -766,7 +769,7 @@ const AboutSection = ({
           className="mb-16 md:mb-24 relative"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
           {/* Background decoration elements */}
           <div className="absolute -z-10 inset-0 overflow-hidden">
@@ -871,7 +874,7 @@ const AboutSection = ({
           className="mb-10 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
           <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 md:mb-8 text-center transition-colors duration-300">
             Our Domains
@@ -882,10 +885,11 @@ const AboutSection = ({
                 key={index}
                 className="bg-white dark:bg-gray-800 p-3 md:p-6 rounded-lg shadow-md transition-colors duration-300 h-full"
                 initial={{ opacity: 0, y: 20 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                }
-                transition={{ delay: index * 0.1 + 0.7, duration: 0.5 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ 
+                  delay: index * 0.05 + 0.2,
+                  duration: 0.3
+                }}
               >
                 <div className="flex flex-col items-center text-center">
                   <motion.div
@@ -973,8 +977,8 @@ const AboutSection = ({
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3
+                staggerChildren: 0.1,
+                delayChildren: 0.1
               }
             },
             hidden: { opacity: 0 }
@@ -988,16 +992,16 @@ const AboutSection = ({
             {keyPeople.map((person, index) => (
               <motion.div
                 key={index}
-                className="group relative bg-white dark:bg-gray-800 rounded-2xl p-4 md:p-6 shadow-xl transition-all duration-500 hover:shadow-2xl dark:shadow-blue-500/10"
+                className="group relative bg-white dark:bg-gray-800 rounded-2xl p-4 md:p-6 shadow-xl transition-all duration-300 hover:shadow-2xl dark:shadow-blue-500/10"
                 variants={{
-                  hidden: { opacity: 0, y: 50 },
+                  hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 }
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 100,
-                  damping: 20,
-                  delay: index * 0.2
+                  stiffness: 200,
+                  damping: 15,
+                  delay: index * 0.1
                 }}
               >
                 {/* Decorative gradient blob */}
