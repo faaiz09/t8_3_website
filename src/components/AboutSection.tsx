@@ -514,25 +514,25 @@ const AboutSection = ({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  icon: <Signal className="h-8 w-8 text-teal-400" />,
+                  icon: <Signal className="h-8 w-8 text-teal" />,
                   title: "Disconnected Experiences",
                   description: "Organizations are unable to provide seamless, secure, and real-time experiences due to outdated technology.",
                   gradient: "from-teal-500 to-blue-500"
                 },
                 {
-                  icon: <DollarSign className="h-8 w-8 text-purple-400" />,
+                  icon: <DollarSign className="h-8 w-8 text-purple" />,
                   title: "High Costs",
                   description: "Organizations are facing high costs and maintenance issues due to the need for frequent updates and upgrades.",
                   gradient: "from-purple-500 to-pink-500"
                 },
                 {
-                  icon: <Zap className="h-8 w-8 text-amber-400" />,
+                  icon: <Zap className="h-8 w-8 text-amber" />,
                   title: "Slow Adaptation",
                   description: "Organizations are unable to keep up with the rapid pace of technological change, leading to a lack of innovation.",
                   gradient: "from-amber-500 to-orange-500"
                 },
                 {
-                  icon: <LineChart className="h-8 w-8 text-blue-400" />,
+                  icon: <LineChart className="h-8 w-8 text-blue" />,
                   title: "Data Management",
                   description: "Organizations are unable to capture real-time data and manage it effectively, leading to inefficient operations.",
                   gradient: "from-blue-500 to-indigo-500"
@@ -573,19 +573,19 @@ const AboutSection = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
-                  icon: <Users className="h-8 w-8 text-emerald-400" />,
+                  icon: <Users className="h-8 w-8 text-emerald" />,
                   title: "Self-Service Solutions",
                   description: "Customers are increasingly looking for self-service solutions to meet their needs.",
                   gradient: "from-emerald-500 to-teal-500"
                 },
                 {
-                  icon: <Clock className="h-8 w-8 text-blue-400" />,
+                  icon: <Clock className="h-8 w-8 text-blue" />,
                   title: "Rapid Adaptation",
                   description: "Legacy providers are struggling to keep up with the pace of technological change.",
                   gradient: "from-blue-500 to-cyan-500"
                 },
                 {
-                  icon: <TrendingUp className="h-8 w-8 text-indigo-400" />,
+                  icon: <TrendingUp className="h-8 w-8 text-indigo" />,
                   title: "Flexible Deployment",
                   description: "Deployment of new solutions is often expensive and inflexible.",
                   gradient: "from-indigo-500 to-purple-500"
