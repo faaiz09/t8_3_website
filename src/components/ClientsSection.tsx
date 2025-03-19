@@ -62,15 +62,15 @@ const ClientsSection = () => {
       id: "banking",
       name: "Banking",
       clients: [
+        { id: "icici", name: "ICICI Bank", logo: icici },
         { id: "hdfc", name: "HDFC Bank", logo: hdfc },
         { id: "axis", name: "Axis Bank", logo: axis },
-        { id: "canara", name: "Canara Bank", logo: canara },
-        { id: "icici", name: "ICICI Bank", logo: icici },
-        { id: "kalupur", name: "Kalupur Bank", logo: kalupur },
-        { id: "dbs", name: "DBS Bank", logo: dbs },
-        { id: "rbl", name: "RBL Bank", logo: rbl },
-        { id: "smriti", name: "Smriti Bank", logo: smriti },
         { id: "karnataka", name: "Karnataka Bank", logo: karnataka },
+        { id: "rbl", name: "RBL Bank", logo: rbl },
+        { id: "dbs", name: "DBS Bank", logo: dbs },
+        { id: "canara", name: "Canara Bank", logo: canara },
+        { id: "kalupur", name: "Kalupur Bank", logo: kalupur },
+        { id: "smriti", name: "Smriti Bank", logo: smriti },
         { id: "sewa", name: "Shri Mahila Sewa Sahakari Bank", logo: sewa },
       ],
     },
@@ -87,9 +87,9 @@ const ClientsSection = () => {
       id: "government",
       name: "Government",
       clients: [
+        { id: "mahagenco", name: "Maha Genco", logo: mahagenco },
         { id: "bmrcl", name: "BMRCL", logo: bmrcl },
         { id: "mumbai-metro", name: "Mumbai Metro", logo: mumbaiMetro },
-        { id: "mahagenco", name: "Maha Genco", logo: mahagenco },
       ],
     },
     {
@@ -150,7 +150,7 @@ const ClientsSection = () => {
             Marquee Customers Across Industry Verticals
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
-            Trusted by leading organizations across various industries
+          In less than 2 years, we've successfully onboarded three of the country's largest banks as our valued customers
           </p>
         </motion.div>
 

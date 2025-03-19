@@ -214,8 +214,8 @@ const Footer = ({ className }: FooterProps) => {
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5" />,
-      text: "hr@technocrafts.net",
-      href: "mailto:hr@technocrafts.net",
+      text: "sales@technocrafts.co.in",
+      href: "mailto:sales@technocrafts.co.in",
     },
     {
       icon: <Phone className="h-5 w-5" />,

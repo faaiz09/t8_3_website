@@ -52,30 +52,30 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
   // 3D animation effect for logo
   useEffect(() => {
-    const logo = logoRef.current;
-    if (!logo) return;
+    // const logo = logoRef.current;
+    // if (!logo) return;
 
-    const handleMouseMove = (e: MouseEvent): void => {
-      const rect = logo.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const rotateX = (y / rect.height) * 20;
-      const rotateY = (x / rect.width) * -20;
+    // const handleMouseMove = (e: MouseEvent): void => {
+    //   const rect = logo.getBoundingClientRect();
+    //   const x = e.clientX - rect.left - rect.width / 2;
+    //   const y = e.clientY - rect.top - rect.height / 2;
+    //   const rotateX = (y / rect.height) * 20;
+    //   const rotateY = (x / rect.width) * -20;
 
-      logo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    };
+    //   logo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    // };
 
-    const handleMouseLeave = (): void => {
-      logo.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
-    };
+    // const handleMouseLeave = (): void => {
+    //   logo.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+    // };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    logo.addEventListener("mouseleave", handleMouseLeave);
+    // window.addEventListener("mousemove", handleMouseMove);
+    // logo.addEventListener("mouseleave", handleMouseLeave);
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      logo.removeEventListener("mouseleave", handleMouseLeave);
-    };
+    // return () => {
+    //   window.removeEventListener("mousemove", handleMouseMove);
+    //   logo.removeEventListener("mouseleave", handleMouseLeave);
+    // };
   }, []);
 
   return (

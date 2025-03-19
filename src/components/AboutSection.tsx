@@ -18,6 +18,20 @@ import {
   Twitter,
   BriefcaseIcon,
   GraduationCap,
+  Lightbulb,
+  Signal,
+  ClipboardList,
+  DollarSign,
+  LineChart,
+  Share2,
+  Settings,
+  Lock,
+  Bell,
+  Home,
+  Clock,
+  TrendingUp,
+  Search,
+  ShieldCheck,
 } from "lucide-react";
 
 import Products from "../assets/img/product_icon.png";
@@ -27,6 +41,7 @@ import Domains from "../assets/img/domain_icon.png";
 import chairman from "../assets/img/ganesh_samant.jpg";
 import director from "../assets/img/prasad_samant_2.jpg";
 import cro from "../assets/img/prit_gupta.jpg";
+import us from "../assets/img/us.png";
 
 interface StatItem {
   value: string;
@@ -101,6 +116,24 @@ const AboutSection = ({
       icon: <Globe className="h-6 w-6 text-indigo-500" />,
       description: "Connectivity service systems",
     },
+  ];
+
+  const capabilitiesSection = [
+    {
+      title: "Design Thinking",
+      icon: <Lightbulb className="h-12 w-12 text-teal-400" />,
+      description: "Focus on providing value to customers through clutter breaking design led experiences across all products and solutions in partnership with Kaelo."
+    },
+    {
+      title: "Tech Capabilities",
+      icon: <Signal className="h-12 w-12 text-teal-400" />,
+      description: "Team leads have 5-10 years of team leadership experience and 15-20 years of total experience in large systems design and deployment."
+    },
+    {
+      title: "Lifecycle Management",
+      icon: <ClipboardList className="h-12 w-12 text-teal-400" />,
+      description: "Experience in manufacturing, deploying and managing over 40 thousand self-service kiosks, cheque truncation systems, payment processing and transaction automation solutions."
+    }
   ];
 
   const containerVariants = {
@@ -234,11 +267,6 @@ const AboutSection = ({
       role: "Pre Sales and Purchase",
       image: "https://ui-avatars.com/api/?name=Vrushali+Shirke&background=AB8C0D&color=fff",
     },
-    // {
-    //   name: "Prathmesh P",
-    //   role: "R&D",
-    //   image: "https://ui-avatars.com/api/?name=Prathmesh+P&background=8C0DAB&color=fff",
-    // },
     {
       name: "Rupesh Mohite",
       role: "Accounts",
@@ -302,27 +330,13 @@ const AboutSection = ({
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
             About Us
           </h2>
-          {/* <motion.div
-            className="inline-block mb-4 relative"
-            animate={{ rotate: [0, 5, 0, -5, 0] }}
-            transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-          >
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-blue-600 rounded-lg blur opacity-30 animate-pulse"></div>
-              <h2 className="relative bg-white dark:bg-gray-900 px-6 py-2 rounded-lg text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">
-                About Us
-              </h2>
-            </div>
-          </motion.div> */}
           <motion.p
             className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
           >
-            T8 is a leading provider of innovative banking software and kiosk
-            solutions, transforming how financial institutions serve their
-            customers.
+            T8 is revolutionizing the self-service automation industry by introducing design led innovative solutions. Our  cutting-edge technology is transforming how businesses interact with customers and manage operations efficiently.
           </motion.p>
         </motion.div>
 
@@ -434,9 +448,7 @@ const AboutSection = ({
                   </h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">
-                  To revolutionize banking and customer service through
-                  innovative technology solutions that enhance efficiency,
-                  security, and user experience.
+                  To revolutionize customer engagement through design-led self-service solutions that blend innovative technology with human-centered experiences, empowering businesses across multiple sectors to deliver exceptional service while reducing operational costs.
                 </p>
                 <motion.div
                   className="h-1 w-20 bg-gradient-to-r from-red-500 to-red-300 rounded-full"
@@ -462,9 +474,7 @@ const AboutSection = ({
                   </h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">
-                  To be the global leader in digital transformation for
-                  financial institutions and service providers, setting new
-                  standards for innovation and excellence.
+                  To continuously redefine the possibilities of self-service automation through relentless innovation, becoming the catalyst for digital transformation that creates measurable value for businesses and delightful experiences for their customers worldwide.
                 </p>
                 <motion.div
                   className="h-1 w-20 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full"
@@ -473,6 +483,248 @@ const AboutSection = ({
                 />
               </div>
             </motion.div>
+          </div>
+        </motion.div>
+
+        {/* What are we solving? Why chose us? Section */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
+              What are we solving? Why choose us?
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
+              Organizations face critical challenges with legacy technology that hamper growth and customer satisfaction. Our T8 platform delivers innovative solutions to these pressing issues.
+            </p>
+          </div>
+
+          {/* Problems Section */}
+          <div className="mb-16 bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8 overflow-hidden relative shadow-lg transition-colors duration-300">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-red-500/10 rounded-full blur-2xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
+
+            <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">
+              Challenges with Incumbent Technology
+            </h4>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: <Signal className="h-8 w-8 text-teal-400" />,
+                  title: "Disconnected Experiences",
+                  description: "Organizations are unable to provide seamless, secure, and real-time experiences due to outdated technology.",
+                  gradient: "from-teal-500 to-blue-500"
+                },
+                {
+                  icon: <DollarSign className="h-8 w-8 text-purple-400" />,
+                  title: "High Costs",
+                  description: "Organizations are facing high costs and maintenance issues due to the need for frequent updates and upgrades.",
+                  gradient: "from-purple-500 to-pink-500"
+                },
+                {
+                  icon: <Zap className="h-8 w-8 text-amber-400" />,
+                  title: "Slow Adaptation",
+                  description: "Organizations are unable to keep up with the rapid pace of technological change, leading to a lack of innovation.",
+                  gradient: "from-amber-500 to-orange-500"
+                },
+                {
+                  icon: <LineChart className="h-8 w-8 text-blue-400" />,
+                  title: "Data Management",
+                  description: "Organizations are unable to capture real-time data and manage it effectively, leading to inefficient operations.",
+                  gradient: "from-blue-500 to-indigo-500"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: index * 0.15, duration: 0.5 }}
+                >
+                  <div className={`p-3 rounded-lg bg-gradient-to-br ${item.gradient} w-fit mb-4`}>
+                    {item.icon}
+                  </div>
+                  <h5 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h5>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-8 bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border-l-4 border-red-500">
+              <p className="text-center text-gray-800 dark:text-gray-200 font-medium">
+                ORGANIZATIONS ARE FACING A NUMBER OF CHALLENGES WHEN IT COMES TO PROVIDING SEAMLESS, SECURE, AND REAL-TIME EXPERIENCES
+              </p>
+            </div>
+          </div>
+
+          {/* Solutions Section */}
+          <div className="mb-12 bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8 overflow-hidden relative shadow-lg transition-colors duration-300">
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-green-500/10 rounded-full blur-2xl"></div>
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-teal-500/10 rounded-full blur-2xl"></div>
+
+            <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">
+              T8: Adapting Quickly to Emerging Technologies
+            </h4>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: <Users className="h-8 w-8 text-emerald-400" />,
+                  title: "Self-Service Solutions",
+                  description: "Customers are increasingly looking for self-service solutions to meet their needs.",
+                  gradient: "from-emerald-500 to-teal-500"
+                },
+                {
+                  icon: <Clock className="h-8 w-8 text-blue-400" />,
+                  title: "Rapid Adaptation",
+                  description: "Legacy providers are struggling to keep up with the pace of technological change.",
+                  gradient: "from-blue-500 to-cyan-500"
+                },
+                {
+                  icon: <TrendingUp className="h-8 w-8 text-indigo-400" />,
+                  title: "Flexible Deployment",
+                  description: "Deployment of new solutions is often expensive and inflexible.",
+                  gradient: "from-indigo-500 to-purple-500"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: index * 0.15, duration: 0.5 }}
+                >
+                  <div className={`p-3 rounded-lg bg-gradient-to-br ${item.gradient} w-fit mb-4`}>
+                    {item.icon}
+                  </div>
+                  <h5 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h5>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-8 bg-teal-50 dark:bg-teal-900/20 p-4 rounded-lg border-l-4 border-teal-500">
+              <p className="text-center text-gray-800 dark:text-gray-200 font-medium">
+                THE NEED FOR SELF-SERVICE SOLUTIONS IS GROWING, BUT TRADITIONAL PROVIDERS ARE UNABLE TO KEEP UP WITH THE PACE OF CHANGE
+              </p>
+            </div>
+          </div>
+
+          {/* How we're different Section */}
+          {/* <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+              <div className="bg-gradient-to-br from-red-500/5 to-blue-500/5 dark:from-red-500/10 dark:to-blue-500/10 p-6 flex items-center justify-center overflow-hidden">
+                <motion.div
+                  className="relative w-full rounded-xl overflow-hidden shadow-lg flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.7, delay: 0.4 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-red-500/20 dark:from-blue-500/30 dark:to-red-500/30 mix-blend-overlay"></div>
+                  <img 
+                    src={us} 
+                    alt="T8 Difference" 
+                    className="w-full object-contain rounded-xl my-auto"
+                  />
+                </motion.div>
+              </div>
+              
+              <div className="p-8 md:p-10 flex flex-col justify-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.7, delay: 0.6 }}
+                >
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">So how are we different?</h3>
+                  <div className="w-20 h-1 bg-gradient-to-r from-red-500 to-blue-500 rounded-full mb-6"></div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
+                    By fusing design thinking, cutting-edge technology, and service excellence, our T8 platform offers tailored, efficient solutions. Its eight pillars provide adaptability and exceptional performance, empowering businesses to enhance customer experience and streamline operations.
+                  </p>
+                  
+                  <div className="space-y-4">
+                    {[
+                      { icon: <Lightbulb className="h-5 w-5" />, text: "Design-led innovative solutions" },
+                      { icon: <Cpu className="h-5 w-5" />, text: "Cutting-edge self-service technology" },
+                      { icon: <Zap className="h-5 w-5" />, text: "Rapid adaptation to market changes" },
+                      { icon: <ShieldCheck className="h-5 w-5" />, text: "Secure and reliable performance" }
+                    ].map((item, idx) => (
+                      <motion.div 
+                        key={idx}
+                        className="flex items-center gap-3"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                        transition={{ delay: 0.8 + idx * 0.1, duration: 0.5 }}
+                      >
+                        <div className="p-2 bg-gradient-to-r from-red-500 to-blue-500 rounded-full">
+                          {item.icon}
+                        </div>
+                        <span className="text-gray-700 dark:text-gray-200 transition-colors duration-300">{item.text}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div> */}
+          
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Image section - now outside the card */}
+            <motion.div
+              className="relative w-full md:w-1/2 rounded-xl overflow-hidden shadow-lg flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-tr from-white-500/20 to-white-500/20 dark:from-blue-500/30 dark:to-red-500/30 mix-blend-overlay"></div>
+              <img
+                src={us}
+                alt="T8 Difference"
+                className="w-full object-contain rounded-xl my-auto"
+              />
+            </motion.div>
+
+            {/* Card section - now separate from the image */}
+            <div className="w-full md:w-1/2 bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+              <div className="p-8 md:p-10 flex flex-col justify-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.7, delay: 0.6 }}
+                >
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">So how are we different?</h3>
+                  <div className="w-20 h-1 bg-gradient-to-r from-red-500 to-blue-500 rounded-full mb-6"></div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
+                    By fusing design thinking, cutting-edge technology, and service excellence, our T8 platform offers tailored, efficient solutions. Its eight pillars provide adaptability and exceptional performance, empowering businesses to enhance customer experience and streamline operations.
+                  </p>
+
+                  <div className="space-y-4">
+                    {[
+                      { icon: <Lightbulb className="h-5 w-5" />, text: "Design-led innovative solutions" },
+                      { icon: <Cpu className="h-5 w-5" />, text: "Cutting-edge self-service technology" },
+                      { icon: <Zap className="h-5 w-5" />, text: "Rapid adaptation to market changes" },
+                      { icon: <ShieldCheck className="h-5 w-5" />, text: "Secure and reliable performance" }
+                    ].map((item, idx) => (
+                      <motion.div
+                        key={idx}
+                        className="flex items-center gap-3"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                        transition={{ delay: 0.8 + idx * 0.1, duration: 0.5 }}
+                      >
+                        <div className="p-2 bg-gradient-to-r from-red-500 to-blue-500 rounded-full">
+                          {item.icon}
+                        </div>
+                        <span className="text-gray-700 dark:text-gray-200 transition-colors duration-300">{item.text}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -494,7 +746,6 @@ const AboutSection = ({
         >
 
           <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">
-            {/* <span className="absolute inset-x-0 -bottom-3 h-1.5 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 rounded-full blur-sm" /> */}
             Our Achievements
           </h3>
 
@@ -592,7 +843,6 @@ const AboutSection = ({
                 Watch Our Story
               </h3>
               <motion.div
-                // className="h-1 w-24 bg-gradient-to-r from-red-500 to-blue-500 rounded-full mx-auto"
                 initial={{ width: 0 }}
                 animate={{ width: "6rem" }}
                 transition={{ duration: 1, delay: 0.7 }}
@@ -609,9 +859,9 @@ const AboutSection = ({
               className="relative group"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
-              transition={{ 
+              transition={{
                 type: "spring",
-                stiffness: 100, 
+                stiffness: 100,
                 damping: 15,
                 delay: 0.7
               }}
@@ -620,40 +870,40 @@ const AboutSection = ({
             >
               {/* Gradient border effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-blue-600 to-red-600 rounded-xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
-              
+
               {/* Video container */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800 transition-colors duration-300">
                 <div className="aspect-w-16 aspect-h-9">
-                  <iframe 
+                  <iframe
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/hmB1ktCmMKY?rel=0" 
+                    src="https://www.youtube.com/embed/hmB1ktCmMKY?rel=0"
                     title="T8 Company Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen>
                   </iframe>
                 </div>
 
                 {/* Floating decorative elements that appear on hover */}
-                <motion.div 
+                <motion.div
                   className="absolute -top-3 -right-3 bg-gradient-to-br from-red-500 to-pink-500 w-12 h-12 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  animate={{ 
+                  animate={{
                     y: [0, -10, 0],
                     rotate: [0, 5, 0, -5, 0]
                   }}
-                  transition={{ 
-                    repeat: Infinity, 
+                  transition={{
+                    repeat: Infinity,
                     duration: 5,
-                    ease: "easeInOut" 
+                    ease: "easeInOut"
                   }}
                 />
-                <motion.div 
+                <motion.div
                   className="absolute -bottom-3 -left-3 bg-gradient-to-tr from-blue-500 to-teal-400 w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  animate={{ 
+                  animate={{
                     y: [0, 10, 0],
                     rotate: [0, -5, 0, 5, 0]
                   }}
-                  transition={{ 
-                    repeat: Infinity, 
+                  transition={{
+                    repeat: Infinity,
                     duration: 5,
                     ease: "easeInOut",
                     delay: 0.5
@@ -673,7 +923,7 @@ const AboutSection = ({
             </motion.div>
           </div>
         </motion.div>
-        
+
         {/* Domains Section with simplified animations */}
         <motion.div
           className="mb-16"
@@ -721,64 +971,60 @@ const AboutSection = ({
           </div>
         </motion.div>
 
-        {/* Values Section */}
-        {/* <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
+        {/* Design Thinking, Tech Capabilities and Lifecycle Management Section */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="mt-20"
         >
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 transition-colors duration-300">
-            Our Core Values
-          </h3>
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-2xl">
+              Design Thinking, Tech Capabilities & Lifecycle Management
+            </h3>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Through design thinking, tech capabilities and lifecycle management, we have the expertise to provide value to customers through clutter breaking design led experiences across all our products and solutions.
+            </p>
+          </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              {
-                value: "Innovation",
-                icon: <Cpu className="h-5 w-5 text-red-500" />,
-              },
-              {
-                value: "Security",
-                icon: <ShieldIcon className="h-5 w-5 text-blue-500" />,
-              },
-              {
-                value: "Reliability",
-                icon: <Server className="h-5 w-5 text-green-500" />,
-              },
-              {
-                value: "Customer Focus",
-                icon: <Users className="h-5 w-5 text-purple-500" />,
-              },
-            ].map((item, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {capabilitiesSection.map((capability, index) => (
               <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-md flex items-center gap-2 transition-colors duration-300"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={
-                  isInView
-                    ? { opacity: 1, scale: 1 }
-                    : { opacity: 0, scale: 0.8 }
-                }
-                transition={{ delay: index * 0.1 + 0.9 }}
-                whileHover={{
-                  scale: 1.1,
-                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
-                }}
+                variants={itemVariants}
+                className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700 text-center flex flex-col items-center relative overflow-hidden group"
+                whileHover={{ y: -5 }}
               >
-                {item.icon}
-                <span className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">
-                  {item.value}
-                </span>
+                <div className="absolute inset-0 bg-teal-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                <div className="mb-6 bg-teal-50 dark:bg-teal-900/30 p-5 rounded-full flex items-center justify-center relative z-10 shadow-md">
+                  {capability.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 relative z-10">
+                  {capability.title}
+                </h3>
+                <div className="w-12 h-1 bg-teal-500 mb-4 rounded-full"></div>
+                <p className="text-gray-600 dark:text-gray-300 relative z-10">
+                  {capability.description}
+                </p>
               </motion.div>
             ))}
           </div>
-        </motion.div> */}
+
+          <div className="mt-16 text-center bg-teal-50 dark:bg-teal-900/20 p-8 rounded-2xl shadow-inner">
+            <motion.p
+              className="text-xl text-gray-700 dark:text-gray-200 italic font-medium"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              "Through design thinking, tech capabilities and lifecycle management, we have the expertise to provide value to customers through clutter breaking design led experiences across all our products and solutions."
+            </motion.p>
+          </div>
+        </motion.div>
 
         {/* Key People Section */}
         <motion.div
-          className="mb-24"
-          initial="hidden"
+          className="mb-0"
           whileInView="visible"
           viewport={{ once: true }}
           variants={{
@@ -792,7 +1038,7 @@ const AboutSection = ({
             hidden: { opacity: 0 }
           }}
         >
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center transition-colors duration-300">
+          <h3 className=" mt-10 text-2xl font-bold text-gray-900 dark:text-gray-100 mb-12 text-center transition-colors duration-300">
             Meet Our Key People
           </h3>
 
@@ -825,14 +1071,6 @@ const AboutSection = ({
                         className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
-                    <motion.div
-                      className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-red-600 text-white px-4 py-1 rounded-full text-sm font-medium"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      {person.role}
-                    </motion.div>
                   </div>
 
                   {/* Content */}
@@ -840,6 +1078,14 @@ const AboutSection = ({
                     <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {person.name}
                     </h4>
+                    <motion.div
+                      className={`mb-4 ${index === 0 ? 'bg-gradient-to-r from-red-600 to-blue-600' : 'bg-gradient-to-r from-blue-600 to-red-600'} text-white px-4 py-1 rounded-full text-sm font-medium mx-auto inline-block`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {person.role}
+                    </motion.div>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
                       {person.bio}
                     </p>
@@ -895,7 +1141,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Extended Team Section */}
-        <motion.div
+        {/* <motion.div
           className="mb-24"
           initial="hidden"
           whileInView="visible"
@@ -952,7 +1198,7 @@ const AboutSection = ({
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
