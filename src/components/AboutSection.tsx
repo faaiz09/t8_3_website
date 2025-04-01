@@ -645,7 +645,7 @@ const AboutSection = ({
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 transition-colors duration-300">So how are we different?</h3>
                   <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-red-500 to-blue-500 rounded-full mb-4 md:mb-6"></div>
                   <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-6 md:mb-8 transition-colors duration-300">
-                    By fusing design thinking, cutting-edge technology, and service excellence, our T8 platform offers tailored, efficient solutions. Its eight pillars provide adaptability and exceptional performance, empowering businesses to enhance customer experience and streamline operations.
+                    By fusing design thinking, cutting-edge technology, and service excellence, our T8 platform offers tailored, efficient solutions. We provide adaptability and exceptional performance, empowering businesses to enhance customer experience and streamline operations.
                   </p>
                   
                   <div className="space-y-3 md:space-y-4">

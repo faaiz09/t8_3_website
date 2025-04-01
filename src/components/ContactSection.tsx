@@ -24,7 +24,7 @@ interface ContactSectionProps {
 
 const ContactSection: React.FC<ContactSectionProps> = ({
   title = "Get in Touch",
-  subtitle = "Have questions about our banking solutions? Our team is here to help.",
+  subtitle = "Have questions about our innovative solutions? Our team is here to help.",
   email = "sales@technocrafts.co.in",
   phone = "+91-9004605550",
   addresses = [
